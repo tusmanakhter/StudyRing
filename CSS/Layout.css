@@ -11,3 +11,25 @@ body{
 	margin-top:21px;
 	margin-bottom:21px;
 }
+
+#Header{
+	height:70px;
+	background-image:url(../assets/logo.jpg);
+	background-repeat:no-repeat;
+	margin-bottom:11px;
+}
+
+#Navbar {
+	height:60px;
+	background-color: #000000;
+}
+h1{
+	margin:0;
+}
+#Content{
+	width:980px;
+	float:left;
+}
+#Footer{
+	height:100px;
+}
