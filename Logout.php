@@ -24,7 +24,7 @@
 <div id="Content"> 
 	<?php 
 		session_start();
-		$_SESSION['login'] = 0; //sets login cookie value to 0 (logged out)
+		$_SESSION['login'] = 0; //sets session login value to 0 (logged out)
 	?>
 	<div id="ContentLeft"></div>
     <div id = "ContentRight"> </div>
