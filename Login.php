@@ -49,8 +49,8 @@
 					echo 'alert("Sucessfully logged in")'; //alerts user that login was successful
 					echo '</script>';
 					$control = 1; //set control variable to 1 to indicate successful login
-					setcookie("user", $_POST["Username"], time() + (3600), "/"); //sets a session cookie for the user, cookie expires after 3600 seconds (1 hour)
-					$_SESSION['login'] = 1; //creates a cookie for logged in user with "login" value on cookie set to 1 (logged in)
+					setcookie("user", $_POST["Username"]); //sets a session cookie for the user, cookie is deleted automatically upon browser closing
+					$_SESSION['login'] = 1; //sets session login value to 1 (logged in)
 					header ("Location: template.php"); //sends user to template.php page after successful login. 
 				}
 			}
