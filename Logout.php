@@ -22,6 +22,10 @@
 </div>
 <h1>Page heading</h1>
 <div id="Content"> 
+	<?php 
+		session_start();
+		$_SESSION['login'] = 0; //sets session login value to 0 (logged out)
+	?>
 	<div id="ContentLeft"></div>
     <div id = "ContentRight"> </div>
 </div>
