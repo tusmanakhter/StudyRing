@@ -13,10 +13,10 @@
 <div id="Navbar">
 	<nav>
     	<ul>
-        	<li><a href="#">Home </a> </li>
+        	<li><a href="index.php">Home </a> </li>
             <li><a href="#">About us </a> </li>
             <li><a href="#">Documentation </a> </li>
-            <li><a href="#">Login </a> </li>
+            <li><a href="Login.php">Login </a> </li>
         </ul>
     </nav> 
 </div>
