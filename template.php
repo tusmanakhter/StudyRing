@@ -23,9 +23,10 @@
 <h1>Page heading</h1>
 <div id="Content"> 
 	<div id="ContentLeft"></div>
+	<strong>We will display all the available study groups that have been created here.</strong>
+	<em>This will be done in Sprint 2 </em>
     <div id = "ContentRight"> </div>
 </div>
 <div id="Footer"> </div>
-</div>
 </body>
 </html>
