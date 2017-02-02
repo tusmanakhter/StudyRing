@@ -61,8 +61,8 @@
 <?php 
 	$file = fopen("users.txt", "a+"); //opens users.txt file
 
-	if (isset($_POST["Username"])){
-		$user = ($_POST["Username"]); 
+	if (isset($_POST["username"])){
+		$user = ($_POST["username"]); 
 	}
 	else {
 		$user = null;
