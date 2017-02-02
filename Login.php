@@ -22,17 +22,6 @@
 </div>
 <h1>Login Now!</h1>
 <div id="Content"> 
-<form>
-						<fieldset = "Login Info">
-								Enter Username
-								<input type="text" name="user"><br>
-								Enter Password
-								<input type="text" name="password"><br>
-						</fieldset>
-						<input type="submit" value="Submit Form" onclick=""/>
-						<input type="reset" value="Reset Form" />
-	</form>
-
 	<div id="ContentLeft"></div>
 		<form method="post">
 			<fieldset>
