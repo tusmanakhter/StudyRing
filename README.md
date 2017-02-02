@@ -1,8 +1,8 @@
 # StudyRing
 Project for SOEN 341
 
-[Link to Wiki](https://github.com/kpamela/StudyRing/wiki)
-[www.StudyRing.ml] (www.StudyRing.ml)
+[Link to Wiki](https://github.com/kpamela/StudyRing/wiki)  
+[www.StudyRing.ml] (www.studyring.ml)
 
 ## Introduction/Goal
 The goal of our project is to create a web application which will allow students to form study groups and study together. These study groups would be created by students and other students would be able to join. The groups will have tags associated to them for different courses that are being studied in that group. The groups can then create events to study at a particular location. The event may have a cap set to limit the amount of people able to join, this will prevent overcrowded study locations.
