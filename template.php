@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link href= "CSS/Layout.css" rel = "stylesheet" type = "text/css" />
 <link href= "CSS/Menu.css" rel = "stylesheet" type = "text/css" />
-<title>Untitled Document</title>
+<title>StudyRing</title>
 </head>
 
 <body>
@@ -16,11 +16,11 @@
         	<li><a href="#">Home </a> </li>
             <li><a href="#">About us </a> </li>
             <li><a href="#">Documentation </a> </li>
-            <li><a href="#">Login </a> </li>
+			<li><a href="Logout.php">Logout</a> </li>
         </ul>
     </nav> 
 </div>
-<h1>Page heading</h1>
+<h1>You are Connected!</h1>
 <div id="Content"> 
 	<div id="ContentLeft"></div>
 	<strong>We will display all the available study groups that have been created here.</strong>

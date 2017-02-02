@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link href= "CSS/Layout.css" rel = "stylesheet" type = "text/css" />
 <link href= "CSS/Menu.css" rel = "stylesheet" type = "text/css" />
-<title>Untitled Document</title>
+<title>StudyRing</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         </ul>
     </nav> 
 </div>
-<h1>Page heading</h1>
+<h1>Register Now!</h1>
 <div id="Content">
   <form id="RegisterForm" name="RegisterForm" method="post">
     <table width="400" border="1">
@@ -57,7 +57,6 @@
   </form>
 </div>
 <div id="Footer"> </div>
-	
 <?php 
 	$file = fopen("users.txt", "a+"); //opens users.txt file
 
@@ -115,6 +114,5 @@
 	}
 	fclose($file); //closes users.txt file
 ?>
-	
 </body>
 </html>
