@@ -5,23 +5,23 @@
 <body>
   <h1>StudyRing</h1>
   {{#if currentUser}}
-      <p>You're logged in.</p>
+      {{> dashboard}}
   {{else}}
       {{> register}}
       {{> login}}
   {{/if}}
 </body>
 
-<template name="hello">
-  <button>Login</button>
-  <p>You've pressed the button {{counter}} times!</p>
+<template name="Welcome">
+  <p>Join a study ring.</p>
 </template>
 
 <!-- Registration form-->
 <template name="register">
     <form>
-        <input type="email" name="registerEmail"> <br/>
-        <input type="password" name="registerPassword"> <br/>
+        Username: <input type="text" name="registerUsername"> <br/>
+        E-mail: <input type="email" name="registerEmail"> <br/>
+        Password: <input type="password" name="registerPassword"> <br/>
         <input type="submit" value="Register">
     </form>
 </template>
@@ -29,8 +29,14 @@
 <!-- Login form -->
 <template name="login">
     <form>
-        <input type="email" name="loginEmail"> <br/>
-        <input type="password" name="loginPassword"> <br/>
+        E-mail: <input type="email" name="loginEmail"> <br/>
+        Password: <input type="password" name="loginPassword"> <br/>
         <input type="submit" value="Login">
     </form>
+</template>
+
+<!-- -->
+<template name="dashboard">
+    <p>You're logged in.</p>
+    <p><a href="#" class="logout">Logout</a></p>
 </template>
