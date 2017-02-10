@@ -42,6 +42,17 @@ Template.dashboard.events({
     }
 });
 
+Template.accountSettings.events({
+    'click .changePassword': function(event){
+      event.preventDefault();
+      var oldPass = event.target.oldPassword.value;
+      var newPass = event.target.newPassword.value;
+      var newPass2 = event.target.newPassword2.value;
+      if (newPass.isEqual(newPass2)){
+        Accounts.changePassword(oldPass, newPass);
+      }
+    }
+});
 Accounts.onLogin(function() {
   console.log(Meteor.userId());
 });
