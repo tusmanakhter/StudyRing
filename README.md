@@ -8,7 +8,7 @@ Project for SOEN 341
 The goal of our project is to create a web application which will allow students to form study groups and study together. These study groups would be created by students and other students would be able to join. The groups will have tags associated to them for different courses that are being studied in that group. The groups can then create events to study at a particular location. The event may have a cap set to limit the amount of people able to join, this will prevent overcrowded study locations.
 
 ## Features
-* Create study groups
+* Create study groups (a.k.a. study rings)
 * Create study events
 * Tag study groups with courses
 * Set groups to private or public
@@ -27,10 +27,11 @@ The goal of our project is to create a web application which will allow students
 * HTML
 * JavaScript
 * CSS
-* PHP
 
-## Potential/Future Technologies To Be Used
-* MySql
+## Frameworks
+* Meteor
+* React
+* MongoDB
 * Bootstrap
 
 ##Other Useful Information

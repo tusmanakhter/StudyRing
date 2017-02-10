@@ -1,0 +1,42 @@
+<head>
+  <title>StudyRing</title>
+</head>
+
+<body>
+  <h1>StudyRing</h1>
+  {{#if currentUser}}
+      {{> dashboard}}
+  {{else}}
+      {{> register}}
+      {{> login}}
+  {{/if}}
+</body>
+
+<template name="Welcome">
+  <p>Join a study ring.</p>
+</template>
+
+<!-- Registration form-->
+<template name="register">
+    <form>
+        Username: <input type="text" name="registerUsername"> <br/>
+        E-mail: <input type="email" name="registerEmail"> <br/>
+        Password: <input type="password" name="registerPassword"> <br/>
+        <input type="submit" value="Register">
+    </form>
+</template>
+
+<!-- Login form -->
+<template name="login">
+    <form>
+        E-mail: <input type="email" name="loginEmail"> <br/>
+        Password: <input type="password" name="loginPassword"> <br/>
+        <input type="submit" value="Login">
+    </form>
+</template>
+
+<!-- -->
+<template name="dashboard">
+    <p>You're logged in.</p>
+    <p><a href="#" class="logout">Logout</a></p>
+</template>
