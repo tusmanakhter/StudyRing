@@ -3,6 +3,21 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+Template.navBar.events({
+  'submit form': function(event){
+     event.preventDefault();
+     var myEmail = event.target.myEmail.value;
+     var myPassword = event.target.myPassword.value;
+     Meteor.loginWithPassword(myEmail, myPassword, function(error){
+        if (Meteor.user()) {
+           console.log(Meteor.userId());
+        } else {
+           console.log("ERROR: " + error.reason);
+        }
+     });
+  }
+});
+
 Template.register.events({
     'submit form': function(event) {
         event.preventDefault();
@@ -17,22 +32,6 @@ Template.register.events({
            }
         });
     }
-});
-
-Template.login.events({
-   'submit form': function(event){
-      event.preventDefault();
-      var myEmail = event.target.loginEmail.value;
-      var myPassword = event.target.loginPassword.value;
-
-      Meteor.loginWithPassword(myEmail, myPassword, function(error){
-         if (Meteor.user()) {
-            console.log(Meteor.userId());
-         } else {
-            console.log("ERROR: " + error.reason);
-         }
-      });
-   }
 });
 
 Template.dashboard.events({
@@ -53,6 +52,6 @@ Template.accountSettings.events({
       }
     }
 });
-Accounts.onLogin(function() {
+/*Accounts.onLogin(function() {
   console.log(Meteor.userId());
-});
+});*/
