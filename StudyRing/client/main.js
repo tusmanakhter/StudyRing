@@ -34,8 +34,8 @@ Template.register.events({
     }
 });
 
-Template.dashboard.events({
-    'click .logout': function(event){
+Template.navBarLoggedIn.events({
+    'click .btn': function(event){
       event.preventDefault();
       Meteor.logout();
     }
