@@ -12,11 +12,11 @@
       {{> register}}
   {{/if}}
 </body>
-<!-- Navbar
-      Contains
-        - login
-        - Registration (to be added)
-        - Navigation to other main pages -->
+
+
+<!-- ___________________________________
+Navbar for logged out user
+________________________________________-->
 <template name="navBar">
   <!-- Second navbar for sign in -->
      <nav class="navbar navbar-default">
@@ -61,6 +61,10 @@
      </nav><!-- /.navbar -->
 </template>
 
+
+<!-- ___________________________________
+Navbar for logged in user
+________________________________________-->
 <template name="navBarLoggedIn">
   <!-- Second navbar for sign in -->
      <nav class="navbar navbar-default">
@@ -84,7 +88,7 @@
              <li><a href="#">GitHub</a></li>
              <li><a href="#">Contact</a></li>
              <li>
-               <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Logout</a>
+               <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" name="logout">Logout</a>
              </li>
            </ul>
          </div><!-- /.navbar-collapse -->
@@ -93,13 +97,9 @@
 </template>
 
 
-
-<!-- Header -->
-<template name="Welcome">
-  <p>Join a study ring!</p>
-</template>
-
-<!-- Registration form-->
+<!-- ___________________________________
+Registration form
+________________________________________-->
 <template name="register">
     <form>
         Username<br/> <input type="text" name="registerUsername"> <br/>
@@ -109,20 +109,25 @@
     </form>
 </template>
 
-<!-- Dashoboard on login-->
+
+<!-- ___________________________________
+Dashboard for logged in user
+________________________________________-->
 <template name="dashboard">
     <p>You're logged in.</p>
-    <p><a href="#" class="logout">Logout</a></p>
 </template>
 
 <!-- Account settings -->
 <template name="accountSettings">
   <h1> Account settings </h1>
   <form>
-    Old password: <input type="password" name="oldPassword"> <br/>
-    Change password: <input type="password" name="newPassword"> <br/>
-    Rewrite password: <input type="password" name="newPassword2"> <br/>
-    <input type="submit" class="changePassword" name="Change Password">
+    Old password: <input type="password" name="oldPassword" id="oldPassword"> <br/>
+    Change password: <input type="password" name="newPassword" id="newPassword"> <br/>
+    Rewrite password: <input type="password" name="newPassword2" id="newPassword2"> <br/>
+    <input type="submit" class="changePassword" name="changePassword" id="changePassword">
   </form>
-  Change username: <input type= "text" name="changeUsername"> <br/>
+  <form>
+    Change username: <input type= "text" name="newUsername"> <br/>
+    <input type="submit" class="changeUsername" name="changeUsername" id="changeUsername">
+  </form>
 </template>

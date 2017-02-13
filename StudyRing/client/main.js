@@ -18,6 +18,13 @@ Template.navBar.events({
   }
 });
 
+Template.navBarLoggedIn.events({
+    'click .btn': function(event){
+      event.preventDefault();
+      Meteor.logout();
+    }
+});
+
 Template.register.events({
     'submit form': function(event) {
         event.preventDefault();
@@ -34,24 +41,28 @@ Template.register.events({
     }
 });
 
-Template.navBarLoggedIn.events({
-    'click .btn': function(event){
+Template.accountSettings.events({
+    'click .changePassword': function(event){
+        event.preventDefault();
+       var oldPass = event.target.oldPassword.value;
+        var newPass = event.target.newPassword.value;
+        var newPass2 = event.target.newPassword2.value;
+        Accounts.changePassword(oldPass, newPass, function(error){
+          if (error) {
+            console.log("ERROR" + error.reason);
+          }
+          else{
+            console.log("Password Changed");
+          }
+        });
+    },
+    'click .changeUsername': function(event){
       event.preventDefault();
-      Meteor.logout();
+      var newUsername = event.target.changeUsername.value;
+      Accounts.changeUsername(Meteor.userID(), newUsername);
     }
 });
 
-Template.accountSettings.events({
-    'click .changePassword': function(event){
-      event.preventDefault();
-      var oldPass = event.target.oldPassword.value;
-      var newPass = event.target.newPassword.value;
-      var newPass2 = event.target.newPassword2.value;
-      if (newPass.isEqual(newPass2)){
-        Accounts.changePassword(oldPass, newPass);
-      }
-    }
+Accounts.onLogin(function() {
+  console.log("Successful Login");
 });
-/*Accounts.onLogin(function() {
-  console.log(Meteor.userId());
-});*/
