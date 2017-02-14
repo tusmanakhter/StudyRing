@@ -1,0 +1,3 @@
+Template.RingInfo.events({
+
+});

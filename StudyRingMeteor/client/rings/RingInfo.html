@@ -1,0 +1,18 @@
+<template name="RingInfo">
+    <article class="ring">
+        <h3>
+            {{name}}
+        </h3>
+        <p>
+            {{desc}}
+        </p>
+        <p>
+            {{#each tags}}
+                <span class="tags">{{name}}</span>
+            {{/each}}
+        </p>
+        <a href="/rings/{{_id}}">View Details</a>
+        <button class="btn-primary toggle-menu">Add to dashboard</button>
+        <button class="btn-deny toggle-menu">Remove from dashboard</button>
+    </article>
+</template>
