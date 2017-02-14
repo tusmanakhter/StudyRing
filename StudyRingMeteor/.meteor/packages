@@ -19,6 +19,7 @@ ecmascript@0.6.1              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.1            # Server-side component of the `meteor shell` command
 
 twbs:bootstrap
+session
 kadira:flow-router
 kadira:blaze-layout
 erasaur:meteor-lodash
@@ -29,6 +30,7 @@ fastclick
 raix:handlebar-helpers
 aldeed:collection2
 aldeed:autoform
+accounts-ui
 accounts-password
 matb33:bootstrap-glyphicons
 zimme:active-route
@@ -37,5 +39,3 @@ meteortoys:allthings
 
 
 check
-stylus
-ian:accounts-ui-bootstrap-3

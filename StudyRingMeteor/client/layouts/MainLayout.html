@@ -1,9 +1,7 @@
 <template name="MainLayout">
     {{> Header}}
     {{> SideNav}}
-    <div id="page-content-wrapper">
-        <main>
-            {{> Template.dynamic template=main}}
-        </main>
-    </div>
+    <main class="main-layout">
+        {{> Template.dynamic template=main}}
+    </main>
 </template>

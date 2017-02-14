@@ -1,6 +1,6 @@
 if(Meteor.isClient){
     Accounts.onLogin(function(){
-        FlowRouter.go('rings');
+        FlowRouter.go('dashboard');
     });
 
     Accounts.onLogout(function(){
@@ -18,11 +18,19 @@ FlowRouter.route('/', {
     name: 'home',
     action() {
         if(Meteor.userId()){
-            FlowRouter.go('rings');
+            FlowRouter.go('dashboard');
         }
         BlazeLayout.render('HomeLayout');
     }
 });
+
+FlowRouter.route('/dashboard', {
+    name: 'dashboard',
+    action() {
+        BlazeLayout.render('MainLayout', {main:'Dashboard'});
+    }
+});
+
 
 FlowRouter.route('/rings', {
     name: 'rings',

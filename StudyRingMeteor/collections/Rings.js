@@ -3,6 +3,9 @@ Rings = new Mongo.Collection('rings');
 Rings.allow({
     insert: function(userId, doc){
         return !!userId;
+    },
+    update: function(userId, doc) {
+        return !!userId;
     }
 });
 
@@ -54,4 +57,25 @@ RingSchema = new SimpleSchema({
     }
 });
 
+Meteor.methods({
+    togglePrivate: function(id, currentState) {
+        Rings.update(id, {
+            $set: {
+                isPrivate: true
+            }
+        });
+    },
+    togglePublic: function(id, currentState) {
+        Rings.update(id, {
+            $set: {
+                isPrivate: false
+            }
+        });
+    },
+    deleteRing: function(id) {
+        Rings.remove(id);
+    }
+});
+
 Rings.attachSchema( RingSchema );
+

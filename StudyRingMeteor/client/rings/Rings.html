@@ -1,3 +1,7 @@
 <template name="Rings">
-    {{> NewRing}}
+{{#if $.Session.get 'newRing'}}
+        {{> NewRing}}
+{{else}}
+    <button class="new-ring">New Ring</button>
+{{/if}}
 </template>
