@@ -1,0 +1,23 @@
+<!-- Account settings -->
+<template name="AccountSettings">
+  <h1> Account settings </h1>
+  {{#if $.Session.get 'changeSettings'}}
+    <i class="fa fa-close"></i>
+    <form>
+      Old password: <input type="password" name="oldPassword" id="oldPassword"> <br/>
+      Change password: <input type="password" name="newPassword" id="newPassword"> <br/>
+      Rewrite password: <input type="password" name="newPassword2" id="newPassword2"> <br/>
+      <input type="submit" class="changePassword" name="changePassword" id="changePassword">
+    </form>
+    <form>
+      Change username: <input type= "text" name="newUsername"> <br/>
+      <input type="submit" class="changeUsername" name="changeUsername" id="changeUsername">
+    </form>
+  {{else}}
+      Email: {{#each user.emails}}
+        {{address}}
+      {{/each}} <br/>
+      Username: {{user.username}} <br/>
+      <button class="change-settings">Change Settings</button>
+  {{/if}}
+</template>

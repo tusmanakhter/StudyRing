@@ -52,3 +52,10 @@ FlowRouter.route('/rings/:id', {
         BlazeLayout.render('MainLayout', {main:'RingSingle'});
     }
 });
+
+FlowRouter.route('/account', {
+    name: 'account-settings',
+    action() {
+        BlazeLayout.render('MainLayout', {main:'AccountSettings'});
+    }
+});
