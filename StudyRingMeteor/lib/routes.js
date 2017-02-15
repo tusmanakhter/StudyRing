@@ -13,6 +13,12 @@ FlowRouter.triggers.enter([function(context, redirect){
         FlowRouter.go('home');
     }
 }]);
+// FlowRouter.route('/register',{
+//   name: 'registration',
+//   action( {
+//     BlazeLayout.render('Register');
+//   })
+// })
 
 FlowRouter.route('/', {
     name: 'home',

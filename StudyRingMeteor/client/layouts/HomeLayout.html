@@ -5,9 +5,12 @@
                 <h2>Study Together</h2>
             </div>
         </main>
-    {{#if $.Session.get 'register'}}
-        {{> Register}}
+    {{#if currentUser}}
+      {{> MainLayout}}
     {{else}}
-        {{> Login}}
-    {{/if}}
+          {{> Register}}
+  
+          {{> Login}}
+
+      {{/if}}
 </template>
