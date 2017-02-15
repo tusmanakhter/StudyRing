@@ -1,0 +1,27 @@
+<template name="RingInfo">
+    <article class="ring {{#if isPrivate}}is-private{{/if}}">
+        <h3>
+            {{name}}
+        </h3>
+        {{#if editMode}}
+                {{> quickForm collection="Rings" id=updateRingId type="update" doc=this autosave=true}}
+            {{else}}
+            <p>
+                {{desc}}
+            </p>
+            <p>
+                {{#each tags}}
+                    <span class="tags">{{name}}</span>
+                {{/each}}
+            </p>
+            <a href="/rings/{{_id}}">View Details</a>
+            {{#if isPrivate}}
+                <button class="btn-primary set-public">Set Public</button>
+                {{else}}
+                <button class="btn-deny set-private">Set Private</button>
+            {{/if}}
+        {{/if}}
+        <i class="fa fa-pencil"></i>
+        <i class="fa fa-trash"></i>
+    </article>
+</template>

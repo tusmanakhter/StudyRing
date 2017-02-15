@@ -1,0 +1,13 @@
+<template name="HomeLayout">
+    {{> Header}}
+        <main>
+            <div class="billboard">
+                <h2>Study Together</h2>
+            </div>
+        </main>
+    {{#if $.Session.get 'register'}}
+        {{> Register}}
+    {{else}}
+        {{> Login}}
+    {{/if}}
+</template>

@@ -1,0 +1,15 @@
+<template name="RingSingle">
+    <article class="ring">
+        <h3>
+            {{ring.name}}
+        </h3>
+        <p>
+            {{ring.desc}}
+        </p>
+        <p>
+            {{#each ring.tags}}
+                <span class="tags">{{name}}</span>
+            {{/each}}
+        </p>
+    </article>
+</template>
