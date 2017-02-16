@@ -1,5 +1,5 @@
-Template.AccountSettings.events({
-    'click .changePassword': function(event){
+Template.changePassword.events({
+    'submit form': function(event){
         event.preventDefault();
         console.log(event);
         var oldPass = event.target.oldPassword.value;
@@ -13,8 +13,11 @@ Template.AccountSettings.events({
             console.log("Password Changed");
           }
         });
-    },
-    'click .changeUsername': function(event){
+    }
+});
+
+Template.changeUsername.events({
+    'submit form': function(event){
       event.preventDefault();
       var newUsername = event.target.changeUsername.value;
       Accounts.changeUsername(Meteor.userID(), newUsername);
