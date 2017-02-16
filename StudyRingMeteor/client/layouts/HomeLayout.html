@@ -8,9 +8,10 @@
     {{#if currentUser}}
       {{> MainLayout}}
     {{else}}
+      {{#if register}}
           {{> Register}}
-  
+      {{else}}
           {{> Login}}
-
+      {{/if}}
       {{/if}}
 </template>

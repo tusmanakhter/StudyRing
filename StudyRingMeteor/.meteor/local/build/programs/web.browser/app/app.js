@@ -70,7 +70,7 @@ Template["AccountSettings"] = new Template("Template.AccountSettings", (function
 Template.__checkName("Login");                                                                                // 2
 Template["Login"] = new Template("Template.Login", (function() {                                              // 3
   var view = this;                                                                                            // 4
-  return HTML.FORM("\n        ", HTML.BODY("\n            ", HTML.Raw('<div class="container">\n                <div class="row ">\n                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">\n                        <div class="panel panel-default">\n                            <div class="panel-heading">\n                        <strong>   Enter Details To Login </strong>\n                            </div>\n                            <div class="panel-body">\n                                <form role="form">\n                                        <br>\n                                    <div class="form-group input-group">\n                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>\n                                        <input type="text" class="form-control" name="username" placeholder="Your Username ">\n                                    </div>\n                                    <div class="form-group input-group">\n                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                        <input type="password" class="form-control" name="loginPassword" placeholder="Your Password">\n                                    </div>\n                                    <div class="form-group">\n                                        <label class="checkbox-inline">\n                                            <input type="checkbox"> Remember me\n                                        </label>\n                                        <span class="pull-right">\n                                                <a href="#">Forget password ? </a>\n                                        </span>\n                                    </div>\n                                      <input type="submit" value="Login" class="btn btn-primary ">\n<!--\n                                        <a href="index.html" class="btn btn-primary ">\n                                            empty test\n                                        </a>\n        -->\n                                    <hr>\n                                    Not registered ? <a href="register.html" class="register">click here </a>\n                                    </form>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>'), "\n        ", HTML.SCRIPT("\n        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n        ga('create', 'UA-38955291-1', 'auto');\n        ga('send', 'pageview');\n\n        "), "\n        "), "\n    ");
+  return HTML.FORM("\n        ", HTML.BODY("\n            ", HTML.Raw('<div class="container">\n                <div class="row ">\n                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">\n                        <div class="panel panel-default">\n                            <div class="panel-heading">\n                        <strong>   Enter Details To Login </strong>\n                            </div>\n                            <div class="panel-body">\n                                <form role="form">\n                                        <br>\n                                    <div class="form-group input-group">\n                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>\n                                        <input type="text" class="form-control" name="loginEmail" placeholder="Your Username ">\n                                    </div>\n                                    <div class="form-group input-group">\n                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                        <input type="password" class="form-control" name="loginPassword" placeholder="Your Password">\n                                    </div>\n                                    <div class="form-group">\n                                        <label class="checkbox-inline">\n                                            <input type="checkbox"> Remember me\n                                        </label>\n                                        <span class="pull-right">\n                                                <a href="#">Forget password ? </a>\n                                        </span>\n                                    </div>\n                                      <input type="submit" value="Login" class="btn btn-primary ">\n<!--\n                                        <a href="index.html" class="btn btn-primary ">\n                                            empty test\n                                        </a>\n        -->\n                                    <hr>\n                                    Not registered ? <a href="/register" class="register">click here </a>\n                                    </form>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>'), "\n        ", HTML.SCRIPT("\n        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n        ga('create', 'UA-38955291-1', 'auto');\n        ga('send', 'pageview');\n\n        "), "\n        "), "\n    ");
 }));                                                                                                          // 6
                                                                                                               // 7
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +87,7 @@ Template["Login"] = new Template("Template.Login", (function() {                
 Template.__checkName("Register");                                                                             // 2
 Template["Register"] = new Template("Template.Register", (function() {                                        // 3
   var view = this;                                                                                            // 4
-  return HTML.BODY(HTML.Raw('\n    <div class="container">\n        <div class="row text-center  ">\n            <div class="col-md-12">\n                <br><br>\n                <h2> Register Now! </h2>\n\n                <h5>( Register yourself to get access )</h5>\n                 <br>\n            </div>\n        </div>\n         <div class="row">\n\n                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">\n                        <div class="panel panel-default">\n                            <div class="panel-heading">\n                        <strong>  New User ? Register Yourself </strong>\n                            </div>\n                            <div class="panel-body">\n                                <form role="form">\n<br>\n                                        <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-circle-o-notch"></i></span>\n                                            <input type="text" class="form-control" placeholder="Your Name">\n                                        </div>\n                                     <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>\n                                            <input type="text" class="form-control" placeholder="Desired Username">\n                                        </div>\n                                         <div class="form-group input-group">\n                                            <span class="input-group-addon">@</span>\n                                            <input type="email" class="form-control" name="registerEmail" placeholder="Your Email">\n                                        </div>\n                                      <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                            <input type="password" class="form-control" name="registerPassword" placeholder="Enter Password">\n                                        </div>\n                                     <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                            <input type="password" class="form-control" placeholder="Retype Password">\n                                        </div>\n\n                                     <a href="index.html" class="btn btn-success ">\n                                       <input type="submit" value="Register"></a>\n                                    <hr>\n                                    Already Registered ?  <a href="login.html">Login here</a>\n                                    </form>\n                            </div>\n\n                        </div>\n                    </div>\n\n\n        </div>\n    </div>\n'), HTML.SCRIPT("\n  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n  ga('create', 'UA-38955291-1', 'auto');\n  ga('send', 'pageview');\n\n"), "\n");
+  return HTML.BODY(HTML.Raw('\n    <div class="container">\n        <div class="row text-center  ">\n            <div class="col-md-12">\n                <br><br>\n                <h2> Register Now! </h2>\n\n                <h5>( Register yourself to get access )</h5>\n                 <br>\n            </div>\n        </div>\n         <div class="row">\n\n                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">\n                        <div class="panel panel-default">\n                            <div class="panel-heading">\n                        <strong>  New User ? Register Yourself </strong>\n                            </div>\n                            <div class="panel-body">\n                                <form role="form">\n<br>\n                                        <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-circle-o-notch"></i></span>\n                                            <input type="text" class="form-control" placeholder="Your Name">\n                                        </div>\n                                     <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>\n                                            <input type="text" class="form-control" placeholder="Desired Username">\n                                        </div>\n                                         <div class="form-group input-group">\n                                            <span class="input-group-addon">@</span>\n                                            <input type="email" class="form-control" name="registerEmail" placeholder="Your Email">\n                                        </div>\n                                      <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                            <input type="password" class="form-control" name="registerPassword" placeholder="Enter Password">\n                                        </div>\n                                     <div class="form-group input-group">\n                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>\n                                            <input type="password" class="form-control" placeholder="Retype Password">\n                                        </div>\n\n                                     <a href="/login" class="btn btn-success ">\n                                       <input type="submit" value="Register"></a>\n                                    <hr>\n                                    Already Registered ?  <a href="/login">Login here</a>\n                                    </form>\n                            </div>\n\n                        </div>\n                    </div>\n\n\n        </div>\n    </div>\n'), HTML.SCRIPT("\n  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n  ga('create', 'UA-38955291-1', 'auto');\n  ga('send', 'pageview');\n\n"), "\n");
 }));                                                                                                          // 6
                                                                                                               // 7
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -139,13 +139,13 @@ Template.AccountSettings.events({                                               
 //make sure the code is not running on server                                                                 // 45
                                                                                                               //
 if (Meteor.isClient) {                                                                                        // 46
-    Template.dashboard.events({                                                                               // 47
+    Template.Dashboard.events({                                                                               // 47
         'click .logout': function (event) {                                                                   // 48
             event.preventDefault();                                                                           // 49
             Meteor.logout();                                                                                  // 50
         }                                                                                                     // 51
     });                                                                                                       // 47
-    Template.register.events({                                                                                // 53
+    Template.Register.events({                                                                                // 53
         'submit form': function (event) {                                                                     // 54
             event.preventDefault();                                                                           // 55
             var emailVar = event.target.registerEmail.value;                                                  // 56
@@ -156,7 +156,7 @@ if (Meteor.isClient) {                                                          
             });                                                                                               // 58
         }                                                                                                     // 62
     });                                                                                                       // 53
-    Template.login.events({                                                                                   // 64
+    Template.Login.events({                                                                                   // 64
         'submit form': function (event) {                                                                     // 65
             event.preventDefault();                                                                           // 66
             var emailVar = event.target.loginEmail.value;                                                     // 67
@@ -180,7 +180,7 @@ if (Meteor.isClient) {                                                          
 Template.__checkName("Dashboard");                                                                            // 2
 Template["Dashboard"] = new Template("Template.Dashboard", (function() {                                      // 3
   var view = this;                                                                                            // 4
-  return HTML.Raw('Welcome to the Dashboard.\n    <p>You\'re logged in.</p>\n    <p><a href="/.." class="logout">Logout</a></p>');
+  return HTML.Raw('Welcome to the Dashboard.\n    <p>You\'re logged in.</p>\n    <p><a href="/" class="logout">Logout</a></p>');
 }));                                                                                                          // 6
                                                                                                               // 7
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -202,10 +202,16 @@ Template["HomeLayout"] = new Template("Template.HomeLayout", (function() {      
   }, function() {                                                                                             // 7
     return [ "\n      ", Spacebars.include(view.lookupTemplate("MainLayout")), "\n    " ];                    // 8
   }, function() {                                                                                             // 9
-    return [ "\n          ", Spacebars.include(view.lookupTemplate("Register")), "\n  \n          ", Spacebars.include(view.lookupTemplate("Login")), "\n\n      " ];
-  }) ];                                                                                                       // 11
-}));                                                                                                          // 12
-                                                                                                              // 13
+    return [ "\n      ", Blaze.If(function() {                                                                // 10
+      return Spacebars.call(view.lookup("register"));                                                         // 11
+    }, function() {                                                                                           // 12
+      return [ "\n          ", Spacebars.include(view.lookupTemplate("Register")), "\n      " ];              // 13
+    }, function() {                                                                                           // 14
+      return [ "\n          ", Spacebars.include(view.lookupTemplate("Login")), "\n      " ];                 // 15
+    }), "\n      " ];                                                                                         // 16
+  }) ];                                                                                                       // 17
+}));                                                                                                          // 18
+                                                                                                              // 19
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"template.MainLayout.js":function(){
@@ -244,10 +250,20 @@ Template["MainLayout"] = new Template("Template.MainLayout", (function() {      
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                               //
 Template.HomeLayout.events({                                                                                  // 1
-    'click .register': function () {                                                                          // 2
-        Session.set('register', true);                                                                        // 3
-    }                                                                                                         // 4
+  'click .register': function () {                                                                            // 2
+    FlowRouter.go('Register');                                                                                // 3
+    console.log("clicked register button");                                                                   // 4
+  }                                                                                                           // 6
 });                                                                                                           // 1
+Template.HomeLayout.helpers({                                                                                 // 9
+  register: function () {                                                                                     // 10
+    if (Session.get('register') == null) {                                                                    // 11
+      return false;                                                                                           // 12
+    } else {                                                                                                  // 13
+      return Session.get('register');                                                                         // 14
+    }                                                                                                         // 15
+  }                                                                                                           // 16
+});                                                                                                           // 9
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"partials":{"template.Header.js":function(){
@@ -262,7 +278,7 @@ Template.HomeLayout.events({                                                    
 Template.__checkName("Header");                                                                               // 2
 Template["Header"] = new Template("Template.Header", (function() {                                            // 3
   var view = this;                                                                                            // 4
-  return HTML.HEADER(HTML.Raw("\n        <h1>StudyRing</h1>\n    "), Spacebars.include(view.lookupTemplate("loginButtons")), "\n    ");
+  return HTML.Raw("<header>\n        <h1>StudyRing</h1>\n  <!--  {{> loginButtons}} -->\n    </header>");     // 5
 }));                                                                                                          // 6
                                                                                                               // 7
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -599,69 +615,75 @@ if (Meteor.isClient) {                                                          
     Accounts.onLogout(function () {                                                                           // 6
         FlowRouter.go('home');                                                                                // 7
     });                                                                                                       // 8
-}                                                                                                             // 9
+} // FlowRouter.triggers.enter([function(context, redirect){                                                  // 9
+//     if(!Meteor.userId()){                                                                                  // 12
+//         FlowRouter.go('home');                                                                             // 13
+//     }                                                                                                      // 14
+// }]);                                                                                                       // 15
                                                                                                               //
-FlowRouter.triggers.enter([function (context, redirect) {                                                     // 11
-    if (!Meteor.userId()) {                                                                                   // 12
-        FlowRouter.go('home');                                                                                // 13
-    }                                                                                                         // 14
-}]); // FlowRouter.route('/register',{                                                                        // 15
-//   name: 'registration',                                                                                    // 17
-//   action( {                                                                                                // 18
-//     BlazeLayout.render('Register');                                                                        // 19
-//   })                                                                                                       // 20
-// })                                                                                                         // 21
                                                                                                               //
-FlowRouter.route('/', {                                                                                       // 23
-    name: 'home',                                                                                             // 24
-    action: function () {                                                                                     // 25
-        if (Meteor.userId()) {                                                                                // 26
-            FlowRouter.go('dashboard');                                                                       // 27
-        }                                                                                                     // 28
+FlowRouter.route('/register', {                                                                               // 17
+    name: 'Register',                                                                                         // 18
+    action: function () {                                                                                     // 19
+        BlazeLayout.render('Register');                                                                       // 20
+    }                                                                                                         // 21
+});                                                                                                           // 17
+FlowRouter.route('/login', {                                                                                  // 24
+    name: 'Login',                                                                                            // 25
+    action: function () {                                                                                     // 26
+        BlazeLayout.render('Login');                                                                          // 27
+    }                                                                                                         // 28
+});                                                                                                           // 24
+FlowRouter.route('/', {                                                                                       // 31
+    name: 'home',                                                                                             // 32
+    action: function () {                                                                                     // 33
+        if (Meteor.userId()) {                                                                                // 34
+            FlowRouter.go('dashboard');                                                                       // 35
+        }                                                                                                     // 36
                                                                                                               //
-        BlazeLayout.render('HomeLayout');                                                                     // 29
-    }                                                                                                         // 30
-});                                                                                                           // 23
-FlowRouter.route('/dashboard', {                                                                              // 33
-    name: 'dashboard',                                                                                        // 34
-    action: function () {                                                                                     // 35
-        BlazeLayout.render('MainLayout', {                                                                    // 36
-            main: 'Dashboard'                                                                                 // 36
-        });                                                                                                   // 36
-    }                                                                                                         // 37
-});                                                                                                           // 33
-FlowRouter.route('/rings', {                                                                                  // 41
-    name: 'rings',                                                                                            // 42
+        BlazeLayout.render('HomeLayout');                                                                     // 37
+    }                                                                                                         // 38
+});                                                                                                           // 31
+FlowRouter.route('/dashboard', {                                                                              // 41
+    name: 'dashboard',                                                                                        // 42
     action: function () {                                                                                     // 43
         BlazeLayout.render('MainLayout', {                                                                    // 44
-            main: 'Rings'                                                                                     // 44
+            main: 'Dashboard'                                                                                 // 44
         });                                                                                                   // 44
     }                                                                                                         // 45
 });                                                                                                           // 41
-FlowRouter.route('/browse-rings', {                                                                           // 48
-    name: 'browse-rings',                                                                                     // 49
-    action: function () {                                                                                     // 50
-        BlazeLayout.render('MainLayout', {                                                                    // 51
-            main: 'BrowseRings'                                                                               // 51
-        });                                                                                                   // 51
-    }                                                                                                         // 52
-});                                                                                                           // 48
-FlowRouter.route('/rings/:id', {                                                                              // 55
-    name: 'ring-single',                                                                                      // 56
-    action: function () {                                                                                     // 57
-        BlazeLayout.render('MainLayout', {                                                                    // 58
-            main: 'RingSingle'                                                                                // 58
-        });                                                                                                   // 58
-    }                                                                                                         // 59
-});                                                                                                           // 55
-FlowRouter.route('/account', {                                                                                // 62
-    name: 'account-settings',                                                                                 // 63
-    action: function () {                                                                                     // 64
-        BlazeLayout.render('MainLayout', {                                                                    // 65
-            main: 'AccountSettings'                                                                           // 65
-        });                                                                                                   // 65
-    }                                                                                                         // 66
-});                                                                                                           // 62
+FlowRouter.route('/rings', {                                                                                  // 49
+    name: 'rings',                                                                                            // 50
+    action: function () {                                                                                     // 51
+        BlazeLayout.render('MainLayout', {                                                                    // 52
+            main: 'Rings'                                                                                     // 52
+        });                                                                                                   // 52
+    }                                                                                                         // 53
+});                                                                                                           // 49
+FlowRouter.route('/browse-rings', {                                                                           // 56
+    name: 'browse-rings',                                                                                     // 57
+    action: function () {                                                                                     // 58
+        BlazeLayout.render('MainLayout', {                                                                    // 59
+            main: 'BrowseRings'                                                                               // 59
+        });                                                                                                   // 59
+    }                                                                                                         // 60
+});                                                                                                           // 56
+FlowRouter.route('/rings/:id', {                                                                              // 63
+    name: 'ring-single',                                                                                      // 64
+    action: function () {                                                                                     // 65
+        BlazeLayout.render('MainLayout', {                                                                    // 66
+            main: 'RingSingle'                                                                                // 66
+        });                                                                                                   // 66
+    }                                                                                                         // 67
+});                                                                                                           // 63
+FlowRouter.route('/account', {                                                                                // 70
+    name: 'account-settings',                                                                                 // 71
+    action: function () {                                                                                     // 72
+        BlazeLayout.render('MainLayout', {                                                                    // 73
+            main: 'AccountSettings'                                                                           // 73
+        });                                                                                                   // 73
+    }                                                                                                         // 74
+});                                                                                                           // 70
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"collections":{"Rings.js":function(){

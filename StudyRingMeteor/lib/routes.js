@@ -8,17 +8,25 @@ if(Meteor.isClient){
     });
 }
 
-FlowRouter.triggers.enter([function(context, redirect){
-    if(!Meteor.userId()){
-        FlowRouter.go('home');
-    }
-}]);
-// FlowRouter.route('/register',{
-//   name: 'registration',
-//   action( {
-//     BlazeLayout.render('Register');
-//   })
-// })
+// FlowRouter.triggers.enter([function(context, redirect){
+//     if(!Meteor.userId()){
+//         FlowRouter.go('home');
+//     }
+// }]);
+
+FlowRouter.route('/register',{
+  name: 'Register',
+  action() {
+    BlazeLayout.render('Register');
+  }
+});
+
+FlowRouter.route('/login', {
+  name: 'Login',
+  action() {
+    BlazeLayout.render('Login');
+  }
+});
 
 FlowRouter.route('/', {
     name: 'home',

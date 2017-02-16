@@ -44,13 +44,13 @@ Template.AccountSettings.events({
 
 //make sure the code is not running on server
 if (Meteor.isClient) {
-  Template.dashboard.events({
+  Template.Dashboard.events({
     'click .logout': function(event){
         event.preventDefault();
         Meteor.logout();
     }
   });
-  Template.register.events({
+  Template.Register.events({
     'submit form': function(event){
         event.preventDefault();
         var emailVar = event.target.registerEmail.value;
@@ -61,7 +61,7 @@ if (Meteor.isClient) {
         });
     }
   });
-  Template.login.events({
+  Template.Login.events({
     'submit form': function(event){
         event.preventDefault();
         var emailVar = event.target.loginEmail.value;

@@ -13,69 +13,75 @@ if (Meteor.isClient) {                                                          
     Accounts.onLogout(function () {                                                                           // 6
         FlowRouter.go('home');                                                                                // 7
     });                                                                                                       // 8
-}                                                                                                             // 9
+} // FlowRouter.triggers.enter([function(context, redirect){                                                  // 9
+//     if(!Meteor.userId()){                                                                                  // 12
+//         FlowRouter.go('home');                                                                             // 13
+//     }                                                                                                      // 14
+// }]);                                                                                                       // 15
                                                                                                               //
-FlowRouter.triggers.enter([function (context, redirect) {                                                     // 11
-    if (!Meteor.userId()) {                                                                                   // 12
-        FlowRouter.go('home');                                                                                // 13
-    }                                                                                                         // 14
-}]); // FlowRouter.route('/register',{                                                                        // 15
-//   name: 'registration',                                                                                    // 17
-//   action( {                                                                                                // 18
-//     BlazeLayout.render('Register');                                                                        // 19
-//   })                                                                                                       // 20
-// })                                                                                                         // 21
                                                                                                               //
-FlowRouter.route('/', {                                                                                       // 23
-    name: 'home',                                                                                             // 24
-    action: function () {                                                                                     // 25
-        if (Meteor.userId()) {                                                                                // 26
-            FlowRouter.go('dashboard');                                                                       // 27
-        }                                                                                                     // 28
+FlowRouter.route('/register', {                                                                               // 17
+    name: 'Register',                                                                                         // 18
+    action: function () {                                                                                     // 19
+        BlazeLayout.render('Register');                                                                       // 20
+    }                                                                                                         // 21
+});                                                                                                           // 17
+FlowRouter.route('/login', {                                                                                  // 24
+    name: 'Login',                                                                                            // 25
+    action: function () {                                                                                     // 26
+        BlazeLayout.render('Login');                                                                          // 27
+    }                                                                                                         // 28
+});                                                                                                           // 24
+FlowRouter.route('/', {                                                                                       // 31
+    name: 'home',                                                                                             // 32
+    action: function () {                                                                                     // 33
+        if (Meteor.userId()) {                                                                                // 34
+            FlowRouter.go('dashboard');                                                                       // 35
+        }                                                                                                     // 36
                                                                                                               //
-        BlazeLayout.render('HomeLayout');                                                                     // 29
-    }                                                                                                         // 30
-});                                                                                                           // 23
-FlowRouter.route('/dashboard', {                                                                              // 33
-    name: 'dashboard',                                                                                        // 34
-    action: function () {                                                                                     // 35
-        BlazeLayout.render('MainLayout', {                                                                    // 36
-            main: 'Dashboard'                                                                                 // 36
-        });                                                                                                   // 36
-    }                                                                                                         // 37
-});                                                                                                           // 33
-FlowRouter.route('/rings', {                                                                                  // 41
-    name: 'rings',                                                                                            // 42
+        BlazeLayout.render('HomeLayout');                                                                     // 37
+    }                                                                                                         // 38
+});                                                                                                           // 31
+FlowRouter.route('/dashboard', {                                                                              // 41
+    name: 'dashboard',                                                                                        // 42
     action: function () {                                                                                     // 43
         BlazeLayout.render('MainLayout', {                                                                    // 44
-            main: 'Rings'                                                                                     // 44
+            main: 'Dashboard'                                                                                 // 44
         });                                                                                                   // 44
     }                                                                                                         // 45
 });                                                                                                           // 41
-FlowRouter.route('/browse-rings', {                                                                           // 48
-    name: 'browse-rings',                                                                                     // 49
-    action: function () {                                                                                     // 50
-        BlazeLayout.render('MainLayout', {                                                                    // 51
-            main: 'BrowseRings'                                                                               // 51
-        });                                                                                                   // 51
-    }                                                                                                         // 52
-});                                                                                                           // 48
-FlowRouter.route('/rings/:id', {                                                                              // 55
-    name: 'ring-single',                                                                                      // 56
-    action: function () {                                                                                     // 57
-        BlazeLayout.render('MainLayout', {                                                                    // 58
-            main: 'RingSingle'                                                                                // 58
-        });                                                                                                   // 58
-    }                                                                                                         // 59
-});                                                                                                           // 55
-FlowRouter.route('/account', {                                                                                // 62
-    name: 'account-settings',                                                                                 // 63
-    action: function () {                                                                                     // 64
-        BlazeLayout.render('MainLayout', {                                                                    // 65
-            main: 'AccountSettings'                                                                           // 65
-        });                                                                                                   // 65
-    }                                                                                                         // 66
-});                                                                                                           // 62
+FlowRouter.route('/rings', {                                                                                  // 49
+    name: 'rings',                                                                                            // 50
+    action: function () {                                                                                     // 51
+        BlazeLayout.render('MainLayout', {                                                                    // 52
+            main: 'Rings'                                                                                     // 52
+        });                                                                                                   // 52
+    }                                                                                                         // 53
+});                                                                                                           // 49
+FlowRouter.route('/browse-rings', {                                                                           // 56
+    name: 'browse-rings',                                                                                     // 57
+    action: function () {                                                                                     // 58
+        BlazeLayout.render('MainLayout', {                                                                    // 59
+            main: 'BrowseRings'                                                                               // 59
+        });                                                                                                   // 59
+    }                                                                                                         // 60
+});                                                                                                           // 56
+FlowRouter.route('/rings/:id', {                                                                              // 63
+    name: 'ring-single',                                                                                      // 64
+    action: function () {                                                                                     // 65
+        BlazeLayout.render('MainLayout', {                                                                    // 66
+            main: 'RingSingle'                                                                                // 66
+        });                                                                                                   // 66
+    }                                                                                                         // 67
+});                                                                                                           // 63
+FlowRouter.route('/account', {                                                                                // 70
+    name: 'account-settings',                                                                                 // 71
+    action: function () {                                                                                     // 72
+        BlazeLayout.render('MainLayout', {                                                                    // 73
+            main: 'AccountSettings'                                                                           // 73
+        });                                                                                                   // 73
+    }                                                                                                         // 74
+});                                                                                                           // 70
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"collections":{"Rings.js":function(){
