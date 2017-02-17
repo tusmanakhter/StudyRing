@@ -1,0 +1,19 @@
+language: node_js
+
+services:
+  - mongodb
+
+cache:
+  directories:
+     - node_modules
+
+before_install:
+  - curl https://install.meteor.com | /bin/sh
+  - export PATH="$HOME/.meteor:$PATH"
+
+before_script:
+  - cd StudyRingMeteor
+  - meteor npm install
+
+script:
+  - meteor build $HOME/build.tgz

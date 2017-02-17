@@ -24,6 +24,21 @@ FlowRouter.route('/', {
     }
 });
 
+FlowRouter.route('/login', {
+  name: 'Login',
+  action() {
+      BlazeLayout.render('Login');
+  }
+});
+
+FlowRouter.route('/register', {
+  name: 'Register',
+  action() {
+    BlazeLayout.render('Register');
+  }
+});
+
+
 FlowRouter.route('/dashboard', {
     name: 'dashboard',
     action() {
