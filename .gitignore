@@ -16,3 +16,4 @@ settings.json
 
 # End of https://www.gitignore.io/api/meteorjs
 StudyRingMeteor/.meteor/local/build/programs/web.browser/app/app.js.map
+StudyRingMeteor/.meteor/local/shell/info.json

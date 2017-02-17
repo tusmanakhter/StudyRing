@@ -53,9 +53,11 @@ if (Meteor.isClient) {
   Template.Register.events({
     'submit form': function(event){
         event.preventDefault();
+        var userName = event.target.registerUsername.value;
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
         Accounts.createUser({
+            username: userName,
             email: emailVar,
             password: passwordVar
         });
