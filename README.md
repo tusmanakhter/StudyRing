@@ -1,6 +1,7 @@
 # StudyRing
 Project for SOEN 341
 
+[![Build Status](https://travis-ci.org/kpamela/StudyRing.svg?branch=master)](https://travis-ci.org/kpamela/StudyRing)  
 [Link to Wiki](https://github.com/kpamela/StudyRing/wiki)  
 [www.studyring.ml] (http://www.studyring.ml)
 

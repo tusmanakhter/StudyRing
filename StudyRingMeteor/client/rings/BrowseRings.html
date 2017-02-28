@@ -1,0 +1,9 @@
+<template name="BrowseRings">
+    {{#if Template.subscriptionsReady}}
+        {{#each rings}}
+            {{> RingInfo}}
+        {{/each}}
+    {{else}}
+        <p>Loading</p>
+    {{/if}}
+</template>

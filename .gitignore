@@ -3,6 +3,7 @@
 ### MeteorJS ###
 # default meteor build and local packages
 .meteor/local
+StudyRingMeteor/npm-debug.log
 
 
 # meteor settings file
