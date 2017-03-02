@@ -1,18 +1,22 @@
 <template name="RingInfo">
     <article class="ring {{#if isPrivate}}is-private{{/if}}">
         <h3>
-            {{name}}
+            Name: {{name}}
         </h3>
         {{#if editMode}}
                 {{> quickForm collection="Rings" id=updateRingId type="update" doc=this autosave=true}}
             {{else}}
             <p>
-                {{desc}}
+                Description: {{desc}}
             </p>
             <p>
+                Tags:
                 {{#each tags}}
                     <span class="tags">{{name}}</span>
                 {{/each}}
+            </p>
+            <p>
+                Created By: {{user.username}} {{> avatar userId=userId shape="circle" size="medium"}}
             </p>
             <a href="/rings/{{_id}}">View Details</a>
             {{#if isPrivate}}

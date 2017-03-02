@@ -1,3 +1,10 @@
+Template.AccountSettings.onCreated(function(){
+    var self = this;
+    self.autorun(function (){
+        self.subscribe('profilePictures');
+    });
+});
+
 Template.changePassword.events({
     'submit form': function(event){
         event.preventDefault();
@@ -24,10 +31,23 @@ Template.changeUsername.events({
     }
 });
 
-Template.AccountSettings.helpers({
-  user: function() {
-    return Meteor.user();
-  }
+Template.changePicture.events({
+    'change .myFileInput': function(event){
+        FS.Utility.eachFile(event, function(file) {
+            ProfilePictures.insert(file, function (err, fileObj) {
+                if (err){
+                    console.log("error");
+                } else {
+                    console.log("success");
+                var userId = Meteor.userId();
+                var imagesURL = {
+                    "profile.image": "/cfs/files/profilePictures/" + fileObj._id
+                };
+                Meteor.users.update(userId, {$set: imagesURL});
+                }
+            });
+        });
+    }
 });
 
 Template.AccountSettings.events({
@@ -40,4 +60,4 @@ Template.AccountSettings.events({
     'click .change-settings': () => {
         Session.set('changeSettings', true);
     }
-})
+});

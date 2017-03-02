@@ -4,11 +4,14 @@
   {{#if $.Session.get 'changeSettings'}}
     {{> changePassword}}
     {{> changeUsername}}
+    {{> changePicture }}
+    {{> avatarManager }}
   {{else}}
       Email: {{#each user.emails}}
         {{address}}
       {{/each}} <br/>
       Username: {{user.username}} <br/>
+      Profile Picture: {{#with currentUser}} {{> avatar user=this shape="circle" size="large"}} {{/with}} <br/>
       <button class="change-settings">Change Settings</button>
   {{/if}}
 </template>
@@ -28,5 +31,13 @@
   <form>
     Change username: <input type= "text" name="newUsername"> <br/>
     <input type="submit" class="changeUsername" name="changeUsername" id="changeUsername">
+  </form>
+</template>
+
+<template name="changePicture">
+  <form>
+    Change profile picture:
+    <input type="file" name="profilePicture" class="myFileInput">
+    <input type="submit" class="changePicture" name="changePicture" id="changePicture">
   </form>
 </template>

@@ -1,5 +1,10 @@
 Template.RingInfo.onCreated(function(){
     this.editMode = new ReactiveVar(false);
+    var self = this;
+    self.autorun(function (){
+        self.subscribe('rings');
+        self.subscribe('allUsers');
+    });
 });
 
 
@@ -24,5 +29,12 @@ Template.RingInfo.helpers({
     },
     editMode: function() {
         return Template.instance().editMode.get();
+    },
+    userId: function () {
+        return this.createdBy;
+    },
+    user: function() {
+        id = Rings.findOne({_id: this._id}).createdBy;
+        return Meteor.users.findOne({_id: id});
     }
 });
