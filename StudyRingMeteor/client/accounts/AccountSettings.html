@@ -4,11 +4,13 @@
   {{#if $.Session.get 'changeSettings'}}
     {{> changePassword}}
     {{> changeUsername}}
+    {{> avatarManager }}
   {{else}}
       Email: {{#each user.emails}}
         {{address}}
       {{/each}} <br/>
       Username: {{user.username}} <br/>
+      Profile Picture: {{#with currentUser}} {{> avatar user=this shape="circle" size="large"}} {{/with}} <br/>
       <button class="change-settings">Change Settings</button>
   {{/if}}
 </template>

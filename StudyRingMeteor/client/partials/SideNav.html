@@ -1,9 +1,17 @@
 <template name="SideNav">
     <nav class="side-nav">
         <ul>
+            <div class="user">
+                {{#with currentUser}}
+                    {{> avatar user=this shape="circle" size="large"}}
+                    You are currently logged in as: {{username}}
+                {{/with}}
+            </div>
+        </ul>
+        <ul>
             <li><a href="/"><i class="fa fa-home"></i>Dashboard</a></li>
             <li><a href="/rings"><i class="fa fa-list"></i>Rings</a></li>
-            <li><a href="/browse-rings"><i class="fa fa-list"></i>Browse Rings</a></li>
+            <li><a href="/browse-rings"><i class="fa fa-qrcode"></i>Browse Rings</a></li>
             <li><a href="/account"><i class="fa fa-list"></i>Account Settings</a></li>
         </ul>
     </nav>

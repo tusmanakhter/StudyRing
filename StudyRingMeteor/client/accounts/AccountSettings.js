@@ -1,3 +1,10 @@
+Template.AccountSettings.onCreated(function(){
+    var self = this;
+    self.autorun(function (){
+        self.subscribe('profilePictures');
+    });
+});
+
 Template.changePassword.events({
     'submit form': function(event){
         event.preventDefault();
@@ -24,12 +31,6 @@ Template.changeUsername.events({
     }
 });
 
-Template.AccountSettings.helpers({
-  user: function() {
-    return Meteor.user();
-  }
-});
-
 Template.AccountSettings.events({
     'click .fa-close': function() {
         Session.set('changeSettings', false);
@@ -40,4 +41,4 @@ Template.AccountSettings.events({
     'click .change-settings': () => {
         Session.set('changeSettings', true);
     }
-})
+});
