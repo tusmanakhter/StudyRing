@@ -21,8 +21,13 @@
             <a href="/rings/{{_id}}">View Details</a>
             {{#if isPrivate}}
                 <button class="btn-primary set-public">Set Public</button>
-                {{else}}
+            {{else}}
                 <button class="btn-deny set-private">Set Private</button>
+            {{/if}}
+            {{#if isMember}}
+                <button class="btn-deny leave-ring">Leave Ring</button>
+            {{else}}
+                <button class="btn-primary join-ring">Join Ring</button>
             {{/if}}
         {{/if}}
         <i class="fa fa-pencil"></i>

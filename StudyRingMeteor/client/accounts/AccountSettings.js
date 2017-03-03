@@ -31,25 +31,6 @@ Template.changeUsername.events({
     }
 });
 
-Template.changePicture.events({
-    'change .myFileInput': function(event){
-        FS.Utility.eachFile(event, function(file) {
-            ProfilePictures.insert(file, function (err, fileObj) {
-                if (err){
-                    console.log("error");
-                } else {
-                    console.log("success");
-                var userId = Meteor.userId();
-                var imagesURL = {
-                    "profile.image": "/cfs/files/profilePictures/" + fileObj._id
-                };
-                Meteor.users.update(userId, {$set: imagesURL});
-                }
-            });
-        });
-    }
-});
-
 Template.AccountSettings.events({
     'click .fa-close': function() {
         Session.set('changeSettings', false);
