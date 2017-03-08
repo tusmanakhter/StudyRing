@@ -25,6 +25,7 @@
                 <button class="btn-deny set-private">Set Private</button>
             {{/if}}
             {{#if isMember}}
+              {{> quickForm collection="Events" id="newEventForm" type="insert" class="newEvenForm"}}
                 <button class="btn-deny leave-ring">Leave Ring</button>
             {{else}}
                 <button class="btn-primary join-ring">Join Ring</button>
