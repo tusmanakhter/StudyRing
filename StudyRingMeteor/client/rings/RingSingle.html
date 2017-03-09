@@ -1,14 +1,23 @@
 <template name="RingSingle">
     <article class="ring">
         <h3>
-            {{ring.name}}
+            Name: {{ring.name}}
         </h3>
         <p>
-            {{ring.desc}}
+            Description: {{ring.desc}}
         </p>
         <p>
+            Tags:
             {{#each ring.tags}}
                 <span class="tags">{{name}}</span>
+            {{/each}}
+        </p>
+        <p>
+            Members:
+            {{#each members}}
+                <span class="names">{{username}}
+                                    {{> avatar userId=_id shape="circle" size="medium"}}
+                </span>
             {{/each}}
         </p>
     </article>

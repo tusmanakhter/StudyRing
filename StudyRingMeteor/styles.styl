@@ -275,16 +275,25 @@ input, select, textarea
         display flex
         justify-content space-between
         list-style none
+    .user
+        color #FFF
+        text-decoration none
+        padding 10px 20px
+        text-align center
+        .avatar
+                display: block
+                margin: 0 auto
     a
         color #FFF
         text-decoration none
-        padding 20px 20px
+        padding 5px 5px
         display block
         text-align center
         trans()
         &:hover, &.active
             background #009900
     i
+
         display block
         font-size 2em
         margin-bottom 10px
@@ -298,13 +307,13 @@ input, select, textarea
             display block
         shadow-level(-1)
         a
-            padding 20px 10px
+            padding 5px 5px
             &:hover, &.active
                 border-left 4px solid teal
     +above($large)
         width $side-nav-large
         a
-            padding 20px 20px
+            padding 5x 5px
             &:hover, &.active
                 border-left 10px solid teal
 
