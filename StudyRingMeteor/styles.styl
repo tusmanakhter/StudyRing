@@ -79,7 +79,9 @@ body
 
 header
     color #FFF
-    background: purp
+
+    background: #009900
+
     padding 20px
     fixed top left
     width 100%
@@ -106,13 +108,15 @@ p
     margin-bottom 30px
 
 .billboard
-    background dark-purp
+    background #7ac780
     color #FFF
     font-size 2em
     text-align center
     padding 60px
     h2
         margin 0
+.hdr
+    color black;
 
 .main-layout
     lost-center 90%
@@ -148,12 +152,12 @@ p
 .btn, button
     display inline-block
     cursor pointer
-    background purp
+    background #009900
     color #FFF
     text-decoration none
     text-transform uppercase
     padding 5px 15px
-    border solid 3px purp
+    border solid 3px #009900
     border-radius 2px
     font-weight 800
     shadow-level(1)
@@ -263,7 +267,9 @@ input, select, textarea
     height 100px
     width 100%
     overflow hidden
-    background dark-purp
+
+    background #59b300
+
     color #FFF
     z-index: z.header
     shadow-level(2)
@@ -289,10 +295,14 @@ input, select, textarea
         text-align center
         trans()
         &:hover, &.active
-            background purp
+
+            background #009900
+
     i
-        font-size 1em
-        padding 0px 10px
+
+        display block
+        font-size 2em
+        margin-bottom 10px
     +above($med)
         height 100%
         z-index: z.mid
@@ -395,4 +405,5 @@ input, select, textarea
         right 0
         left auto
         a
-            color dark-purp
+            color #59b300
+
