@@ -2,11 +2,13 @@
     {{> Header}}
         <main>
             <div class="billboard">
-                <h2 class="hdr">Study Together</h2>
+                <h2>Study Together</h2>
             </div>
         </main>
     {{#if $.Session.get 'register'}}
         {{> Register}}
+    {{else if $.Session.get 'forgotpassword'}}
+        {{> ForgotPassword}}
     {{else}}
         {{> Login}}
     {{/if}}
