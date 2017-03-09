@@ -31,6 +31,13 @@ FlowRouter.route('/login', {
   }
 });
 
+FlowRouter.route('/forgotpassword', {
+  name: 'ForgotPassword',
+  action() {
+      BlazeLayout.render('ForgotPassword');
+  }
+});
+
 FlowRouter.route('/register', {
   name: 'Register',
   action() {
