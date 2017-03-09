@@ -6,5 +6,13 @@ Template.HomeLayout.events({
       else {
         Session.set('register', false);
       }
+    },
+    'click .forgotpassword': function() {
+      if (Session.get('forgotpassword') === false){
+        Session.set('forgotpassword', true);
+      }
+      else {
+        Session.set('forgotpassword', false);
+      }
     }
 });
