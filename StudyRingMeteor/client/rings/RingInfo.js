@@ -20,12 +20,6 @@ Template.RingInfo.events({
     },
     'click .fa-pencil': function(event, template) {
         template.editMode.set(!template.editMode.get());
-    },
-    'click .join-ring': function() {
-        Meteor.call('joinRing', this._id);
-    },
-    'click .leave-ring': function() {
-        Meteor.call('leaveRing', this._id);
     }
 });
 

@@ -1,14 +1,14 @@
 <template name="RingSingle">
     <article class="ring">
         <h3>
-            Name: {{ring.name}}
+            Name: {{name}}
         </h3>
         <p>
-            Description: {{ring.desc}}
+            Description: {{desc}}
         </p>
         <p>
             Tags:
-            {{#each ring.tags}}
+            {{#each tags}}
                 <span class="tags">{{name}}</span>
             {{/each}}
         </p>
@@ -20,5 +20,10 @@
                 </span>
             {{/each}}
         </p>
+        {{#if isMember}}
+            <button class="btn-deny leave-ring">Leave Ring</button>
+        {{else}}
+            <button class="btn-primary join-ring">Join Ring</button>
+        {{/if}}
     </article>
 </template>
