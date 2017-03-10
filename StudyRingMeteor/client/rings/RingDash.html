@@ -1,0 +1,19 @@
+<!--Ring Dashboard will contain future features such as an organized display of
+    events, members, forum or communication between members and other information-->
+
+<template name="RingDash">
+    <h3>
+    {{name}}
+    </h3>
+    <br/>
+        Description: {{desc}}
+    <br/>
+        Tags:
+        {{#each tags}}
+            <span class="tags">{{name}}</span>
+        {{/each}}
+    <br/>
+
+        Created By: {{user.username}} {{> avatar userId=userId shape="circle" size="medium"}}
+        {{> NewEvent}}
+</template>
