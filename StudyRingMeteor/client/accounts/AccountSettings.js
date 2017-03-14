@@ -12,6 +12,7 @@ Template.changePassword.events({
         var oldPass = event.target.oldPassword.value;
         var newPass = event.target.newPassword.value;
         var newPass2 = event.target.newPassword2.value;
+
         if(newPass==newPass2){
             Accounts.changePassword(oldPass, newPass, function(error){
               if (error) {
@@ -32,7 +33,8 @@ Template.changeUsername.events({
     'submit form': function(event){
       event.preventDefault();
       var newUsername = event.target.changeUsername.value;
-      Accounts.changeUsername(Meteor.userID(), newUsername);
+      var userId = Meteor.userID();
+      Accounts.setUsername(userId, newUsername);
     }
 });
 
