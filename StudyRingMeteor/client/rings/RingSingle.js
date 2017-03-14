@@ -20,5 +20,22 @@ Template.RingSingle.helpers({
     members: () => {
         var id = FlowRouter.getParam('id');
         return Meteor.users.find({rings: id});
+    },
+    isMember: function() {
+        var id = this._id;
+        var result = Meteor.users.findOne({_id: Meteor.user()._id, rings: id});
+        if (result)
+            return true;
+        else
+            return false;
     }
+});
+
+Template.RingSingle.events({
+  'click .join-ring': function() {
+      Meteor.call('joinRing', this._id);
+  },
+  'click .leave-ring': function() {
+      Meteor.call('leaveRing', this._id);
+  }
 });

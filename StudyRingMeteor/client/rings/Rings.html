@@ -4,4 +4,11 @@
 {{else}}
     <button class="new-ring">New Ring</button>
 {{/if}}
+{{#if Template.subscriptionsReady}}
+    {{#each rings}}
+        {{> RingInfo}}
+    {{/each}}
+{{else}}
+    <p>Loading</p>
+{{/if}}
 </template>
