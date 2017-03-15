@@ -17,3 +17,4 @@ before_script:
 
 script:
   - meteor build $HOME/build.tgz
+  - meteor npm test
