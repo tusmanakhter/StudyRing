@@ -81,3 +81,10 @@ FlowRouter.route('/account', {
         BlazeLayout.render('MainLayout', {main:'AccountSettings'});
     }
 });
+
+FlowRouter.route('/forum',{
+    name: 'main-forum',
+    action(){
+        BlazeLayout.render('MainLayout',{main:'MainForum'})
+    }
+});
