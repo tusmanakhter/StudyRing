@@ -69,9 +69,9 @@ FlowRouter.route('/browse-rings', {
 });
 
 FlowRouter.route('/rings/:id', {
-    name: 'ring-single',
+    name: 'ring-dash',
     action() {
-        BlazeLayout.render('MainLayout', {main:'RingSingle'});
+        BlazeLayout.render('MainLayout', {main:'RingDash'});
     }
 });
 
@@ -79,5 +79,12 @@ FlowRouter.route('/account', {
     name: 'account-settings',
     action() {
         BlazeLayout.render('MainLayout', {main:'AccountSettings'});
+    }
+});
+
+FlowRouter.route('/forum',{
+    name: 'main-forum',
+    action(){
+        BlazeLayout.render('MainLayout',{main:'MainForum'})
     }
 });

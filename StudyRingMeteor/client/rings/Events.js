@@ -35,34 +35,12 @@ EventsSchema = new SimpleSchema({
             type: "hidden"
         }
     },
-    createdBy:{
-        type: String,
-        label: "Created By",
-        autoValue: function () {
-            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-                return this.userId
-            }
-        },
-        autoform: {
-            type: "hidden"
-        }
-    },
     eventDate:{
       type: Date,
       label: "Date",
+      min: new Date()
     },
-    createdAt: {
-        type: Date,
-        label: "Created At",
-        autoValue: function() {
-            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-                return new Date()
-            }
-        },
-        autoform: {
-            type: "hidden"
-        }
-    },
+    
     members: {
         type: [String],
         autoValue: function() {

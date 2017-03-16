@@ -22,13 +22,7 @@
     <div><input id="search" placeholder="Search Rings"></div>
     {{#if Template.subscriptionsReady}}
         {{#each rings}}
-            {{> RingInfo}}
-            <div
-              class="fb-like"
-              data-share="true"
-              data-width="450"
-              data-show-faces="true">
-            </div>
+            {{> RingSingle}}
         {{/each}}
     {{else}}
         <p>Loading</p>
