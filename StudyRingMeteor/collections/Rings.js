@@ -1,5 +1,6 @@
 Rings = new Mongo.Collection('rings');
 
+//Allow the insert and update function on a ring if the user is logged in
 Rings.allow({
     insert: function(userId, doc){
         return !!userId;
@@ -9,12 +10,14 @@ Rings.allow({
     }
 });
 
+//This is the schema for tags
 Tags = new SimpleSchema({
     name: {
         type: String
     }
 });
 
+//This is the schema for rings
 RingSchema = new SimpleSchema({
     name: {
         type: String,
@@ -39,6 +42,7 @@ RingSchema = new SimpleSchema({
         type: String,
         label: "Created By",
         autoValue: function () {
+            //This makes sure to only set a value when it is an insert function, not an update
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return this.userId
             }
@@ -51,6 +55,7 @@ RingSchema = new SimpleSchema({
         type: Date,
         label: "Created At",
         autoValue: function() {
+            //This makes sure to only set a value when it is an insert function, not an update
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return new Date()
             }
@@ -62,6 +67,7 @@ RingSchema = new SimpleSchema({
     members: {
         type: [String],
         autoValue: function() {
+            //This makes sure to only set a value when it is an insert function, not an update
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return new Array();
             }
@@ -73,6 +79,11 @@ RingSchema = new SimpleSchema({
 });
 
 Meteor.methods({
+    /**
+     * This sets a ring to private
+     * @param id - the id of the ring to be updated
+     * @param currentState - the state of the ring (private or public) (I dont think we need this) **Refactor**
+     */
     togglePrivate: function(id, currentState) {
         Rings.update(id, {
             $set: {
@@ -80,6 +91,11 @@ Meteor.methods({
             }
         });
     },
+    /**
+     * This sets a ring to public
+     * @param id - the id of the ring to be updated
+     * @param currentState - the state of the ring (private or public) (I dont think we need this) **Refactor**
+     */
     togglePublic: function(id, currentState) {
         Rings.update(id, {
             $set: {
@@ -87,17 +103,33 @@ Meteor.methods({
             }
         });
     },
+    /**
+     * This function deletes a ring
+     * @param id - the id of the ring to be deleted
+     */
     deleteRing: function(id) {
         Rings.remove(id);
     },
+    /**
+     * This function lets a user join a ring
+     * @param id - the id of the ring that is to be joined
+     */
     joinRing: function(id){
         var userId = Meteor.userId();
+        //This adds the ring to the users rings he has joined
         Meteor.users.update(userId, {$push: {rings: id}});
+        //This adds the user to the rings members
         Rings.update(id, {$push: {members: userId}});
     },
+    /**
+     * This function lets a user leave a ring
+     * @param id - the id of the ring that is to be left
+     */
     leaveRing: function(id){
         var userId = Meteor.userId();
+        //This removes the ring from the rings the user has joined
         Meteor.users.update(userId, {$pull: {rings: id}});
+        //This removes the user from the rings memebrs
         Rings.update(id, {$pull: {members: userId}});
     }
 });

@@ -29,17 +29,21 @@ User = new SimpleSchema({
             type: "hidden"
         }
     },
+    //This array stores the rings that a user joins
     rings: {
         type: Array,
         optional: true
     },
+    //The rings array stores items of type string
     "rings.$": {
         type: String
     },
+    //This is the profile object where the profile image will be stored
     profile: {
         type: Object,
         optional: true
     },
+    //This is the profile image item which is stored as a string
     "profile.image": {
         type: String,
         optional: true
