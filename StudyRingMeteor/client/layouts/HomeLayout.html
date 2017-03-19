@@ -7,6 +7,8 @@
         </main>
     {{#if $.Session.get 'register'}}
         {{> Register}}
+    {{else if $.Session.get 'forgotpassword'}}
+        {{> ForgotPassword}}
     {{else}}
         {{> Login}}
     {{/if}}

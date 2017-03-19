@@ -1,0 +1,22 @@
+<template name="MainForum">
+  <body>
+      <div class="jumbotron">
+        <h1>Welcome To The Forum</h1>
+        <p>Have a question? We are here to help!</p>
+      </div>
+      {{#each comments}}
+        {{> myComment_post}}
+      {{/each}}
+  </body>
+</template>
+
+<template name="myComment_post">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="well">
+        <p>{{my_comment}}</p>
+      </div>
+    </div>
+  </div>
+
+</template>
