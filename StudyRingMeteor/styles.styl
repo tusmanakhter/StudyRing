@@ -78,45 +78,49 @@ body
     padding: 70px 0 150px
 
 header
-    color #FFF 
-    background: purp
-    padding 20px 
+    color #FFF
+
+    background: #009900
+
+    padding 20px
     fixed top left
     width 100%
-    height 70px  
+    height 70px
     z-index: z.header
     shadow-level(2)
     clearfix()
-    h1 
+    h1
         margin 0
-        font-size 1.6em 
+        font-size 1.6em
         float left
     .login-buttons-dropdown-align-
         float right
         a
             color #FFF
-            text-decoration none 
+            text-decoration none
 
 p
-    color #333 
+    color #333
 
 .page-title
     text-transform uppercase
     text-align center
-    margin-bottom 30px 
+    margin-bottom 30px
 
 .billboard
-    background dark-purp
+    background #7ac780
     color #FFF
     font-size 2em
     text-align center
-    padding 60px 
+    padding 60px
     h2
         margin 0
+.hdr
+    color black;
 
 .main-layout
     lost-center 90%
-    margin-top 20px 
+    margin-top 20px
     +above($med)
         lost-center 90%
         padding-left $side-nav
@@ -124,36 +128,36 @@ p
         lost-center 80%
         margin-top 40px
         padding-left $side-nav-large
-    
+
 .new-ring
-    margin-bottom 20px 
+    margin-bottom 20px
 
 .new-ring-container
     position relative
     background #FFF
-    padding 20px 
-    margin-bottom 20px 
-    shadow-level(2) 
+    padding 20px
+    margin-bottom 20px
+    shadow-level(2)
     .fa-close
         position absolute
         top 0
         right 0
-        padding 20px   
+        padding 20px
     label
         display block
-        margin-bottom 10px 
+        margin-bottom 10px
     textarea, input
-        width 100% 
+        width 100%
 
 .btn, button
     display inline-block
     cursor pointer
-    background purp
+    background #009900
     color #FFF
     text-decoration none
     text-transform uppercase
     padding 5px 15px
-    border solid 3px purp
+    border solid 3px #009900
     border-radius 2px
     font-weight 800
     shadow-level(1)
@@ -191,7 +195,7 @@ p
         shadow-level(0)
         &:hover
             background #FFF
-            color dark-purp 
+            color dark-purp
             border-color @background
             shadow-level(1)
     &.btn-confirmation
@@ -204,7 +208,7 @@ p
     &.btn-cancel
         color #FFF
         background transparent
-        border solid 2px #FFF 
+        border solid 2px #FFF
         opacity 0.4
         shadow-level(-1)
         &:hover
@@ -220,9 +224,9 @@ input, select, textarea
     border solid 2px light-grey
     border-radius 2px
     font-weight 800
-    width 100% 
+    width 100%
     padding 6px 10px
-    margin-bottom 10px  
+    margin-bottom 10px
     &.static-input
         border none
         background transparent
@@ -230,11 +234,11 @@ input, select, textarea
 .list-group
     list-style none
     padding 0
-    
+
 .panel-body
     .form-group
-        lost-column 1/2 
-        
+        lost-column 1/2
+
 .autoform-remove-item.btn
     background light-grey
     box-shadow none
@@ -253,17 +257,19 @@ input, select, textarea
     border none
     box-shadow none
     background light-grey
-     
+
 
 .autoform-remove-item-wrap
-    vertical-align middle 
+    vertical-align middle
 
 .side-nav
     fixed bottom left
     height 100px
     width 100%
-    overflow hidden 
-    background dark-purp
+    overflow hidden
+
+    background #59b300
+
     color #FFF
     z-index: z.header
     shadow-level(2)
@@ -271,7 +277,7 @@ input, select, textarea
         margin 0
         padding 0
         display flex
-        justify-content space-between 
+        justify-content space-between
         list-style none
     .user
         color #FFF
@@ -289,17 +295,21 @@ input, select, textarea
         text-align center
         trans()
         &:hover, &.active
-            background purp 
+
+            background #009900
+
     i
-        font-size 1em
-        padding 0px 10px
+
+        display block
+        font-size 2em
+        margin-bottom 10px
     +above($med)
         height 100%
         z-index: z.mid
         padding 120px 0
         fixed top left
         width $side-nav
-        ul 
+        ul
             display block
         shadow-level(-1)
         a
@@ -314,10 +324,10 @@ input, select, textarea
                 border-left 10px solid teal
 
 .ring
-    background #FFF 
+    background #FFF
     padding 0 20px 20px
     margin-bottom 20px
-    position relative 
+    position relative
     z-index 1
     shadow-level(1)
     trans()
@@ -333,22 +343,22 @@ input, select, textarea
         opacity: 0.3;
         border-bottom: rgba(0,0,0, 0.3) solid 3px
         margin-top 0
-        margin-bottom 10px 
+        margin-bottom 10px
     button
-        margin-top 20px 
+        margin-top 20px
     .fa-trash, .fa-pencil
         opacity 0.3
         cursor pointer
         position absolute
         top 0
         right 0
-        font-size 1.6em  
+        font-size 1.6em
         display block
-        padding 20px 
+        padding 20px
         color black
         trans()
         &:hover
-            color red 
+            color red
             opacity 0.6
     .fa-pencil
         right 40px
@@ -356,9 +366,9 @@ input, select, textarea
             color purple
     .ingredient
         display inline-block
-        margin-right 10px 
-        font-size 1.2em 
-    &:hover 
+        margin-right 10px
+        font-size 1.2em
+    &:hover
         shadow-level(3)
         // animation card 0.6s ease 1 forwards
 
@@ -374,26 +384,26 @@ input, select, textarea
         z-index 10
         transform translate3d(0, 0, 0)
 
-            
+
 .menu-item
     @extend .ring
-    
+
 .shopping-list
     @extend .ring
     padding 50px 5%
     list-style none
     li
-        font-size 2em 
+        font-size 2em
         padding 20px
         border-bottom 1px solid light-grey
         border-top 1px solid light-grey
-        & + li 
+        & + li
             border-top none
 
 .login-buttons-dropdown-align-
     #login-dropdown-list
         right 0
-        left auto 
-        a 
-            color dark-purp
+        left auto
+        a
+            color #59b300
 

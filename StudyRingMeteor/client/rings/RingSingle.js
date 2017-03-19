@@ -1,24 +1,38 @@
 Template.RingSingle.onCreated(function(){
     var self = this;
     self.autorun(function (){
-        var id = FlowRouter.getParam('id');
-        self.subscribe('singleRing', id);
-        self.subscribe('allUsers', id);
+        //This subsribes to all rings and all users so they are visible
+        self.subscribe('rings');
+        self.subscribe('allUsers');
     });
 });
 
 Template.RingSingle.helpers({
-    ring: ()=> {
-        var id = FlowRouter.getParam('id');
-        return Rings.findOne({_id: id});
+    //This returns the userId of the ring it is called from
+    userId: function() {
+        return this.createdBy;
     },
-    createdByUser: function() {
-        var id = FlowRouter.getParam('id');
-        var userid = Rings.findOne({_id: id}).createdBy;
-        return Meteor.users.findOne({_id: userid});
+    //This returns the members of the ring it is called from
+    members: function() {
+        var id = this._id;
+        return Meteor.users.find({rings: this._id});
     },
-    members: () => {
-        var id = FlowRouter.getParam('id');
-        return Meteor.users.find({rings: id});
+    //This checks if the current user is a member of the ring this is called from
+    isMember: function() {
+        var id = this._id;
+        var result = Meteor.users.findOne({_id: Meteor.user()._id, rings: id});
+        if (result)
+            return true;
+        else
+            return false;
     }
+});
+
+Template.RingSingle.events({
+  'click .join-ring': function() {
+      Meteor.call('joinRing', this._id);
+  },
+  'click .leave-ring': function() {
+      Meteor.call('leaveRing', this._id);
+  }
 });

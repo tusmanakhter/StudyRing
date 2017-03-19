@@ -6,11 +6,13 @@
     {{> changeUsername}}
     {{> avatarManager }}
   {{else}}
-      Email: {{#each user.emails}}
+  {{#with currentUser}}
+      Email: {{#each emails}}
         {{address}}
       {{/each}} <br/>
-      Username: {{user.username}} <br/>
-      Profile Picture: {{#with currentUser}} {{> avatar user=this shape="circle" size="large"}} {{/with}} <br/>
+      Username: {{username}} <br/>
+      Profile Picture: {{> avatar user=this shape="circle" size="large"}} <br/>
+  {{/with}}
       <button class="change-settings">Change Settings</button>
   {{/if}}
 </template>
