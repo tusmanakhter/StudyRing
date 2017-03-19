@@ -1,6 +1,4 @@
 UserDiscussion = new Mongo.Collection('userdiscussion');
-<<<<<<< HEAD
-=======
 
 //checks if the user is still logged in
 UserDiscussion.allow({
@@ -58,4 +56,3 @@ Meteor.methods({
 
 
 })
->>>>>>> 0a20139921d8ae1d93cc56e0954e462f3adf11a9
