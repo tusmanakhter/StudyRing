@@ -1,3 +1,5 @@
+import { Rings } from "../../collections/Rings.js"
+
 Events = new Mongo.Collection('events');
 
 Events.allow({

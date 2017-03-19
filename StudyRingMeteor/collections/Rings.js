@@ -1,4 +1,8 @@
-Rings = new Mongo.Collection('rings');
+import { Mongo } from 'meteor/mongo';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Factory } from 'meteor/dburles:factory';
+
+export const Rings = new Mongo.Collection('rings');
 
 //Allow the insert and update function on a ring if the user is logged in
 Rings.allow({
@@ -82,9 +86,8 @@ Meteor.methods({
     /**
      * This sets a ring to private
      * @param id - the id of the ring to be updated
-     * @param currentState - the state of the ring (private or public) (I dont think we need this) **Refactor**
      */
-    togglePrivate: function(id, currentState) {
+    togglePrivate: function(id) {
         Rings.update(id, {
             $set: {
                 isPrivate: true
@@ -94,9 +97,8 @@ Meteor.methods({
     /**
      * This sets a ring to public
      * @param id - the id of the ring to be updated
-     * @param currentState - the state of the ring (private or public) (I dont think we need this) **Refactor**
      */
-    togglePublic: function(id, currentState) {
+    togglePublic: function(id) {
         Rings.update(id, {
             $set: {
                 isPrivate: false
@@ -108,6 +110,7 @@ Meteor.methods({
      * @param id - the id of the ring to be deleted
      */
     deleteRing: function(id) {
+        Meteor.users.update({rings:{ $in: [id]}}, {$pull: {rings: id}}, {multi: true})
         Rings.remove(id);
     },
     /**
@@ -115,7 +118,7 @@ Meteor.methods({
      * @param id - the id of the ring that is to be joined
      */
     joinRing: function(id){
-        var userId = Meteor.userId();
+        var userId = this.userId
         //This adds the ring to the users rings he has joined
         Meteor.users.update(userId, {$push: {rings: id}});
         //This adds the user to the rings members
@@ -126,7 +129,7 @@ Meteor.methods({
      * @param id - the id of the ring that is to be left
      */
     leaveRing: function(id){
-        var userId = Meteor.userId();
+        var userId = this.userId
         //This removes the ring from the rings the user has joined
         Meteor.users.update(userId, {$pull: {rings: id}});
         //This removes the user from the rings memebrs
@@ -136,3 +139,15 @@ Meteor.methods({
 
 Rings.attachSchema( RingSchema );
 
+Rings.after.insert(function() {
+    if (Meteor.isServer){
+        Meteor.call('joinRing', this._id);
+    }
+});
+
+Factory.define('Ring', Rings, {
+  name: () => faker.lorem.sentence(),
+  desc: () => faker.lorem.sentence(),
+  tags: () => [{name: faker.lorem.sentence()}],
+  createdBy: () => faker.lorem.sentence()
+});

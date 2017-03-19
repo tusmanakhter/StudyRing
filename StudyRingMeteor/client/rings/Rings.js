@@ -1,3 +1,5 @@
+import { Rings } from "../../collections/Rings.js"
+
 Template.Rings.events({
     //This sets the variable newRing to true when an item with class new-ring is clicked
     'click .new-ring': () => {

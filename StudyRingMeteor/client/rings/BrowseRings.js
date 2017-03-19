@@ -1,3 +1,5 @@
+import { Rings } from "../../collections/Rings.js"
+
 Template.BrowseRings.onCreated(function(){
     var self = this;
     self.autorun(function (){

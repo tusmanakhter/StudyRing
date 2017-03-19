@@ -1,3 +1,5 @@
+import { Rings } from "../../collections/Rings.js"
+
 Template.RingInfo.onCreated(function(){
     this.editMode = new ReactiveVar(false);
     var self = this;
@@ -10,10 +12,10 @@ Template.RingInfo.onCreated(function(){
 
 Template.RingInfo.events({
     'click .set-private': function() {
-        Meteor.call('togglePrivate', this._id, this.isPrivate);
+        Meteor.call('togglePrivate', this._id);
     },
     'click .set-public': function() {
-        Meteor.call('togglePublic', this._id, this.isPrivate);
+        Meteor.call('togglePublic', this._id);
     },
     'click .fa-trash': function() {
         Meteor.call('deleteRing', this._id);

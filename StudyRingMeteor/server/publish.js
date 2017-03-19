@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor';
+import { Rings } from "../collections/Rings.js"
+
 /**
  * This function returns all rings to the client
  */
