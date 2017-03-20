@@ -47,25 +47,31 @@ describe('Rings', function () {
         assert.isFalse(Rings.findOne({_id: RingId}).isPrivate);
     });
 
-    // it("Should let a user join a ring", function() {
-    //     const methodInvocation = { userId: userId2 };
-    //     const collector = new PublicationCollector();
+    it("Should let a user join a ring", function() {
+        const methodInvocation = { userId: userId2 };
+        const collector = new PublicationCollector();
 
-    //     joinRing._execute(methodInvocation, { id: RingId });
+        joinRing._execute(methodInvocation, { id: RingId });
 
-    //     assert.equal(Meteor.users.findOne({_id: userId2}).rings[1], RingId);
-    //     assert.equal(Rings.findOne({_id: RingId}).members[1], userId2);
-    // });
+        var ring = Meteor.users.findOne({ _id: userId2 }).rings[0];
+        var user = Rings.findOne({_id: RingId}).members[1];
 
-    // it("Should let a user leave a ring", function() {
-    //     const methodInvocation = { userId: userId2 };
-    //     const collector = new PublicationCollector();
+        assert.equal(ring, RingId);
+        assert.equal(user, userId2);
+    });
 
-    //     leaveRing._execute(methodInvocation, { id: RingId });
+    it("Should let a user leave a ring", function() {
+        const methodInvocation = { userId: userId2 };
+        const collector = new PublicationCollector();
 
-    //     assert.isUndefined(Meteor.users.findOne({_id: userId2}).rings[1]);
-    //     assert.isUndefined(Rings.findOne({_id: RingId}).members[1]);
-    // });
+        leaveRing._execute(methodInvocation, { id: RingId });
+
+        var ring = Meteor.users.findOne({ _id: userId2 }).rings[0];
+        var user = Rings.findOne({_id: RingId}).members[1];
+
+        assert.isUndefined(ring);
+        assert.isUndefined(user);
+    });
 
     //Tests the deletion of a ring
     it("Should delete a ring", function() {
