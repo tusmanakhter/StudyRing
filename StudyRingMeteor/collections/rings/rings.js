@@ -12,7 +12,7 @@ Rings.allow({
         return !!userId;
     },
     update: function(userId, doc) {
-        return !!userId;
+        return doc.createdBy == userId;
     }
 });
 
