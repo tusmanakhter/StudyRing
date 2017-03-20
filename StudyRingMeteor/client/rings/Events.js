@@ -40,7 +40,7 @@ EventsSchema = new SimpleSchema({
       label: "Date",
       min: new Date()
     },
-    
+
     members: {
         type: [String],
         autoValue: function() {

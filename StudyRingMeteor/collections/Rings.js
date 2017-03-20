@@ -27,6 +27,11 @@ RingSchema = new SimpleSchema({
     tags: {
         type: [Tags]
     },
+
+    admins: {
+        type: [Tags]
+    },
+
     isPrivate: {
         type: Boolean,
         defaultValue: false,
@@ -35,6 +40,7 @@ RingSchema = new SimpleSchema({
             type: "hidden"
         }
     },
+
     createdBy:{
         type: String,
         label: "Created By",
@@ -47,6 +53,7 @@ RingSchema = new SimpleSchema({
             type: "hidden"
         }
     },
+
     createdAt: {
         type: Date,
         label: "Created At",
@@ -103,4 +110,3 @@ Meteor.methods({
 });
 
 Rings.attachSchema( RingSchema );
-
