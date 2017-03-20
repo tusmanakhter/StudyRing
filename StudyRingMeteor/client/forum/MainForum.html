@@ -4,36 +4,35 @@
         <h1>Welcome To The Forum</h1>
         <p>Have a question? We are here to help!</p>
       </div>
-      {{#each comments}}
-        {{> myComment_post}}
-      {{/each}}
       <div>
-        {{> myCommentBox}}
+        {{#each comments}}
+          {{> myAvatarComment}}
+        {{/each}}
       </div>
-      <div>
         {{> quickForm collection="UserDiscussion" id="insertComment" type="insert" class="newCommentForm"}}
-      </div>
   </body>
 </template>
 
-<template name="myComment_post">
+<template name="myAvatarComment">
   <div class="row">
     <div class="col-sm-9">
-      <div class="well">
-        <p>{{my_comment}}</p>
+      <div class="user">
+          {{#with currentUser}}
+              {{> avatar user=this shape="circle" size="large"}}
+              {{username}}
+          {{/with}}
       </div>
+          {{> myComment}}
     </div>
   </div>
 </template>
 
-<template name="myCommentBox">
-  <h3> Write your own comment! </h3>
-  <form class ="new-commentBox">
-      <input type="textarea" name="mycomment" placeholder="Type your comment here">
-      <input type="submit" value="Submit">
-  </form>
-</template>
-
-<template name="newComment">
-
+<template name = "myComment">
+  <div class="well">
+    <h4>{{comment}}</h4>
+    <p>{{createdAt}}></p>
+    {{> quickForm collection="UserDiscussion" id="updateCommentId" type="update" doc=this}}
+    <button class="btn-primary toggle-menu1"> Edit </button>
+    <button class="fa fa-trash toggle-menu2"> Remove </button>
+  </div>
 </template>

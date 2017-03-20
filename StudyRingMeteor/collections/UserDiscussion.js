@@ -15,7 +15,7 @@ UserDiscussionSchema = new SimpleSchema({
 
    comment: {
       type: String,
-      min: 10,
+      min: 5,
       max: 1000,
       autoform: {
          rows: 5
@@ -53,6 +53,14 @@ Meteor.methods({
   deleteComment: function(id) {
       UserDiscussion.remove(id);
   },
+
+  editComment: function(id, currentState){
+      UserDiscussion.update(id,{
+        $set:{
+          inCommentSection: !currentState
+        }
+      });
+  }
 })
 
 UserDiscussion.attachSchema(UserDiscussionSchema);

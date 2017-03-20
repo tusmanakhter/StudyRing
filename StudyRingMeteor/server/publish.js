@@ -21,6 +21,9 @@ Meteor.publish('allUsers', function() {
     return Meteor.users.find({});
 });
 
-Meteor.public('allUserDiscussion',function(){
+/**
+  This function will return all comment discussion added by all users
+*/
+Meteor.publish('userdiscussion', function() {
   return UserDiscussion.find({});
 });
