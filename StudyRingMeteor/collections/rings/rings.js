@@ -37,7 +37,8 @@ RingSchema = new SimpleSchema({
         type: [Tags]
     },
     admins: {
-        type: [Tags]
+        type: [Tags],
+        optional: true
     },
     isPrivate: {
         type: Boolean,
