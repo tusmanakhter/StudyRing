@@ -1,3 +1,5 @@
+import { joinRing, leaveRing } from "../../collections/rings/methods.js";
+
 Template.RingSingle.onCreated(function(){
     var self = this;
     self.autorun(function (){
@@ -30,9 +32,9 @@ Template.RingSingle.helpers({
 
 Template.RingSingle.events({
   'click .join-ring': function() {
-      Meteor.call('joinRing', this._id);
+      joinRing.call({ id: this._id });
   },
   'click .leave-ring': function() {
-      Meteor.call('leaveRing', this._id);
+      leaveRing.call({ id: this._id });
   }
 });

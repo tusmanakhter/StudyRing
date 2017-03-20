@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
+import { ValidatedMethod } from 'meteor/mdg:validated-method';
+import { joinRing } from './methods.js';
 
 export const Rings = new Mongo.Collection('rings');
 
@@ -83,65 +85,68 @@ RingSchema = new SimpleSchema({
 });
 
 Meteor.methods({
-    /**
-     * This sets a ring to private
-     * @param id - the id of the ring to be updated
-     */
-    togglePrivate: function(id) {
-        Rings.update(id, {
-            $set: {
-                isPrivate: true
-            }
-        });
-    },
-    /**
-     * This sets a ring to public
-     * @param id - the id of the ring to be updated
-     */
-    togglePublic: function(id) {
-        Rings.update(id, {
-            $set: {
-                isPrivate: false
-            }
-        });
-    },
-    /**
-     * This function deletes a ring
-     * @param id - the id of the ring to be deleted
-     */
-    deleteRing: function(id) {
-        Meteor.users.update({rings:{ $in: [id]}}, {$pull: {rings: id}}, {multi: true})
-        Rings.remove(id);
-    },
-    /**
-     * This function lets a user join a ring
-     * @param id - the id of the ring that is to be joined
-     */
-    joinRing: function(id){
-        var userId = this.userId
-        //This adds the ring to the users rings he has joined
-        Meteor.users.update(userId, {$push: {rings: id}});
-        //This adds the user to the rings members
-        Rings.update(id, {$push: {members: userId}});
-    },
-    /**
-     * This function lets a user leave a ring
-     * @param id - the id of the ring that is to be left
-     */
-    leaveRing: function(id){
-        var userId = this.userId
-        //This removes the ring from the rings the user has joined
-        Meteor.users.update(userId, {$pull: {rings: id}});
-        //This removes the user from the rings memebrs
-        Rings.update(id, {$pull: {members: userId}});
-    }
+    // /**
+    //  * This sets a ring to private
+    //  * @param id - the id of the ring to be updated
+    //  */
+    // togglePrivate: function(id) {
+    //     Rings.update(id, {
+    //         $set: {
+    //             isPrivate: true
+    //         }
+    //     });
+    // },
+    // /**
+    //  * This sets a ring to public
+    //  * @param id - the id of the ring to be updated
+    //  */
+    // togglePublic: function(id) {
+    //     Rings.update(id, {
+    //         $set: {
+    //             isPrivate: false
+    //         }
+    //     });
+    // },
+    // /**
+    //  * This function deletes a ring
+    //  * @param id - the id of the ring to be deleted
+    //  */
+    // deleteRing: function(id) {
+    //     if(this.userId == Rings.findOne({_id: id}).createdBy)
+    //     {
+    //         Meteor.users.update({rings:{ $in: [id]}}, {$pull: {rings: id}}, {multi: true})
+    //         Rings.remove(id);
+    //     }
+    // },
+    // /**
+    //  * This function lets a user join a ring
+    //  * @param id - the id of the ring that is to be joined
+    //  */
+    // joinRing: function(id){
+    //     var userId = this.userId
+    //     //This adds the ring to the users rings he has joined
+    //     Meteor.users.update(userId, {$push: {rings: id}});
+    //     //This adds the user to the rings members
+    //     Rings.update(id, {$push: {members: userId}});
+    // },
+    // /**
+    //  * This function lets a user leave a ring
+    //  * @param id - the id of the ring that is to be left
+    //  */
+    // leaveRing: function(id){
+    //     var userId = this.userId
+    //     //This removes the ring from the rings the user has joined
+    //     Meteor.users.update(userId, {$pull: {rings: id}});
+    //     //This removes the user from the rings memebrs
+    //     Rings.update(id, {$pull: {members: userId}});
+    // }
 });
 
 Rings.attachSchema( RingSchema );
 
 Rings.after.insert(function() {
     if (Meteor.isServer){
-        Meteor.call('joinRing', this._id);
+       joinRing.call({ id: this._id });
     }
 });
 
@@ -149,5 +154,5 @@ Factory.define('Ring', Rings, {
   name: () => faker.lorem.sentence(),
   desc: () => faker.lorem.sentence(),
   tags: () => [{name: faker.lorem.sentence()}],
-  createdBy: () => faker.lorem.sentence()
+  createdBy: () => this.userId,
 });

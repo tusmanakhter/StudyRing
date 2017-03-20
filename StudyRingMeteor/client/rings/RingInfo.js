@@ -1,4 +1,5 @@
-import { Rings } from "../../collections/Rings.js"
+import { Rings } from "../../collections/rings/rings.js";
+import { togglePrivate, togglePublic, deleteRing } from "../../collections/rings/methods.js";
 
 Template.RingInfo.onCreated(function(){
     this.editMode = new ReactiveVar(false);
@@ -12,13 +13,13 @@ Template.RingInfo.onCreated(function(){
 
 Template.RingInfo.events({
     'click .set-private': function() {
-        Meteor.call('togglePrivate', this._id);
+        togglePrivate.call({ id: this._id });
     },
     'click .set-public': function() {
-        Meteor.call('togglePublic', this._id);
+        togglePublic.call({ id: this._id });
     },
     'click .fa-trash': function() {
-        Meteor.call('deleteRing', this._id);
+        deleteRing.call({ id: this._id });
     },
     'click .fa-pencil': function(event, template) {
         template.editMode.set(!template.editMode.get());
@@ -26,6 +27,9 @@ Template.RingInfo.events({
 });
 
 Template.RingInfo.helpers({
+    Rings() {
+        return Rings;
+    },
     //This returns the id of the selected ring
     updateRingId: function() {
         return this._id;
@@ -51,5 +55,5 @@ Template.RingInfo.helpers({
             return true;
         else
             return false;
-    }
+    },
 });

@@ -39,6 +39,7 @@ meteortoys:allthings
 selaias:avatar-upload@1.4.0
 utilities:avatar@0.9.2
 matb33:collection-hooks
+mdg:validated-method
 
 dispatch:mocha
 practicalmeteor:chai

@@ -1,4 +1,4 @@
-import { Rings } from "../../collections/Rings.js"
+import { Rings } from "../../collections/rings/rings.js";
 
 Template.RingDash.onCreated(function(){
     this.editMode = new ReactiveVar(false);

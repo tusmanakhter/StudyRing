@@ -4,7 +4,7 @@
             Name: {{name}}
         </h3>
         {{#if editMode}}
-                {{> quickForm collection="Rings" id=updateRingId type="update" doc=this autosave=true}}
+                {{> quickForm collection=Rings id=updateRingId type="update" doc=this autosave=true}}
                 {{#if isPrivate}}
                     <button class="btn-primary set-public">Set Public</button>
                 {{else}}

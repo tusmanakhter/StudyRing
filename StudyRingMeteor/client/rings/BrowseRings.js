@@ -1,4 +1,4 @@
-import { Rings } from "../../collections/Rings.js"
+import { Rings } from "../../collections/rings/rings.js";
 
 Template.BrowseRings.onCreated(function(){
     var self = this;
