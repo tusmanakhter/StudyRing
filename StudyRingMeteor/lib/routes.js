@@ -95,6 +95,6 @@ FlowRouter.route('/account', {
 FlowRouter.route('/forum',{
     name: 'main-forum',
     action(){
-        BlazeLayout.render('MainLayout',{main:'MainForum'})
+        BlazeLayout.render('MainLayout',{main:'MainForum'});
     }
 });

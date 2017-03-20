@@ -1,9 +1,15 @@
 import './MainForum.html';
+Meteor.subscribe('UserDiscussion');
 
 Template.MainForum.helpers({
-  comments: [
-    { my_comment: 'Comment 1 test' },
-    { my_comment: 'Comment 2 test' },
-    { my_comment: 'Comment 3 test' },
-  ],
+    comments: function () {
+    return UserDiscussion.find();
+  }
+});
+
+Template.myCommentBox.events({
+      'submit form': function(event){
+      event.preventDefault();
+      var thisComment = event.target.mycomment.value;
+    }
 });

@@ -20,3 +20,7 @@ Meteor.publish('singleRing', function(id){
 Meteor.publish('allUsers', function() {
     return Meteor.users.find({});
 });
+
+Meteor.public('allUserDiscussion',function(){
+  return UserDiscussion.find({});
+});
