@@ -24,19 +24,24 @@ Template.RingInfo.events({
 });
 
 Template.RingInfo.helpers({
+    //This returns the id of the selected ring
     updateRingId: function() {
         return this._id;
     },
+    //This checks if the ring is in edit mode
     editMode: function() {
         return Template.instance().editMode.get();
     },
+    //This returns the id of the user who created the ring
     userId: function () {
         return this.createdBy;
     },
+    //This returrns the user information of the user who created the ring
     user: function() {
         var id = Rings.findOne({_id: this._id}).createdBy;
         return Meteor.users.findOne({_id: id});
     },
+    //This checks if the current user is a member of the ring
     isMember: function() {
         var id = this._id;
         var result = Meteor.users.findOne({_id: Meteor.user()._id, rings: id});

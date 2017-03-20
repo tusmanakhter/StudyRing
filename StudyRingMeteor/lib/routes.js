@@ -1,3 +1,4 @@
+//This function sends a user to the dashboard at login and to home on logout
 if(Meteor.isClient){
     Accounts.onLogin(function(){
         FlowRouter.go('dashboard');
@@ -8,12 +9,14 @@ if(Meteor.isClient){
     });
 }
 
+//This route brings a user to home if they logs out or tries to go on another page
 FlowRouter.triggers.enter([function(context, redirect){
     if(!Meteor.userId()){
         FlowRouter.go('home');
     }
 }]);
 
+//This route sends a user to the dashboard if they are logged in, or else it brings them to the home page
 FlowRouter.route('/', {
     name: 'home',
     action() {
@@ -24,6 +27,7 @@ FlowRouter.route('/', {
     }
 });
 
+//This route sends a user to the login page
 FlowRouter.route('/login', {
   name: 'Login',
   action() {
@@ -31,6 +35,7 @@ FlowRouter.route('/login', {
   }
 });
 
+//This route sends a user to the forgot password page
 FlowRouter.route('/forgotpassword', {
   name: 'ForgotPassword',
   action() {
@@ -38,6 +43,7 @@ FlowRouter.route('/forgotpassword', {
   }
 });
 
+//This route sends a user to the register page
 FlowRouter.route('/register', {
   name: 'Register',
   action() {
@@ -45,7 +51,7 @@ FlowRouter.route('/register', {
   }
 });
 
-
+//This route sends the user to to mainlayout with the dashboard injected in the content area
 FlowRouter.route('/dashboard', {
     name: 'dashboard',
     action() {
@@ -53,7 +59,7 @@ FlowRouter.route('/dashboard', {
     }
 });
 
-
+//This route sends the user to to mainlayout with the create rings page injected in the content area
 FlowRouter.route('/rings', {
     name: 'rings',
     action() {
@@ -61,6 +67,7 @@ FlowRouter.route('/rings', {
     }
 });
 
+//This route sends the user to to mainlayout with the browse rings page injected in the content area
 FlowRouter.route('/browse-rings', {
     name: 'browse-rings',
     action() {
@@ -68,6 +75,7 @@ FlowRouter.route('/browse-rings', {
     }
 });
 
+//This route sends the user to to mainlayout with the ring dashboard injected in the content area
 FlowRouter.route('/rings/:id', {
     name: 'ring-dash',
     action() {
@@ -75,6 +83,7 @@ FlowRouter.route('/rings/:id', {
     }
 });
 
+//This route sends the user to to mainlayout with the account setting page injected in the content area
 FlowRouter.route('/account', {
     name: 'account-settings',
     action() {
@@ -82,6 +91,7 @@ FlowRouter.route('/account', {
     }
 });
 
+//This route sends the user to to mainlayout with the main forum page injected in the content area
 FlowRouter.route('/forum',{
     name: 'main-forum',
     action(){
