@@ -1,7 +1,7 @@
 import { Rings } from "../../collections/rings/rings.js";
+import { togglePrivate, togglePublic, deleteRing } from "../../collections/rings/methods.js";
 
 Template.Rings.events({
-    //This sets the variable newRing to true when an item with class new-ring is clicked
     'click .new-ring': () => {
         Session.set('newRing', true);
     }
@@ -10,14 +10,12 @@ Template.Rings.events({
 Template.Rings.onCreated(function(){
     var self = this;
     self.autorun(function (){
-        //This subscribes to all rings so they are visible
         self.subscribe('rings');
         self.subscribe('Users');
     });
 });
 
 Template.Rings.helpers({
-    //This returns all the rings that match the search term
     rings: ()=> {
         var regexp = new RegExp(Session.get('search/keyword'), 'i');
         var selector = {$or: [
@@ -45,13 +43,13 @@ Template.RingInfo.onCreated(function(){
 
 Template.RingInfo.events({
     'click .set-private': function() {
-        Meteor.call('togglePrivate', this._id, this.isPrivate);
+        togglePrivate.call({ id: this._id });
     },
     'click .set-public': function() {
-        Meteor.call('togglePublic', this._id, this.isPrivate);
+        togglePublic.call({ id: this._id });
     },
     'click .fa-trash': function() {
-        Meteor.call('deleteRing', this._id);
+        deleteRing.call({ id: this._id });
     },
     'click .fa-pencil': function(event, template) {
         template.editMode.set(!template.editMode.get());
@@ -59,6 +57,9 @@ Template.RingInfo.events({
 });
 
 Template.RingInfo.helpers({
+    Rings() {
+        return Rings;
+    },
     updateRingId: function() {
         return this._id;
     },
@@ -86,20 +87,13 @@ Template.RingDash.onCreated(function(){
     this.editMode = new ReactiveVar(false);
     var self = this;
     self.autorun(function (){
+        var id = FlowRouter.getParam('id');
+        self.subscribe('singleRing', id);
         self.subscribe('allUsers');
     });
 });
 
-Template.RingSingle.onCreated(function(){
-    var self = this;
-    self.autorun(function (){
-        var id = FlowRouter.getParam('id');
-        self.subscribe('singleRing', id);
-        self.subscribe('allUsers', id);
-    });
-});
-
-Template.RingSingle.helpers({
+Template.RingDash.helpers({
     ring: ()=> {
         var id = FlowRouter.getParam('id');
         return Rings.findOne({_id: id});
@@ -112,6 +106,25 @@ Template.RingSingle.helpers({
     members: () => {
         var id = FlowRouter.getParam('id');
         return Meteor.users.find({rings: id});
+    }
+});
+
+Template.RingSingle.onCreated(function(){
+    var self = this;
+    self.autorun(function (){
+        self.subscribe('rings');
+        self.subscribe('allUsers');
+    });
+});
+
+
+Template.RingSingle.helpers({
+    userId: function() {
+        return this.createdBy;
+    },
+    members: function() {
+        var id = this._id;
+        return Meteor.users.find({rings: this._id});
     },
     isMember: function() {
         var id = this._id;
@@ -125,9 +138,9 @@ Template.RingSingle.helpers({
 
 Template.RingSingle.events({
   'click .join-ring': function() {
-      Meteor.call('joinRing', this._id);
+      joinRing.call({ id: this._id });
   },
   'click .leave-ring': function() {
-      Meteor.call('leaveRing', this._id);
+      leaveRing.call({ id: this._id });
   }
 });

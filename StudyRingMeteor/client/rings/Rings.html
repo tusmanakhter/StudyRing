@@ -21,7 +21,7 @@
             Name: {{name}}
         </h3>
         {{#if editMode}}
-                {{> quickForm collection="Rings" id=updateRingId type="update" doc=this autosave=true}}
+                {{> quickForm collection=Rings id=updateRingId type="update" doc=this autosave=true}}
                 {{#if isPrivate}}
                     <button class="btn-primary set-public">Set Public</button>
                 {{else}}
@@ -82,18 +82,28 @@
     events, members, forum or communication between members and other information-->
 
 <template name="RingDash">
-    <h3>
-    {{rings.name}}
-    </h3>
-    <br/>
-        Description: {{rings.desc}}
-    <br/>
-        Tags:
-        {{#each tags}}
-            <span class="tags">{{name}}</span>
-        {{/each}}
-    <br/>
+    <article class="ring">
+        <h3>
+        {{ring.name}}
+        </h3>
+        <br/>
+            Description: {{ring.desc}}
+        <br/>
+            Tags:
+            {{#each ring.tags}}
+                <span class="tags">{{name}}</span>
+            {{/each}}
+        <br/>
+        <p>
+            Members:
+            {{#each members}}
+                <span class="names">{{username}}
+                                    {{> avatar userId=_id shape="circle" size="medium"}}
+                </span>
+            {{/each}}
+        </p>
 
-        Created By: {{user.username}} {{> avatar userId=userId shape="circle" size="medium"}}
+        Created By: {{createdByUser.username}} {{> avatar userId=createdByUser shape="circle" size="medium"}}
         {{> NewEvent}}
+    </article>
 </template>
