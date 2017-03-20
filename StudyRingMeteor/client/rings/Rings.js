@@ -1,5 +1,5 @@
 import { Rings } from "../../collections/rings/rings.js";
-import { togglePrivate, togglePublic, deleteRing } from "../../collections/rings/methods.js";
+import { togglePrivate, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
 
 Template.Rings.events({
     'click .new-ring': () => {
