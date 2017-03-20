@@ -51,5 +51,4 @@ digilord:faker
 hwillson:stub-collections
 
 check
-accounts-facebook
-service-configuration
+accounts-base
