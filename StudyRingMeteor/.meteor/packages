@@ -51,4 +51,9 @@ digilord:faker
 hwillson:stub-collections
 
 check
+
+accounts-facebook
+service-configuration
+momentjs:moment
 accounts-base
+
