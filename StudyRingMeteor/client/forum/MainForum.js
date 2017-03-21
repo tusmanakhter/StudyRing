@@ -33,8 +33,8 @@ Template.MainForum.events({
       Meteor.call('updateComment', this._id, inCommentSection);
     },
 
-'click .toggle-menu2': function() {
+  'click .toggle-menu2': function() {
     console.log('click');
     Meteor.call('deleteComment', this._id);
-  }
+  },
 });
