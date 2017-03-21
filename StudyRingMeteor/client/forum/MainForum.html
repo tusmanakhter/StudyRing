@@ -2,21 +2,41 @@
   <body>
       <div class="jumbotron">
         <h1>Welcome To The Forum</h1>
+          {{>ringDiscussion}}
+        <br><br>
         <p>Have a question? We are here to help!</p>
       </div>
-      {{#each comments}}
-        {{> myComment_post}}
-      {{/each}}
+      <div>
+        {{#each comments}}
+          {{> myAvatarComment}}
+        {{/each}}
+      </div>
+        {{> quickForm collection="UserDiscussion" id="insertComment" type="insert" class="newCommentForm"}}
   </body>
 </template>
 
-<template name="myComment_post">
+<template name="myAvatarComment">
   <div class="row">
     <div class="col-sm-9">
-      <div class="well">
-        <p>{{my_comment}}</p>
+      <div class="user">
+        <div class="col-sm-2">
+           {{#with currentUser}}
+               {{> avatar user=this shape="circle" size="large"}}
+               {{username}}
+           {{/with}}
+        </div>
       </div>
+        {{> myComment}}
     </div>
   </div>
+</template>
 
+<template name = "myComment">
+  <div class="col-sm-9">
+    <div class="well">
+      <h4>{{comment}}</h4>
+      <p>{{createdAt}}></p>
+      <button class="btn-deny toggle-menu2"> Remove </button>
+    </div>
+  </div>
 </template>

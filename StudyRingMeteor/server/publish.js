@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor';
+import { Rings } from "../collections/rings/rings.js"
+
 /**
  * This function returns all rings to the client
  */
@@ -19,4 +22,11 @@ Meteor.publish('singleRing', function(id){
  */
 Meteor.publish('allUsers', function() {
     return Meteor.users.find({});
+});
+
+/**
+  This function will return all comment discussion added by all users
+*/
+Meteor.publish('userdiscussion', function() {
+  return UserDiscussion.find({});
 });
