@@ -1,3 +1,5 @@
+import { Rings } from "../../collections/rings/rings.js"
+
 Events = new Mongo.Collection('events');
 
 Events.allow({
@@ -40,7 +42,7 @@ EventsSchema = new SimpleSchema({
       label: "Date",
       min: new Date()
     },
-    
+
     members: {
         type: [String],
         autoValue: function() {

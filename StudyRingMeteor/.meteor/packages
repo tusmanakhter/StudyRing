@@ -38,15 +38,22 @@ gwendall:auth-client-callbacks
 meteortoys:allthings
 selaias:avatar-upload@1.4.0
 utilities:avatar@0.9.2
-
+matb33:collection-hooks
+mdg:validated-method
+meteorhacks:aggregate
 
 dispatch:mocha
 practicalmeteor:chai
 dburles:factory
 xolvio:cleaner
 johanbrook:publication-collector
+digilord:faker
+hwillson:stub-collections
 
 check
+
 accounts-facebook
 service-configuration
 momentjs:moment
+accounts-base
+
