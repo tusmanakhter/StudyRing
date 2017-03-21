@@ -85,7 +85,7 @@ RingSchema = new SimpleSchema({
         autoform: {
             type: "hidden"
         }
-    }
+    },
     location: {
          type: String,
          label: "location",
