@@ -5,7 +5,7 @@ Template.AccountSettings.onCreated(function(){
     });
 });
 
-Template.changePassword.events({
+Template.ChangePassword.events({
     'submit form': function(event){
         event.preventDefault();
         console.log(event);
@@ -28,7 +28,7 @@ Template.changePassword.events({
     }
 });
 
-Template.changeUsername.events({
+Template.ChangeUsername.events({
     'submit form': function(event){
       event.preventDefault();
       var newUsername = event.target.changeUsername.value;
