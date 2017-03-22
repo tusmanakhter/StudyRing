@@ -62,13 +62,14 @@ Template.RingInfo.events({
 });
 
 Template.RingSetNipModal.events({
-  'click .save': function(e) {
+  'click .btn-primary': function(e) {
     e.preventDefault();
+
+    Modal.hide('RingSetNipModal');
 
     var nipCode = event.target.theNip.value;
 
     addNip.call({ nip: nipCode})
-    Modal.hide('RingSetNipModal');
   }
 });
 
@@ -98,7 +99,11 @@ Template.RingInfo.helpers({
             return true;
         else
             return false;
-    }
+    },
+    // isPrivate: function() {
+    //   var id = this._id;
+    //   return Mongo.Rings.find({_id: id}).isPrivate;
+    // }
 });
 
 Template.RingDash.onCreated(function(){

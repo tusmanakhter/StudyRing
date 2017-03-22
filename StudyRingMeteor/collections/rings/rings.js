@@ -51,7 +51,7 @@ RingSchema = new SimpleSchema({
     nipCode: {
       type: String,
       label: "Secret PassCode",
-      optional: this.isPrivate,
+      optional: true,
     },
     createdBy:{
         type: String,
