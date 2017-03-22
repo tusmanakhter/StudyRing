@@ -3,6 +3,8 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { joinRing } from './methods.js';
+//import { UserDiscussion } from "../UserDiscussion.js"
+//import { UserDiscussionSchema } from '../UserDiscussion.js';
 
 export const Rings = new Mongo.Collection('rings');
 
@@ -23,6 +25,13 @@ Tags = new SimpleSchema({
     }
 });
 
+
+/*Comments = new SimpleSchema({
+   fullcomment: {
+      type: String
+  }
+});*/
+
 //This is the schema for rings
 RingSchema = new SimpleSchema({
     name: {
@@ -35,6 +44,12 @@ RingSchema = new SimpleSchema({
     },
     tags: {
         type: [Tags]
+    },
+    comments: {
+        type: [Tags]
+/*        autoform:{
+        type:"hidden"
+      }*/
     },
     admins: {
         type: [Tags],

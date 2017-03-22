@@ -1,4 +1,4 @@
-UserDiscussion = new Mongo.Collection('userdiscussion');
+ UserDiscussion = new Mongo.Collection('userdiscussion');
 
 //checks if the user is still logged in
 UserDiscussion.allow({
@@ -11,7 +11,7 @@ UserDiscussion.allow({
 });
 
 //schema for the userdiscussion
-UserDiscussionSchema = new SimpleSchema({
+  UserDiscussionSchema = new SimpleSchema({
 
    comment: {
       type: String,

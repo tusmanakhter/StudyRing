@@ -1,4 +1,6 @@
 import './MainForum.html';
+import { Rings } from "../../collections/rings/rings.js"
+//import { UserDiscussion } from "../../collections/UserDiscussion.js";
 //Meteor.subscribe('userdiscussion');
 
 Template.MainForum.onCreated(function(){
@@ -25,6 +27,7 @@ Template.MainForum.helpers({
     comments: ()=> {
       return UserDiscussion.find({});
     }
+
 });
 
 Template.MainForum.events({
