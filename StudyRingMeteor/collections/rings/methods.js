@@ -1,11 +1,26 @@
 import { Rings } from './rings.js';
 
+export const addNip = new ValidatedMethod({
+  name: 'addNip',
+  validate: new SimpleSchema({
+    nip: { type: String}
+  }).validator(),
+  run({ nip }) {
+
+    Rings.update(id, {
+      $set: {
+          nipCode: nip
+      }
+    });
+  }
+})
+
 export const togglePrivate = new ValidatedMethod({
   name: 'togglePrivate',
   validate: new SimpleSchema({
     id: { type: String, regEx: SimpleSchema.RegEx.Id},
   }).validator(),
-  run({ id }) {
+  run({ id}) {
     if (this.userId != Rings.findOne({_id: id}).createdBy) {
         throw new Meteor.Error('rings.togglePrivate.notOwner',
         'Must be the owner to make ring private.');

@@ -42,8 +42,13 @@ Template.RingInfo.onCreated(function(){
 
 
 Template.RingInfo.events({
-    'click .set-private': function() {
-        togglePrivate.call({ id: this._id });
+    'click .set-private': function(e) {
+      e.preventDefault();
+      Modal.show('RingSetNipModal');
+
+        togglePrivate.call({
+          id: this._id
+         });
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -55,6 +60,19 @@ Template.RingInfo.events({
         template.editMode.set(!template.editMode.get());
     }
 });
+
+Template.RingSetNipModal.events({
+  'click .save': function(e) {
+    e.preventDefault();
+
+    var nipCode = event.target.theNip.value;
+
+    addNip.call({ nip: nipCode})
+    Modal.hide('RingSetNipModal');
+  }
+});
+
+
 
 Template.RingInfo.helpers({
     Rings() {

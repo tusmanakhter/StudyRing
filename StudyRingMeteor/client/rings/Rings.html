@@ -26,6 +26,7 @@
                     <button class="btn-primary set-public">Set Public</button>
                 {{else}}
                     <button class="btn-deny set-private">Set Private</button>
+
                 {{/if}}
             {{else}}
             <p>
@@ -106,4 +107,28 @@
         Created By: {{createdByUser.username}} {{> avatar userId=createdByUser shape="circle" size="medium"}}
         {{> NewEvent}}
     </article>
+</template>
+
+<template name="RingSetNipModal">
+  <div class="modal fade">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Nip add / edit</h4>
+        </div>
+
+        <div class="modal-body">
+          <label for="Nip">Nip</label>
+          <input type="text" id="theNip" />
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="save">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </template>

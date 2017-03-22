@@ -48,6 +48,11 @@ RingSchema = new SimpleSchema({
             type: "hidden"
         }
     },
+    nipCode: {
+      type: String,
+      label: "Secret PassCode",
+      optional: this.isPrivate,
+    },
     createdBy:{
         type: String,
         label: "Created By",
