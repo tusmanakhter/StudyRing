@@ -1,4 +1,4 @@
- UserDiscussion = new Mongo.Collection('userdiscussion');
+UserDiscussion = new Mongo.Collection('userdiscussion');
 
 //checks if the user is still logged in
 UserDiscussion.allow({
