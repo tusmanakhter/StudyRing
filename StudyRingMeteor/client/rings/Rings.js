@@ -42,8 +42,13 @@ Template.RingInfo.onCreated(function(){
 
 
 Template.RingInfo.events({
-    'click .set-private': function() {
-        togglePrivate.call({ id: this._id });
+    'click .set-private': function(e) {
+      e.preventDefault();
+      Modal.show('RingSetNipModal');
+
+        togglePrivate.call({
+          id: this._id
+         });
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -55,6 +60,20 @@ Template.RingInfo.events({
         template.editMode.set(!template.editMode.get());
     }
 });
+
+Template.RingSetNipModal.events({
+  'click .btn-primary': function(e) {
+    e.preventDefault();
+
+    Modal.hide('RingSetNipModal');
+
+    var nipCode = event.target.theNip.value;
+
+    addNip.call({ nip: nipCode})
+  }
+});
+
+
 
 Template.RingInfo.helpers({
     Rings() {
@@ -80,7 +99,11 @@ Template.RingInfo.helpers({
             return true;
         else
             return false;
-    }
+    },
+    // isPrivate: function() {
+    //   var id = this._id;
+    //   return Mongo.Rings.find({_id: id}).isPrivate;
+    // }
 });
 
 Template.RingDash.onCreated(function(){
