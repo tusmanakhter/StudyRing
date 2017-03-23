@@ -1,3 +1,5 @@
+import { Rings } from './rings/rings.js';
+
 UserDiscussion = new Mongo.Collection('userdiscussion');
 
 //checks if the user is still logged in
@@ -62,5 +64,26 @@ Meteor.methods({
       });
   }
 })
+
+UserDiscussion.after.insert(function() {
+    if (Meteor.isServer){
+       commentPush.call({ id: this._id });
+    }
+    if (Meteor.isClient){
+        Session.set('newRing', false);
+    }
+});
+
+ commentPush = new ValidatedMethod({
+  name: 'commentPush',
+  validate: new SimpleSchema({
+    id: { type: String, regEx: SimpleSchema.RegEx.Id},
+  }).validator(),
+  run({ id }) {
+    var comment = this.comment
+//   Meteor.users.update(userId, {$push: {rings: id}}); Later associate each comment with a user
+    Rings.update(id, {$push: {UserDiscussion: comment}});
+  },
+});
 
 UserDiscussion.attachSchema(UserDiscussionSchema);
