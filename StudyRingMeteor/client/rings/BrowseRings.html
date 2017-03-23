@@ -2,7 +2,7 @@
     <div><input id="search" placeholder="Search Rings"></div>
     {{#if Template.subscriptionsReady}}
         {{#each rings}}
-            {{> RingSingle}}
+              {{> RingInfo}}
         {{/each}}
     {{else}}
         <p>Loading</p>
