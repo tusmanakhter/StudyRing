@@ -152,6 +152,9 @@ Rings.after.insert(function() {
     if (Meteor.isServer){
        joinRing.call({ id: this._id });
     }
+    if (Meteor.isClient){
+        Session.set('newRing', false);
+    }
 });
 
 Factory.define('Ring', Rings, {
