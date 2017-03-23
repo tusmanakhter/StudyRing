@@ -1,4 +1,5 @@
-import { Rings } from './rings/rings.js';
+import { Rings } from '../rings/rings.js';
+import { commentPush } from './methods.js';
 
 UserDiscussion = new Mongo.Collection('userdiscussion');
 
@@ -29,7 +30,7 @@ UserDiscussion.allow({
        autoValue: function () {
            //This makes sure to only set a value when it is an insert function, not an update
            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-               return this.userId
+               return this.userId;
            }
        },
        autoform: {
@@ -42,13 +43,25 @@ UserDiscussion.allow({
        autoValue: function() {
            //This makes sure to only set a value when it is an insert function, not an update
            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-               return new Date()
+               return new Date();
            }
        },
        autoform: {
            type: "hidden"
        }
    },
+//    ringId: {
+//        type: String,
+//         autoValue: function() {
+//            //This makes sure to only set a value when it is an insert function, not an update
+//            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+//                return '';
+//            }
+//        },
+//         autoform: {
+//            type: "hidden"
+//        }
+//    }
 });
 
 Meteor.methods({
@@ -66,24 +79,9 @@ Meteor.methods({
 })
 
 UserDiscussion.after.insert(function() {
-    if (Meteor.isServer){
+    //if (Meteor.isServer){
        commentPush.call({ id: this._id });
-    }
-    if (Meteor.isClient){
-        Session.set('newRing', false);
-    }
-});
-
- commentPush = new ValidatedMethod({
-  name: 'commentPush',
-  validate: new SimpleSchema({
-    id: { type: String, regEx: SimpleSchema.RegEx.Id},
-  }).validator(),
-  run({ id }) {
-    var comment = this.comment
-//   Meteor.users.update(userId, {$push: {rings: id}}); Later associate each comment with a user
-    Rings.update(id, {$push: {UserDiscussion: comment}});
-  },
+    //}
 });
 
 UserDiscussion.attachSchema(UserDiscussionSchema);

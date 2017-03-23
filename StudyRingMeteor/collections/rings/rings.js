@@ -3,7 +3,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { joinRing } from './methods.js';
-import { UserDiscussion, UserDiscussionSchema } from "../UserDiscussion.js"
+import { UserDiscussion, UserDiscussionSchema } from "../userDiscussion/userDiscussion.js"
 
 export const Rings = new Mongo.Collection('rings');
 
