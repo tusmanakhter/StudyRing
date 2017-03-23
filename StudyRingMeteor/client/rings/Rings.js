@@ -1,5 +1,5 @@
 import { Rings } from "../../collections/rings/rings.js";
-import { togglePrivate, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
+import { togglePrivate, addNip, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
 
 Template.Rings.events({
     'click .new-ring': () => {
@@ -62,17 +62,16 @@ Template.RingInfo.events({
 });
 
 Template.RingSetNipModal.events({
-  'click .btn-primary': function(e) {
+  'submit form': function(e) {
     e.preventDefault();
 
     Modal.hide('RingSetNipModal');
 
     var nipCode = event.target.theNip.value;
 
-    addNip.call({ nip: nipCode})
+    addNip.call({ nip: nipCode}  );
   }
 });
-
 
 
 Template.RingInfo.helpers({

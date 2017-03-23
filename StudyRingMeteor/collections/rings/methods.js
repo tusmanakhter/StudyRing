@@ -13,7 +13,7 @@ export const addNip = new ValidatedMethod({
       }
     });
   }
-})
+});
 
 export const togglePrivate = new ValidatedMethod({
   name: 'togglePrivate',
