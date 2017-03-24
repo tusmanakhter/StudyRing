@@ -1,3 +1,5 @@
+import { ringEvents } from "../../collections/events/ringEvents.js";
+
 Template.NewEvent.events({
   'click .new-event': () => {
       Session.set('newEvent', true);

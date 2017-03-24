@@ -98,3 +98,15 @@ Template.RingInfo.helpers({
       return (Meteor.userId()===s2);
     }
 });
+
+Template.NewRing.helpers({
+    Rings() {
+        return Rings;
+    }
+});
+
+Template.NewRing.events({
+    'click .fa-close': function() {
+        Session.set('newRing', false);
+    }
+});
