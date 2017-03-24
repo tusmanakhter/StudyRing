@@ -52,6 +52,9 @@ RingSchema = new SimpleSchema({
       type: String,
       label: "Secret PassCode",
       optional: true,
+      autoform:{
+        type:"hidden"
+      }
     },
     createdBy:{
         type: String,

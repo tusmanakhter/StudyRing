@@ -69,6 +69,10 @@ Template.RingInfo.events({
     'click .join-ring': function() {
         joinRing.call({ id: this._id });
     },
+    'click .join-ring-private': function() {
+        Modal.show("RingInputNipModal")    //opening an modal where user needs to
+                                          //input the nip to join the ring
+    },
     'click .leave-ring': function() {
         leaveRing.call({ id: this._id });
     }
@@ -77,12 +81,19 @@ Template.RingInfo.events({
 Template.RingSetNipModal.events({
   'submit form': function(e) {
     e.preventDefault();
-
     Modal.hide('RingSetNipModal');
-
     var nipCode = event.target.theNip.value;
-
     addNip.call({ nip: nipCode}  );
+  }
+});
+Template.RingInputNipModal.events({
+  'submit form': function(e) {
+    e.preventDefault();
+    Modal.hide('RingInputNipModal');
+    var Code = event.target.secretCode.value;
+    if(this.nipCode == Code  ){
+        joinRing.call({ id: this._id });
+    }
   }
 });
 
