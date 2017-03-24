@@ -1,5 +1,5 @@
 import { Rings } from "../../collections/rings/rings.js";
-import { togglePrivate, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
+import { togglePrivate, addNip, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
 
 Template.Rings.events({
     'click .new-ring': () => {
@@ -49,8 +49,13 @@ Template.RingInfo.onCreated(function(){
 
 
 Template.RingInfo.events({
-    'click .set-private': function() {
-        togglePrivate.call({ id: this._id });
+    'click .set-private': function(e) {
+      e.preventDefault();
+      Modal.show('RingSetNipModal');
+
+        togglePrivate.call({
+          id: this._id
+         });
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -68,6 +73,20 @@ Template.RingInfo.events({
         leaveRing.call({ id: this._id });
     }
 });
+
+Template.RingSetNipModal.events({
+  'submit form': function(e) {
+    e.preventDefault();
+
+    Modal.hide('RingSetNipModal');
+
+    var nipCode = event.target.theNip.value;
+
+    addNip.call({ nip: nipCode}  );
+  }
+});
+
+
 
 Template.RingInfo.helpers({
     Rings() {
@@ -93,6 +112,8 @@ Template.RingInfo.helpers({
             return true;
         else
             return false;
+
+      
     },
     isOwner: function(s2){
       return (Meteor.userId()===s2);
