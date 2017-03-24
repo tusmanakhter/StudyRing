@@ -1,3 +1,12 @@
+<!--
+________________________________________________________________________________
+                                ****Rings****
+Description: Rings is the template that appears under the "My Rings" tab.
+Subtemplates: RingInfo, NewRing
+Functions: Show a list of all the rings the user has created, and give the option
+          of creating a new ring.
+________________________________________________________________________________
+-->
 <template name="Rings">
 {{#if $.Session.get 'newRing'}}
         {{> NewRing}}
@@ -15,6 +24,31 @@
 {{/if}}
 </template>
 
+<!--
+________________________________________________________________________________
+                                ****NewRing****
+Description: Appears in the "My Rings" tab
+Functions: Quickform package that automatically creates a form for all the
+          attributes of "rings" in the rings collection.
+________________________________________________________________________________
+-->
+<template name="NewRing">
+    <div class="new-ring-container">
+        <i class="fa fa-close"></i>
+        {{> quickForm collection=Rings id="newRingsForm" type="insert" class="newRingsForm"}}
+    </div>
+</template>
+
+<!--
+________________________________________________________________________________
+                                ****RingInfo****
+Description: Appears in the "My Rings" and "Browse Rings" tab
+Functions: Template to show a single ring's most important information such as
+          creator, member, name, description, etc. This template's display changes
+          depending on the permission that the current user holds. If the ring is
+          created by the user, it will show the edit and delete buttons. 
+________________________________________________________________________________
+-->
 <template name="RingInfo">
     <article class="ring {{#if isPrivate}}is-private{{/if}}">
         <h3>
@@ -49,8 +83,7 @@
             {{/if}}
         {{/if}}
 
-        <!--Checks if this is the ring owner, then displays options to delete or edit the ring-->
-        {{#if isOwner createdBy}}
+        {{#if isOwner createdBy}}                                               <!--Displays options to delete or edit a ring only if it is the owner-->
             <i class="fa fa-pencil"></i>
             <i class="fa fa-trash"></i>
         {{/if}}
