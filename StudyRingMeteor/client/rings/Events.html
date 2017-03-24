@@ -1,0 +1,52 @@
+<template name="Events">
+        {{> NewEvent}}
+
+{{#if Template.subscriptionsReady}}
+    {{#each events}}
+          {{> EventInfo}}
+    {{/each}}
+{{else}}
+    <p>Loading</p>
+{{/if}}
+</template>
+<!--
+________________________________________________________________________________
+                                ****EventInfo****
+Description: Appears in the Dashboard, displays events for a specific ring
+Functions: Template to show a ring's events
+________________________________________________________________________________
+-->
+<template name="EventsInfo">
+    <article class="ring {{#if isPrivate}}is-private{{/if}}">
+        <h3>
+            Name: {{name}}
+        </h3>
+        {{#if editMode}}
+                {{> quickForm collection=Events id=updateRingId type="update" doc=this autosave=true}}
+            {{else}}
+            <p>
+                Description: {{desc}}
+            </p>
+            <p>
+                Tags:
+                {{#each tags}}
+                    <span class="tags">{{name}}</span>
+                {{/each}}
+            </p>
+            <p>
+                Created By: {{user.username}} {{> avatar userId=userId shape="circle" size="medium"}}
+            </p>
+
+            {{#if isMember}}
+                <button class="btn-deny leave-ring">Leave Event</button>
+            {{else}}
+                <button class="btn-primary join-ring">Join Event</button>
+            {{/if}}
+        {{/if}}
+
+        {{#if isOwner createdBy}}                                               <!--Displays options to delete or edit an event only if it is the owner-->
+            <i class="fa fa-pencil"></i>
+            <i class="fa fa-trash"></i>
+        {{/if}}
+    </article>
+</template>
