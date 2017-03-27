@@ -30,7 +30,7 @@ The goal of our project is to create a web application which will allow students
 
 ## Frameworks
 * Meteor
-* React
+* Blaze
 * MongoDB
 * Bootstrap
 
