@@ -13,7 +13,12 @@ Meteor.publish('rings', function(){
  */
 Meteor.publish('usersRings', function(){
     var rings = Meteor.users.findOne(this.userId).rings;
-    return Rings.find({ _id: { $in: rings}});
+    if (rings != null)
+    {
+        return Rings.find({ _id: { $in: rings}});
+    }
+    else
+        return null;
 });
 
 /**

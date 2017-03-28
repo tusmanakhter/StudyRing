@@ -12,9 +12,11 @@ Template.Dashboard.helpers({
     rings: ()=> {
         return Rings.find({});
     },
-    numOfMembers: () => {
-        console.log(this._id);
-        Rings.findOne({_id: this._id}).members.length;
+    noRings: ()=> {
+        if (Rings.find({}).count() == 0)
+            return true;
+        else
+            return false;
     }
 });
 
@@ -24,4 +26,10 @@ Template.Dashboard.events({
     //This sets search/keyword variable to the value in the search box
     Session.set('search/keyword', event.target.value);
   }
+});
+
+Template.DashboardRings.helpers({
+    numOfMembers: function() {
+        return Rings.findOne({_id: this._id}).members.length;
+    }
 });
