@@ -9,6 +9,14 @@ Meteor.publish('rings', function(){
 });
 
 /**
+ * This function returns all rings to the client
+ */
+Meteor.publish('usersRings', function(){
+    var rings = Meteor.users.findOne(this.userId).rings;
+    return Rings.find({ _id: { $in: rings}});
+});
+
+/**
  * This functions returns a single ring to the client
  * @param id - id of the ring we need
  */
