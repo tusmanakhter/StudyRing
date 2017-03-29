@@ -62,6 +62,7 @@ EventsSchema = new SimpleSchema({
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return new String();
             }
+        }
     }
 });
 
