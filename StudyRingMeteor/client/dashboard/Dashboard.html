@@ -9,7 +9,6 @@ Functions: Display all the useful information to the user such as upcoming event
 ________________________________________________________________________________
 -->
 <template name="Dashboard">
-
 <body>
   <div class="row">
       <div class="col-md-12">
@@ -60,6 +59,27 @@ ________________________________________________________________________________
                 <div class="text-box">
                     <p class="main-text">#</p>
                     <p class="text-muted text-center">Today</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-back noti-box">
+                <span class="icon-box bg-color-blue set-icon">
+                    <i class="fa fa-list"></i>
+                </span>
+                <div class="text-box">
+                <p class="main-text">Rings</p>
+                    {{#if Template.subscriptionsReady}}
+                        {{#if noRings }}
+                            No rings joined. Join a ring today!
+                        {{else}}
+                            {{#each rings}}
+                                {{> DashboardRings}}
+                            {{/each}}
+                        {{/if}}
+                    {{else}}
+                        <p>Loading</p>
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -116,4 +136,12 @@ ________________________________________________________________________________
     </div>
 </div>
   </body>
+</template>
+
+<template name="DashboardRings">
+    <div style="border: 1px solid black;">
+        Name: {{ name }}<br/>
+        Members: {{ numOfMembers }}<br/>
+        <a href="/rings/{{_id}}">View</a>
+    </div>
 </template>
