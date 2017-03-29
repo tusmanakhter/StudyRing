@@ -12,7 +12,11 @@ Meteor.publish('rings', function(){
  * This function returns all rings to the client
  */
 Meteor.publish('usersRings', function(){
-    var rings = Meteor.users.findOne(this.userId).rings;
+    if(this.userId)
+        var rings = Meteor.users.findOne(this.userId).rings;
+    else
+        var rings = null;
+        
     if (rings != null)
     {
         return Rings.find({ _id: { $in: rings}});
