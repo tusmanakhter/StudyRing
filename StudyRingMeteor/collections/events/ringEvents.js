@@ -53,6 +53,15 @@ EventsSchema = new SimpleSchema({
         autoform: {
             type: "hidden"
         }
+    },
+     location: {
+         type: String,
+         label: "location",
+        autoValue: function() {
+            //This makes sure to only set a value when it is an insert function, not an update
+            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+                return new String();
+            }
     }
 });
 
