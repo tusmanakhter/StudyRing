@@ -53,6 +53,10 @@ EventsSchema = new SimpleSchema({
         autoform: {
             type: "hidden"
         }
+    },
+    location: {
+        type: String,
+        label: "Location"
     }
 });
 
