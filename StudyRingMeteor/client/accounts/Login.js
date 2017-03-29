@@ -10,6 +10,14 @@ Template.Login.events({
            console.log("ERROR: " + error.reason);
         }
      });
+  },
+  'click .register': function() {
+    event.preventDefault();
+    Session.set('register', true);
+  },
+  'click .forgotpassword': function() {
+    event.preventDefault();
+    Session.set('forgotpassword', true);
   }
 });
 
@@ -27,7 +35,11 @@ Template.Register.events({
             console.log("ERROR: " + error.reason);
          }
       });
-  }
+    },
+    'click .login': function() {
+     event.preventDefault();
+     Session.set('register', false);
+    }
 });
 
 Template.ForgotPassword.helpers({
@@ -59,11 +71,15 @@ Template.ForgotPassword.events({
     var pw = t.find('#new-password').value;
     
     Accounts.resetPassword(Session.get('resetPassword'), pw, function(err){
-      if (err)
-        console.log("error");
-      else {
-        Session.set('resetPassword', null);
-      }
-    });
-  }
+        if (err)
+          console.log("error");
+        else {
+          Session.set('resetPassword', null);
+        }
+      });
+    },
+    'click .login': function() {
+      event.preventDefault();
+      Session.set('forgotpassword', false);
+    }
 });
