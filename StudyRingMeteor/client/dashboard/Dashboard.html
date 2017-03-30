@@ -1,3 +1,13 @@
+<!--
+________________________________________________________________________________
+                                ****Dashboard****
+Description: The dashboard is the lading page after someone has logged in or
+            registered successfully.
+Subtemplates: Soon to be implemented
+Functions: Display all the useful information to the user such as upcoming events,
+          current rings,
+________________________________________________________________________________
+-->
 <template name="Dashboard">
 <body>
   <div class="row">
@@ -9,9 +19,9 @@
     <hr />
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-red set-icon">
-                      <i class="fa fa-envelope-o"></i>
+            <div class="panel not-box">
+                <span class="icon-box icon-1">
+                      <i class="fa fa-calendar-plus-o"></i>
                   </span>
                 <div class="text-box">
                     <p class="main-text">3 New</p>
@@ -20,19 +30,19 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-green set-icon">
-                      <i class="fa fa-bars"></i>
+            <div class="panel not-box">
+                <span class="icon-box icon-2">
+                      <i class="fa fa-comment"></i>
                   </span>
                 <div class="text-box">
-                    <p class="main-text">1</p><br/>
-                    <p class="text-muted text-center">Event(s) today</p>
+                    <p class="main-text">10</p>
+                    <p class="text-muted text-center">New Posts</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue set-icon">
+            <div class="panel not-box">
+                <span class="icon-box icon-3">
                       <i class="fa fa-bell-o"></i>
                   </span>
                 <div class="text-box">
@@ -42,13 +52,13 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-brown set-icon">
-               <i class="fa fa-rocket"></i>
+            <div class="panel not-box">
+                <span class="icon-box icon-4">
+               <i class="fa fa-calendar"></i>
            </span>
                 <div class="text-box">
-                    <p class="main-text">another</p>
-                    <p class="text-muted text-center">Pending</p>
+                    <p class="main-text">#</p>
+                    <p class="text-muted text-center">Today</p>
                 </div>
             </div>
         </div>
@@ -74,6 +84,57 @@
             </div>
         </div>
     </div>
+
+<!-- not functional -->
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default mid">
+            <div class="panel-heading">
+                Rings You're In
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ring Name</th>
+                                <th>Ring Leader</th>
+                                <th>Members</th>
+                                <th>Events</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>SOEN 341 Studygroup</td>
+                                <td>Someones Name</td>
+                                <td>34</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>COMP 346</td>
+                                <td>Aiman Hanna</td>
+                                <td>65</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Finals</td>
+                                <td>John Smith</td>
+                                <td>120</td>
+                                <td>13</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
   </body>
 </template>
 
