@@ -34,9 +34,3 @@ Template.Dashboard.events({
     Session.set('search/keyword', event.target.value);
   }
 });
-
-Template.DashboardRings.helpers({
-    numOfMembers: function() {
-        return Rings.findOne({_id: this._id}).members.length;
-    }
-});
