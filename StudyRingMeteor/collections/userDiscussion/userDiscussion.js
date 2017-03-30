@@ -50,18 +50,12 @@ UserDiscussion.allow({
            type: "hidden"
        }
    },
-//    ringId: {
-//        type: String,
-//         autoValue: function() {
-//            //This makes sure to only set a value when it is an insert function, not an update
-//            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-//                return '';
-//            }
-//        },
-//         autoform: {
-//            type: "hidden"
-//        }
-//    }
+   ringId: {
+        type: String,
+        autoform: {
+            type: "hidden"
+        }
+   }
 });
 
 Meteor.methods({
@@ -78,10 +72,8 @@ Meteor.methods({
   }
 })
 
-UserDiscussion.after.insert(function() {
-    //if (Meteor.isServer){
-       commentPush.call({ id: this._id });
-    //}
-});
+// UserDiscussion.after.insert(function() {
+//     commentPush.call({ id: this._id });
+// });
 
 UserDiscussion.attachSchema(UserDiscussionSchema);

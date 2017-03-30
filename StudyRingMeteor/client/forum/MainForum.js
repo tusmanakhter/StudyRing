@@ -41,3 +41,29 @@ Template.MainForum.events({
     Meteor.call('deleteComment', this._id);
   },
 });
+
+var hooksObject = {
+  before: {
+    insert: function(doc) {
+      //Altering the doc before submission to include the ring
+      if(Session.get('activeRing')){
+        doc.ringId = Session.get('activeRing');
+      }
+      else{
+        doc.ringId = "none";   
+      }
+
+      return doc;
+    }
+  },
+//   after: {
+//       insert: function(doc){
+//         var id = Session.get('activeRing')
+//         commentPush.call({id, doc});
+//       }
+//   }
+}
+
+AutoForm.hooks({
+  insertComment: hooksObject
+});
