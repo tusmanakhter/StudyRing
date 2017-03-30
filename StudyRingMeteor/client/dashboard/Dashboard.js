@@ -12,11 +12,18 @@ Template.Dashboard.helpers({
     rings: ()=> {
         return Rings.find({});
     },
+    createdBy: function () {
+        var id = Rings.findOne({_id: this._id}).createdBy;
+        return Meteor.users.findOne({_id: id}).username;
+    },
     noRings: ()=> {
         if (Rings.find({}).count() == 0)
             return true;
         else
             return false;
+    },
+    numOfMembers: function() {
+        return Rings.findOne({_id: this._id}).members.length;
     }
 });
 
