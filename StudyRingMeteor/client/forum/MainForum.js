@@ -1,6 +1,6 @@
 import './MainForum.html';
 import { Rings } from "../../collections/rings/rings.js"
-//import { UserDiscussion } from "../../collections/UserDiscussion.js";
+import { commentPush, deleteComment } from "../../collections/userDiscussion/methods.js";
 //Meteor.subscribe('userdiscussion');
 
 Template.MainForum.onCreated(function(){
@@ -25,7 +25,8 @@ Template.MainForum.helpers({
         return this.createdBy;
     },
     comments: ()=> {
-      return UserDiscussion.find({});
+      var active = Session.get('activeRing');
+      return UserDiscussion.find({ringId: active});
     }
 
 });
@@ -38,7 +39,7 @@ Template.MainForum.events({
 
   'click .toggle-menu2': function() {
     console.log('click');
-    Meteor.call('deleteComment', this._id);
+    deleteComment.call({ id: this._id });
   },
 });
 
@@ -50,18 +51,19 @@ var hooksObject = {
         doc.ringId = Session.get('activeRing');
       }
       else{
-        doc.ringId = "none";   
+        throw new Meteor.Error('activeRingError', 'Please select a ring');
       }
 
       return doc;
     }
   },
-//   after: {
-//       insert: function(doc){
-//         var id = Session.get('activeRing')
-//         commentPush.call({id, doc});
-//       }
-//   }
+  after: {
+      insert: function(error, result){
+        var ringId = Session.get('activeRing');
+        var commentId = result;
+        commentPush.call({ringId, commentId});
+      }
+  }
 }
 
 AutoForm.hooks({

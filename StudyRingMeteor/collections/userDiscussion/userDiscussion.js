@@ -59,10 +59,6 @@ UserDiscussion.allow({
 });
 
 Meteor.methods({
-  deleteComment: function(id) {
-      UserDiscussion.remove(id);
-  },
-
   editComment: function(id, currentState){
       UserDiscussion.update(id,{
         $set:{
@@ -71,9 +67,5 @@ Meteor.methods({
       });
   }
 })
-
-// UserDiscussion.after.insert(function() {
-//     commentPush.call({ id: this._id });
-// });
 
 UserDiscussion.attachSchema(UserDiscussionSchema);
