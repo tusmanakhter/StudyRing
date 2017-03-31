@@ -47,3 +47,7 @@ Meteor.publish('allUsers', function() {
 Meteor.publish('userdiscussion', function() {
   return UserDiscussion.find({});
 });
+
+Meteor.publish('events', function(){
+    return Events.find({});
+});
