@@ -27,30 +27,6 @@ FlowRouter.route('/', {
     }
 });
 
-//This route sends a user to the login page
-FlowRouter.route('/login', {
-  name: 'Login',
-  action() {
-      BlazeLayout.render('Login');
-  }
-});
-
-//This route sends a user to the forgot password page
-FlowRouter.route('/forgotpassword', {
-  name: 'ForgotPassword',
-  action() {
-      BlazeLayout.render('ForgotPassword');
-  }
-});
-
-//This route sends a user to the register page
-FlowRouter.route('/register', {
-  name: 'Register',
-  action() {
-    BlazeLayout.render('Register');
-  }
-});
-
 //This route sends the user to to mainlayout with the dashboard injected in the content area
 FlowRouter.route('/dashboard', {
     name: 'dashboard',

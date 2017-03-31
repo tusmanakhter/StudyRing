@@ -3,10 +3,10 @@ Template.ForgotPassword.helpers({
   resetPassword : function(t) {
     if (Accounts._resetPasswordToken) {
       Session.set('resetPassword', Accounts._resetPasswordToken);
-    }
+    } 
     return Session.get('resetPassword');
   }
-
+  
 });
 
 Template.ForgotPassword.events({
@@ -26,13 +26,17 @@ Template.ForgotPassword.events({
   'submit #new-password' : function(e, t) {
     e.preventDefault();
     var pw = t.find('#new-password').value;
-
+    
     Accounts.resetPassword(Session.get('resetPassword'), pw, function(err){
-      if (err)
-        console.log("error");
-      else {
-        Session.set('resetPassword', null);
-      }
-    });
-  }
+        if (err)
+          console.log("error");
+        else {
+          Session.set('resetPassword', null);
+        }
+      });
+    },
+    'click .login': function() {
+      event.preventDefault();
+      Session.set('forgotpassword', false);
+    }
 });
