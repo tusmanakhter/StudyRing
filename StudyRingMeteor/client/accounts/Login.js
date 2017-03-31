@@ -10,5 +10,13 @@ Template.Login.events({
            console.log("ERROR: " + error.reason);
         }
      });
+  },
+  'click .register': function() {
+    event.preventDefault();
+    Session.set('register', true);
+  },
+  'click .forgotpassword': function() {
+    event.preventDefault();
+    Session.set('forgotpassword', true);
   }
 });

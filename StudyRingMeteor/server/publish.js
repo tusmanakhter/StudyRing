@@ -9,6 +9,23 @@ Meteor.publish('rings', function(){
 });
 
 /**
+ * This function returns all rings to the client
+ */
+Meteor.publish('usersRings', function(){
+    if(this.userId)
+        var rings = Meteor.users.findOne(this.userId).rings;
+    else
+        var rings = null;
+        
+    if (rings != null)
+    {
+        return Rings.find({ _id: { $in: rings}});
+    }
+    else
+        return null;
+});
+
+/**
  * This functions returns a single ring to the client
  * @param id - id of the ring we need
  */
