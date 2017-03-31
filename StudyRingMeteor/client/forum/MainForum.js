@@ -7,6 +7,14 @@ Template.MainForum.onCreated(function(){
     var self = this;
     self.autorun(function(){
       self.subscribe('userdiscussion');
+      self.subscribe('allUsers');
+    });
+});
+
+Template.myAvatarComment.onCreated(function(){
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('allUsers');
     });
 });
 
@@ -28,7 +36,17 @@ Template.MainForum.helpers({
       var active = Session.get('activeRing');
       return UserDiscussion.find({ringId: active});
     }
+});
 
+Template.myAvatarComment.helpers({
+    username: function(){
+      var userId = this.createdBy;
+      return Meteor.users.findOne({_id: userId}).username;
+    },
+    userId: function () {
+        var userId = this.createdBy;
+        return Meteor.users.findOne({_id: userId});
+    }
 });
 
 Template.MainForum.events({

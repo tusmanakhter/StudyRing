@@ -20,10 +20,8 @@
     <div class="col-sm-9">
       <div class="user">
         <div class="col-sm-2">
-           {{#with currentUser}}
-               {{> avatar user=this shape="circle" size="large"}}
                {{username}}
-           {{/with}}
+               {{> avatar user=userId shape="circle" size="large"}}
         </div>
       </div>
         {{> myComment}}
