@@ -35,18 +35,25 @@ Template.MainForum.helpers({
     comments: ()=> {
       var active = Session.get('activeRing');
       return UserDiscussion.find({ringId: active});
-    }
+    },
 });
 
 Template.myAvatarComment.helpers({
-    username: function(){
-      var userId = this.createdBy;
-      return Meteor.users.findOne({_id: userId}).username;
-    },
     userId: function () {
         var userId = this.createdBy;
         return Meteor.users.findOne({_id: userId});
     }
+});
+
+Template.myComment.helpers({
+  createdAt: function(){
+    console.log(this.createdAt);
+    return moment(this.createdAt).format('DD/MM/YYYY');
+  },
+  createdAgo: function(){
+    console.log(this.createdAt);
+    return moment(this.createdAt).fromNow();
+  }
 });
 
 Template.MainForum.events({
