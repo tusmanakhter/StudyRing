@@ -3,7 +3,7 @@
 
 {{#if Template.subscriptionsReady}}
     {{#each events}}
-          {{> EventInfo}}
+          {{> EventsInfo}}
     {{/each}}
 {{else}}
     <p>Loading</p>
@@ -17,7 +17,6 @@ Functions: Template to show a ring's events
 ________________________________________________________________________________
 -->
 <template name="EventsInfo">
-    <article class="ring {{#if isPrivate}}is-private{{/if}}">
         <h3>
             Name: {{name}}
         </h3>
@@ -43,10 +42,4 @@ ________________________________________________________________________________
                 <button class="btn-primary join-ring">Join Event</button>
             {{/if}}
         {{/if}}
-
-        {{#if isOwner createdBy}}                                               <!--Displays options to delete or edit an event only if it is the owner-->
-            <i class="fa fa-pencil"></i>
-            <i class="fa fa-trash"></i>
-        {{/if}}
-    </article>
 </template>
