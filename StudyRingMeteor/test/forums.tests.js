@@ -1,4 +1,4 @@
-import { Rings } from '../collections/rings/rings.js';
+/* import { Rings } from '../collections/rings/rings.js';
 import { UserDiscussion } from '../collections/userDiscussion/userDiscussion.js';
 import { deleteComment, commentPush } from '../collections/userDiscussion/methods.js';
 import { togglePrivate, togglePublic, joinRing, leaveRing, deleteRing } from '../collections/rings/methods.js';
@@ -87,3 +87,4 @@ describe('Rings', function () {
     });
 
 });
+*/
