@@ -3,8 +3,8 @@ import { commentPush } from './methods.js';
 
 UserDiscussion = new Mongo.Collection('userdiscussion');
 
-//checks if the user is still logged in
-UserDiscussion.allow({
+
+UserDiscussion.allow({                                                          //Checks if the user is still logged in
     insert: function(userId, doc){
         return !!userId;
     },
@@ -13,8 +13,7 @@ UserDiscussion.allow({
     }
 });
 
-//schema for the userdiscussion
-  UserDiscussionSchema = new SimpleSchema({
+UserDiscussionSchema = new SimpleSchema({                                       //schema for the userdiscussion
 
    comment: {
       type: String,
@@ -28,9 +27,8 @@ UserDiscussion.allow({
        type: String,
        label: "Created By",
        autoValue: function () {
-           //This makes sure to only set a value when it is an insert function, not an update
-           if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-               return this.userId;
+           if (this.isInsert && (!this.isSet || this.value.length === 0)) {     //Sets value when its insert, not update
+               return this.userId
            }
        },
        autoform: {
@@ -41,7 +39,6 @@ UserDiscussion.allow({
        type: Date,
        label: "Created At",
        autoValue: function() {
-           //This makes sure to only set a value when it is an insert function, not an update
            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                return new Date();
            }

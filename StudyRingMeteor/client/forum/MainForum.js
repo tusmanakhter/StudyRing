@@ -3,6 +3,7 @@ import { Rings } from "../../collections/rings/rings.js"
 import { commentPush, deleteComment } from "../../collections/userDiscussion/methods.js";
 //Meteor.subscribe('userdiscussion');
 
+
 Template.MainForum.onCreated(function(){
     var self = this;
     self.autorun(function(){
@@ -20,16 +21,13 @@ Template.myAvatarComment.onCreated(function(){
 
 Template.MainForum.helpers({
 
-    //This returns the id of the selected comment
-    updateCommentId: function() {
+    updateCommentId: function() {                                               //This returns the id of the selected comment
         return this._id;
     },
-    //This checks if the comment is in edit mode
-    editComment: function() {
+    editComment: function() {                                                   //This checks if the comment is in edit mode
         return Template.instance().editMode.get();
     },
-    //This returns the id of the user who created the comment
-    userId: function () {
+    userId: function () {                                                       //This returns the id of the user who created the comment
         return this.createdBy;
     },
     comments: ()=> {

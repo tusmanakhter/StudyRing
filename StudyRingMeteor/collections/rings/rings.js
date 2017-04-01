@@ -61,6 +61,11 @@ RingSchema = new SimpleSchema({
             type: "hidden"
         }
     },
+    nipCode: {
+      type: String,
+      label: "Secret PassCode",
+      optional: true,
+    },
     createdBy:{
         type: String,
         label: "Created By",

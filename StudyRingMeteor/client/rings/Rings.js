@@ -1,5 +1,5 @@
 import { Rings } from "../../collections/rings/rings.js";
-import { togglePrivate, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
+import { togglePrivate, addNip, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
 
 Template.Rings.events({
     'click .new-ring': () => {
@@ -24,9 +24,16 @@ Template.Rings.helpers({
         ]};
         return Rings.find(selector);
     },
-
     isOwner: function(s2){
       return (Meteor.userId()===s2);
+    },
+    isMember: function() {
+        var id = this._id;
+        var result = Meteor.users.findOne({_id: Meteor.user()._id, rings: id});
+        if (result)
+            return true;
+        else
+            return false;
     }
 });
 
@@ -42,8 +49,13 @@ Template.RingInfo.onCreated(function(){
 
 
 Template.RingInfo.events({
-    'click .set-private': function() {
-        togglePrivate.call({ id: this._id });
+    'click .set-private': function(e) {
+      e.preventDefault();
+      Modal.show('RingSetNipModal');
+
+        togglePrivate.call({
+          id: this._id
+         });
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -53,8 +65,28 @@ Template.RingInfo.events({
     },
     'click .fa-pencil': function(event, template) {
         template.editMode.set(!template.editMode.get());
+    },
+    'click .join-ring': function() {
+        joinRing.call({ id: this._id });
+    },
+    'click .leave-ring': function() {
+        leaveRing.call({ id: this._id });
     }
 });
+
+Template.RingSetNipModal.events({
+  'submit form': function(e) {
+    e.preventDefault();
+
+    Modal.hide('RingSetNipModal');
+
+    var nipCode = event.target.theNip.value;
+
+    addNip.call({ nip: nipCode}  );
+  }
+});
+
+
 
 Template.RingInfo.helpers({
     Rings() {
@@ -80,67 +112,22 @@ Template.RingInfo.helpers({
             return true;
         else
             return false;
+
+      
+    },
+    isOwner: function(s2){
+      return (Meteor.userId()===s2);
     }
 });
 
-Template.RingDash.onCreated(function(){
-    this.editMode = new ReactiveVar(false);
-    var self = this;
-    self.autorun(function (){
-        var id = FlowRouter.getParam('id');
-        self.subscribe('singleRing', id);
-        self.subscribe('allUsers');
-    });
-});
-
-Template.RingDash.helpers({
-    ring: ()=> {
-        var id = FlowRouter.getParam('id');
-        return Rings.findOne({_id: id});
-    },
-    createdByUser: function() {
-        var id = FlowRouter.getParam('id');
-        var userid = Rings.findOne({_id: id}).createdBy;
-        return Meteor.users.findOne({_id: userid});
-    },
-    members: () => {
-        var id = FlowRouter.getParam('id');
-        return Meteor.users.find({rings: id});
+Template.NewRing.helpers({
+    Rings() {
+        return Rings;
     }
 });
 
-Template.RingSingle.onCreated(function(){
-    var self = this;
-    self.autorun(function (){
-        self.subscribe('rings');
-        self.subscribe('allUsers');
-    });
-});
-
-
-Template.RingSingle.helpers({
-    userId: function() {
-        return this.createdBy;
-    },
-    members: function() {
-        var id = this._id;
-        return Meteor.users.find({rings: this._id});
-    },
-    isMember: function() {
-        var id = this._id;
-        var result = Meteor.users.findOne({_id: Meteor.user()._id, rings: id});
-        if (result)
-            return true;
-        else
-            return false;
+Template.NewRing.events({
+    'click .fa-close': function() {
+        Session.set('newRing', false);
     }
-});
-
-Template.RingSingle.events({
-  'click .join-ring': function() {
-      joinRing.call({ id: this._id });
-  },
-  'click .leave-ring': function() {
-      leaveRing.call({ id: this._id });
-  }
 });
