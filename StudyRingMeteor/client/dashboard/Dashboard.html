@@ -62,27 +62,6 @@ ________________________________________________________________________________
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue set-icon">
-                    <i class="fa fa-list"></i>
-                </span>
-                <div class="text-box">
-                <p class="main-text">Rings</p>
-                    {{#if Template.subscriptionsReady}}
-                        {{#if noRings }}
-                            No rings joined. Join a ring today!
-                        {{else}}
-                            {{#each rings}}
-                                {{> DashboardRings}}
-                            {{/each}}
-                        {{/if}}
-                    {{else}}
-                        <p>Loading</p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
     </div>
 
 <!-- not functional -->
@@ -105,13 +84,15 @@ ________________________________________________________________________________
                             </tr>
                         </thead>
                         <tbody>
+                            {{ #each rings }}
                             <tr>
                                 <td>1</td>
-                                <td>SOEN 341 Studygroup</td>
-                                <td>Someones Name</td>
-                                <td>34</td>
+                                <td>{{ name }}</td>
+                                <td>{{ createdBy }}</td>
+                                <td>{{ numOfMembers }}</td>
                                 <td>2</td>
                             </tr>
+                            {{/each}}
                             <tr>
                                 <td>2</td>
                                 <td>COMP 346</td>
@@ -136,12 +117,4 @@ ________________________________________________________________________________
     </div>
 </div>
   </body>
-</template>
-
-<template name="DashboardRings">
-    <div style="border: 1px solid black;">
-        Name: {{ name }}<br/>
-        Members: {{ numOfMembers }}<br/>
-        <a href="/rings/{{_id}}">View</a>
-    </div>
 </template>
