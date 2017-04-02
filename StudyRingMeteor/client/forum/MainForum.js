@@ -12,7 +12,7 @@ Template.MainForum.onCreated(function(){
     });
 });
 
-Template.myAvatarComment.onCreated(function(){
+Template.MyAvatarComment.onCreated(function(){
     var self = this;
     self.autorun(function(){
       self.subscribe('allUsers');
@@ -36,14 +36,14 @@ Template.MainForum.helpers({
     },
 });
 
-Template.myAvatarComment.helpers({
+Template.MyAvatarComment.helpers({
     userId: function () {
         var userId = this.createdBy;
         return Meteor.users.findOne({_id: userId});
     }
 });
 
-Template.myComment.helpers({
+Template.MyComment.helpers({
   createdAt: function(){
     console.log(this.createdAt);
     return moment(this.createdAt).format('DD/MM/YYYY');

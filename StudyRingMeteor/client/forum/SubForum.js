@@ -2,7 +2,7 @@ import './MainForum.html';
 import './SubForum.html';
 import { Rings } from "../../collections/rings/rings.js";
 
-Template.ringDiscussion.onCreated(function(){
+Template.RingDiscussion.onCreated(function(){
     var self = this;
     self.autorun(function (){
         self.subscribe('rings');
@@ -10,7 +10,7 @@ Template.ringDiscussion.onCreated(function(){
     });
 });
 
-Template.ringDiscussion.events({
+Template.RingDiscussion.events({
   'click .btn-primary':  function(){
     var ringId = this._id;
     Session.set('activeRing', ringId);
@@ -19,7 +19,7 @@ Template.ringDiscussion.events({
   }
 })
 
-Template.ringDiscussion.helpers({
+Template.RingDiscussion.helpers({
 
 
 //to show which button has been selected - UI enhancement
