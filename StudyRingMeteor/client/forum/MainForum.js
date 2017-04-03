@@ -1,9 +1,21 @@
 import './MainForum.html';
+import { Rings } from "../../collections/rings/rings.js"
+import { commentPush, deleteComment } from "../../collections/userDiscussion/methods.js";
+//Meteor.subscribe('userdiscussion');
+
 
 Template.MainForum.onCreated(function(){
     var self = this;
     self.autorun(function(){
       self.subscribe('userdiscussion');
+      self.subscribe('allUsers');
+    });
+});
+
+Template.MyAvatarComment.onCreated(function(){
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('allUsers');
     });
 });
 
@@ -19,8 +31,31 @@ Template.MainForum.helpers({
         return this.createdBy;
     },
     comments: ()=> {
-      return UserDiscussion.find({});
+      var active = Session.get('activeRing');
+      return UserDiscussion.find({ringId: active});
+    },
+});
+
+Template.MyAvatarComment.helpers({
+    userId: function () {
+        var userId = this.createdBy;
+        return Meteor.users.findOne({_id: userId});
+    },
+    username: function(){
+      var userId = this.createdBy;
+      return Meteor.users.findOne({_id: userId}).username;
     }
+});
+
+Template.MyComment.helpers({
+  createdAt: function(){
+    console.log(this.createdAt);
+    return moment(this.createdAt).format('DD/MM/YYYY');
+  },
+  createdAgo: function(){
+    console.log(this.createdAt);
+    return moment(this.createdAt).fromNow();
+  }
 });
 
 Template.MainForum.events({
@@ -31,6 +66,33 @@ Template.MainForum.events({
 
   'click .toggle-menu2': function() {
     console.log('click');
-    Meteor.call('deleteComment', this._id);
+    deleteComment.call({ id: this._id });
   },
+});
+
+var hooksObject = {
+  before: {
+    insert: function(doc) {
+      //Altering the doc before submission to include the ring
+      if(Session.get('activeRing')){
+        doc.ringId = Session.get('activeRing');
+      }
+      else{
+        throw new Meteor.Error('activeRingError', 'Please select a ring');
+      }
+
+      return doc;
+    }
+  },
+  after: {
+      insert: function(error, result){
+        var ringId = Session.get('activeRing');
+        var commentId = result;
+        commentPush.call({ringId, commentId});
+      }
+  }
+}
+
+AutoForm.hooks({
+  insertComment: hooksObject
 });
