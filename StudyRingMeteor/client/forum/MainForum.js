@@ -40,6 +40,10 @@ Template.MyAvatarComment.helpers({
     userId: function () {
         var userId = this.createdBy;
         return Meteor.users.findOne({_id: userId});
+    },
+    username: function(){
+      var userId = this.createdBy;
+      return Meteor.users.findOne({_id: userId}).username;
     }
 });
 
