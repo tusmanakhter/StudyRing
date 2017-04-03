@@ -51,7 +51,10 @@ ________________________________________________________________________________
       <h4>{{comment}}</h4>
       <p> Created on: {{createdAt}} <br>
       Posted {{createdAgo}} </p>
+      {{#if userDelete}}
       <button class="btn-deny toggle-menu2"> Remove </button>
+      {{else}}
+      {{/if}}
     </div>
   </div>
 </template>
