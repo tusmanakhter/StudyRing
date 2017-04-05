@@ -64,7 +64,7 @@ export const deleteRing = new ValidatedMethod({
         'Must be the owner to delete ring.');
     }
 
-    Meteor.users.update({rings: id}, {$pull: {rings: id}}, {multi: true})
+    Meteor.users.update({rings: id}, {$pull: {rings: id}}, {multi: true});
     Rings.remove(id);
   },
 });

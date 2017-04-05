@@ -10,7 +10,7 @@ ________________________________________________________________________________
   <body>
       <div class="jumbotron">
         <h1>Welcome To The Forum</h1>
-          {{>ringDiscussion}}
+          {{>RingDiscussion}}
         <br><br>
         <p>Have a question? We are here to help!</p>
       </div>
@@ -19,7 +19,7 @@ ________________________________________________________________________________
           {{> MyAvatarComment}}
         {{/each}}
       </div>
-        {{> quickForm collection="userdiscussion" id="insertComment" type="insert" class="newCommentForm"}}
+        {{> quickForm collection="UserDiscussion" id="insertComment" type="insert" class="newCommentForm"}}
   </body>
 </template>
 <!--
@@ -36,10 +36,8 @@ ________________________________________________________________________________
     <div class="col-sm-9">
       <div class="user">
         <div class="col-sm-2">
-           {{#with currentUser}}
-               {{> avatar user=this shape="circle" size="large"}}
                {{username}}
-           {{/with}}
+               {{> avatar user=userId shape="circle" size="large"}}
         </div>
       </div>
         {{> MyComment}}
@@ -51,7 +49,8 @@ ________________________________________________________________________________
   <div class="col-sm-9">
     <div class="well">
       <h4>{{comment}}</h4>
-      <p>{{createdAt}}></p>
+      <p> Created on: {{createdAt}} <br>
+      Posted {{createdAgo}} </p>
       <button class="btn-deny toggle-menu2"> Remove </button>
     </div>
   </div>

@@ -3,6 +3,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { joinRing } from './methods.js';
+import { UserDiscussion } from "../userDiscussion/userDiscussion.js"
 
 export const Rings = new Mongo.Collection('rings');
 
@@ -36,6 +37,18 @@ RingSchema = new SimpleSchema({
     tags: {
         type: [Tags]
     },
+    UserDiscussion: {
+        type: [String],
+        autoform:{
+            type: "hidden"
+        },
+        autoValue: function () {
+            //This makes sure to only set a value when it is an insert function, not an update
+            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+                return new Array();
+            }
+        }
+    },
     admins: {
         type: [Tags],
         optional: true
@@ -62,7 +75,7 @@ RingSchema = new SimpleSchema({
         autoValue: function () {
             //This makes sure to only set a value when it is an insert function, not an update
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-                return this.userId
+                return this.userId;
             }
         },
         autoform: {

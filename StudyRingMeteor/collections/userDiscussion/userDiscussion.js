@@ -1,3 +1,6 @@
+import { Rings } from '../rings/rings.js';
+import { commentPush } from './methods.js';
+
 UserDiscussion = new Mongo.Collection('userdiscussion');
 
 
@@ -37,20 +40,22 @@ UserDiscussionSchema = new SimpleSchema({                                       
        label: "Created At",
        autoValue: function() {
            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-               return new Date()
+               return new Date();
            }
        },
        autoform: {
            type: "hidden"
        }
    },
+   ringId: {
+        type: String,
+        autoform: {
+            type: "hidden"
+        }
+   }
 });
 
 Meteor.methods({
-  deleteComment: function(id) {
-      UserDiscussion.remove(id);
-  },
-
   editComment: function(id, currentState){
       UserDiscussion.update(id,{
         $set:{
