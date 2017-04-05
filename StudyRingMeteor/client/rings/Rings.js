@@ -65,11 +65,21 @@ Template.RingInfo.events({
         template.editMode.set(!template.editMode.get());
     },
     'click .join-ring': function() {
+      console.log(this._id)
         joinRing.call({ id: this._id });
     },
     'click .join-ring-private': function() {
+      var currentRing = Rings.findOne(this._id);
+      var id = currentRing._id;
+      var nip=currentRing.nipCode;
         Modal.show("RingInputNipModal")    //opening an modal where user needs to
-        Session.set("thisRing", this)                                  //input the nip to join the ring
+        //Session.set("thisRing", this)      //input the nip to join the ring
+        console.log(this);
+        console.log(currentRing + " this is the currentRing");
+        console.log(nip + id);
+        Session.set("id", id);
+        Session.set("currentRingNip", nip);
+
     },
     'click .leave-ring': function() {
         leaveRing.call({ id: this._id });
@@ -92,9 +102,10 @@ Template.RingInputNipModal.events({
     e.preventDefault();
     Modal.hide('RingInputNipModal');
     var Code = event.target.secretCode.value;
-    console.log(this);
-    if(this.nipCode == Code  ){
-        joinRing.call({ id: this._id });
+    console.log(this.nipCode);
+    console.log(Session.get("currentRingNip")+ " the current ring nip")
+    if(Session.get("currentRingNip") == Code  ){
+        joinRing.call({ id: Session.get("id") });
     }
   }
 });
