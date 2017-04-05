@@ -53,9 +53,7 @@ Template.RingInfo.events({
       e.preventDefault();
       Modal.show('RingSetNipModal');
 
-        togglePrivate.call({
-          id: this._id
-         });
+
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -71,7 +69,7 @@ Template.RingInfo.events({
     },
     'click .join-ring-private': function() {
         Modal.show("RingInputNipModal")    //opening an modal where user needs to
-                                          //input the nip to join the ring
+        Session.set("thisRing", this)                                  //input the nip to join the ring
     },
     'click .leave-ring': function() {
         leaveRing.call({ id: this._id });
@@ -84,6 +82,9 @@ Template.RingSetNipModal.events({
     Modal.hide('RingSetNipModal');
     var nipCode = event.target.theNip.value;
     addNip.call({ nip: nipCode}  );
+    togglePrivate.call({
+      id: this._id
+     });
   }
 });
 Template.RingInputNipModal.events({
@@ -91,6 +92,7 @@ Template.RingInputNipModal.events({
     e.preventDefault();
     Modal.hide('RingInputNipModal');
     var Code = event.target.secretCode.value;
+    console.log(this);
     if(this.nipCode == Code  ){
         joinRing.call({ id: this._id });
     }
@@ -100,7 +102,7 @@ Template.RingInputNipModal.events({
 
 Template.RingInfo.helpers({
     Rings() {
-        return Rings;
+        return Rings.find({});
     },
     updateRingId: function() {
         return this._id;
@@ -131,7 +133,7 @@ Template.RingInfo.helpers({
 
 Template.NewRing.helpers({
     Rings() {
-        return Rings;
+        return Rings.find({});
     }
 });
 
