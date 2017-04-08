@@ -47,7 +47,8 @@ RingSchema = new SimpleSchema({
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return new Array();
             }
-        }
+        },
+        optional: true
     },
     admins: {
         type: [Tags],
@@ -102,7 +103,8 @@ RingSchema = new SimpleSchema({
         },
         autoform: {
             type: "hidden"
-        }
+        },
+        optional: true
     }
 });
 

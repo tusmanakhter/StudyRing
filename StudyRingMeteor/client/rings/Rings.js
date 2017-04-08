@@ -1,5 +1,6 @@
 import { Rings } from "../../collections/rings/rings.js";
 import { togglePrivate, addNip, togglePublic, deleteRing, joinRing, leaveRing } from "../../collections/rings/methods.js";
+AutoForm.debug() 
 
 Template.Rings.events({
     'click .new-ring': () => {

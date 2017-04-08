@@ -1,4 +1,5 @@
 import { Rings } from './rings.js';
+import { UserDiscussion } from '../userDiscussion/userDiscussion.js';
 
 export const addNip = new ValidatedMethod({
   name: 'addNip',
@@ -65,6 +66,7 @@ export const deleteRing = new ValidatedMethod({
     }
 
     Meteor.users.update({rings: id}, {$pull: {rings: id}}, {multi: true});
+    UserDiscussion.remove({ringId: id});
     Rings.remove(id);
   },
 });
