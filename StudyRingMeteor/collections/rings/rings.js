@@ -47,7 +47,8 @@ RingSchema = new SimpleSchema({
             if (this.isInsert && (!this.isSet || this.value.length === 0)) {
                 return new Array();
             }
-        }
+        },
+        optional: true
     },
     admins: {
         type: [Tags],
@@ -102,66 +103,9 @@ RingSchema = new SimpleSchema({
         },
         autoform: {
             type: "hidden"
-        }
+        },
+        optional: true
     }
-});
-
-Meteor.methods({
-    // /**
-    //  * This sets a ring to private
-    //  * @param id - the id of the ring to be updated
-    //  */
-    // togglePrivate: function(id) {
-    //     Rings.update(id, {
-    //         $set: {
-    //             isPrivate: true
-    //         }
-    //     });
-    // },
-    // /**
-    //  * This sets a ring to public
-    //  * @param id - the id of the ring to be updated
-    //  */
-    // togglePublic: function(id) {
-    //     Rings.update(id, {
-    //         $set: {
-    //             isPrivate: false
-    //         }
-    //     });
-    // },
-    // /**
-    //  * This function deletes a ring
-    //  * @param id - the id of the ring to be deleted
-    //  */
-    // deleteRing: function(id) {
-    //     if(this.userId == Rings.findOne({_id: id}).createdBy)
-    //     {
-    //         Meteor.users.update({rings:{ $in: [id]}}, {$pull: {rings: id}}, {multi: true})
-    //         Rings.remove(id);
-    //     }
-    // },
-    // /**
-    //  * This function lets a user join a ring
-    //  * @param id - the id of the ring that is to be joined
-    //  */
-    // joinRing: function(id){
-    //     var userId = this.userId
-    //     //This adds the ring to the users rings he has joined
-    //     Meteor.users.update(userId, {$push: {rings: id}});
-    //     //This adds the user to the rings members
-    //     Rings.update(id, {$push: {members: userId}});
-    // },
-    // /**
-    //  * This function lets a user leave a ring
-    //  * @param id - the id of the ring that is to be left
-    //  */
-    // leaveRing: function(id){
-    //     var userId = this.userId
-    //     //This removes the ring from the rings the user has joined
-    //     Meteor.users.update(userId, {$pull: {rings: id}});
-    //     //This removes the user from the rings memebrs
-    //     Rings.update(id, {$pull: {members: userId}});
-    // }
 });
 
 Rings.attachSchema( RingSchema );
