@@ -6,6 +6,7 @@ services:
 cache:
   directories:
      - node_modules
+     - Testing
 
 before_install:
   - curl https://install.meteor.com | /bin/sh

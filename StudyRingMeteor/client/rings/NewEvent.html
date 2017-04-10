@@ -2,7 +2,7 @@
     <div class="new-ring-container">
       {{#if $.Session.get 'newEvent'}}
           <i class="fa fa-close"></i>
-          {{> quickForm collection="Events" id="newEventForm" type="insert" class="newEvenForm"}}
+          {{> quickForm collection="Events" id="newEventForm" type="insert" class="newEventForm"}}
       {{else}}
           <button class="new-event">New Event</button>
       {{/if}}

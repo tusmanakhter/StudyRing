@@ -1,7 +1,10 @@
-UserDiscussion = new Mongo.Collection('userdiscussion');
+import { Rings } from '../rings/rings.js';
+import { commentPush } from './methods.js';
 
-//checks if the user is still logged in
-UserDiscussion.allow({
+export const UserDiscussion = new Mongo.Collection('userdiscussion');
+
+
+UserDiscussion.allow({                                                          //Checks if the user is still logged in
     insert: function(userId, doc){
         return !!userId;
     },
@@ -10,8 +13,7 @@ UserDiscussion.allow({
     }
 });
 
-//schema for the userdiscussion
-UserDiscussionSchema = new SimpleSchema({
+UserDiscussionSchema = new SimpleSchema({                                       //schema for the userdiscussion
 
    comment: {
       type: String,
@@ -25,8 +27,7 @@ UserDiscussionSchema = new SimpleSchema({
        type: String,
        label: "Created By",
        autoValue: function () {
-           //This makes sure to only set a value when it is an insert function, not an update
-           if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+           if (this.isInsert && (!this.isSet || this.value.length === 0)) {     //Sets value when its insert, not update
                return this.userId
            }
        },
@@ -38,22 +39,23 @@ UserDiscussionSchema = new SimpleSchema({
        type: Date,
        label: "Created At",
        autoValue: function() {
-           //This makes sure to only set a value when it is an insert function, not an update
            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
-               return new Date()
+               return new Date();
            }
        },
        autoform: {
            type: "hidden"
        }
    },
+   ringId: {
+        type: String,
+        autoform: {
+            type: "hidden"
+        }
+   }
 });
 
 Meteor.methods({
-  deleteComment: function(id) {
-      UserDiscussion.remove(id);
-  },
-
   editComment: function(id, currentState){
       UserDiscussion.update(id,{
         $set:{
@@ -64,3 +66,10 @@ Meteor.methods({
 })
 
 UserDiscussion.attachSchema(UserDiscussionSchema);
+
+Factory.define('UserDiscussion', UserDiscussion, {
+  comment: () => faker.lorem.sentence(),
+  ringId: () => this.ringId,
+  createdBy: () => this.userId,
+  ringId: () => faker.lorem.sentence()
+});

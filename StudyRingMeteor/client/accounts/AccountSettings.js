@@ -1,3 +1,6 @@
+import { Accounts } from 'meteor/accounts-base'
+import { changeUsername } from "../../collections/users/methods.js";
+
 Template.AccountSettings.onCreated(function(){
     var self = this;
     self.autorun(function (){
@@ -5,7 +8,7 @@ Template.AccountSettings.onCreated(function(){
     });
 });
 
-Template.changePassword.events({
+Template.ChangePassword.events({
     'submit form': function(event){
         event.preventDefault();
         console.log(event);
@@ -28,11 +31,11 @@ Template.changePassword.events({
     }
 });
 
-Template.changeUsername.events({
+Template.ChangeUsername.events({
     'submit form': function(event){
       event.preventDefault();
-      var newUsername = event.target.changeUsername.value;
-      Accounts.changeUsername(Meteor.userID(), newUsername);
+      var newUsername = event.target.newUsername.value;
+      changeUsername.call({ id: Meteor.userId(), newUsername });
     }
 });
 

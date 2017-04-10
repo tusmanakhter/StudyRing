@@ -1,10 +1,25 @@
-<template name="ringDiscussion">
+<!--
+________________________________________________________________________________
+                                ****RingDiscussion****
+Description: Rings is the template that appears under the "Forums" tab.
+Functions: Display all relevant ring discussions.
+________________________________________________________________________________
+-->
+<template name="RingDiscussion">
   <div class="container">
     <h2>Discuss with your rings!</h2>
     <div class="btn-group">
-      <button type="button" class="btn btn-primary">General</button>
-      <button type="button" class="btn btn-primary">My Ring 1</button>
-      <button type="button" class="btn btn-primary">My Ring 2</button>
+      {{#each rings}}
+      <button type="button" class="btn btn-primary">{{name}}</button> <!-- {{selectedButton would go inside + css}} -->
+      {{/each}}
     </div>
   </div>
+  Ring name: {{ringComments.name}}
+  {{#each ringComments.comments}}
+  Comment:  {{name}}
+  {{/each}}
+</template>
+
+<template name="content">
+
 </template>

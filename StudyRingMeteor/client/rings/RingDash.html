@@ -1,0 +1,35 @@
+<!--
+________________________________________________________________________________
+                                ****RingDash****
+Description: Rings is the template that appears under the "My Rings" tab.
+Subtemplates: Events, Forums
+Functions: Display all the information of the specific ring.
+________________________________________________________________________________
+-->
+
+<template name="RingDash">
+    <article class="ring">
+        <h3>
+        {{ring.name}}
+        </h3>
+        <br/>
+            Description: {{ring.desc}}
+        <br/>
+            Tags:
+            {{#each ring.tags}}
+                <span class="tags">{{name}}</span>
+            {{/each}}
+        <br/>
+        <p>
+            Members:
+            {{#each members}}
+                <span class="names">{{username}}
+                                    {{> avatar userId=_id shape="circle" size="medium"}}
+                </span>
+            {{/each}}
+        </p>
+
+        Created By: {{createdByUser.username}} {{> avatar userId=createdByUser shape="circle" size="medium"}}
+        {{> Events}}
+    </article>
+</template>

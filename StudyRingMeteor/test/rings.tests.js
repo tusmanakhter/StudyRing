@@ -2,6 +2,7 @@ import { Rings } from '../collections/rings/rings.js';
 import { togglePrivate, togglePublic, joinRing, leaveRing, deleteRing } from '../collections/rings/methods.js';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import { Random } from 'meteor/random';
+import { resetDatabase } from 'meteor/xolvio:cleaner'
 import '../server/publish.js';
 
 
@@ -15,7 +16,7 @@ describe('Rings', function () {
             Factory.create('Ring');
         });
         // Create a ring and holds the id
-        RingId = Factory.create('Ring', {createdy: userId})._id;
+        RingId = Factory.create('Ring', {createdBy: userId})._id;
         
         userId2 = Accounts.createUser({username: 'test2', email: 'test@gmail.com2', password: 'test2'});
     });
@@ -84,4 +85,7 @@ describe('Rings', function () {
         assert.isUndefined(Rings.findOne({_id: RingId}));
     });
 
+    after(function() {
+        resetDatabase(null);
+    });
 });

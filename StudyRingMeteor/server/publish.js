@@ -1,11 +1,29 @@
 import { Meteor } from 'meteor/meteor';
 import { Rings } from "../collections/rings/rings.js"
+import { UserDiscussion } from "../collections/userDiscussion/userDiscussion.js"
 
 /**
  * This function returns all rings to the client
  */
 Meteor.publish('rings', function(){
     return Rings.find({});
+});
+
+/**
+ * This function returns all rings to the client
+ */
+Meteor.publish('usersRings', function(){
+    if(this.userId)
+        var rings = Meteor.users.findOne(this.userId).rings;
+    else
+        var rings = null;
+        
+    if (rings != null)
+    {
+        return Rings.find({ _id: { $in: rings}});
+    }
+    else
+        return null;
 });
 
 /**
@@ -29,4 +47,8 @@ Meteor.publish('allUsers', function() {
 */
 Meteor.publish('userdiscussion', function() {
   return UserDiscussion.find({});
+});
+
+Meteor.publish('events', function(){
+    return Events.find({});
 });
