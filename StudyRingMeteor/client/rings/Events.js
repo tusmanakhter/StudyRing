@@ -1,3 +1,6 @@
+import { Events } from "../../collections/events/ringEvents.js";
+import { joinEvent, leaveEvent } from "../../collections/events/methods.js";
+
 Template.Events.onCreated(function(){
     var self = this;
     self.autorun(function (){
@@ -6,7 +9,33 @@ Template.Events.onCreated(function(){
 })
 
 Template.Events.helpers({
+    Events() {
+        return Events;
+    },
     events: ()=> {
         return Events.find({});
+    }
+})
+
+Template.EventsInfo.events({
+    'click .join-event': function() {
+        joinEvent.call({ id: this._id });
+    },
+    'click .leave-event': function() {
+        leaveEvent.call({ id: this._id });
+    }
+});
+
+Template.EventsInfo.helpers({
+    isMember: function() {
+        var id = this._id;
+        var result = Meteor.users.findOne({_id: Meteor.user()._id, events: id});
+        if (result)
+            return true;
+        else
+            return false;
+    },
+    userId: function () {
+        return this.createdBy;
     }
 })

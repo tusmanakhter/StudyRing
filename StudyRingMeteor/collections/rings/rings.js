@@ -105,6 +105,19 @@ RingSchema = new SimpleSchema({
             type: "hidden"
         },
         optional: true
+    },
+    events: {
+        type: [String],
+        autoValue: function() {
+            //This makes sure to only set a value when it is an insert function, not an update
+            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+                return new Array();
+            }
+        },
+        autoform: {
+            type: "hidden"
+        },
+        optional: true
     }
 });
 

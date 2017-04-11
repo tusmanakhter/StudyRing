@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import { Rings } from "../collections/rings/rings.js"
-import { UserDiscussion } from "../collections/userDiscussion/userDiscussion.js"
+import { Rings } from "../collections/rings/rings.js";
+import { UserDiscussion } from "../collections/userDiscussion/userDiscussion.js";
+import { Events } from "../collections/events/ringEvents.js";
 
 /**
  * This function returns all rings to the client
