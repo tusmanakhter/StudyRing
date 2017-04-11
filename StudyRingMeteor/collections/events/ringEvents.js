@@ -78,7 +78,8 @@ EventsSchema = new SimpleSchema({
         },
         autoform: {
             type: "hidden"
-        }
+        },
+        optional: true
     },
     location: {
         type: String,
@@ -106,4 +107,14 @@ Events.after.insert(function() {
     if (Meteor.isClient){
         Session.set('newEvent', false);
     }
+});
+
+Factory.define('Event', Events, {
+  name: () => faker.lorem.sentence(),
+  desc: () => faker.lorem.sentence(),
+  tags: () => [{name: faker.lorem.sentence()}],
+  location: () => faker.lorem.sentence(),
+  createdBy: () => this.userId,
+  eventDate: () => new Date(),
+  ringId: () => faker.lorem.sentence()
 });

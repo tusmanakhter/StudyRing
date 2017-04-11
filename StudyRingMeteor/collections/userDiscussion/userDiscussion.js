@@ -69,7 +69,6 @@ UserDiscussion.attachSchema(UserDiscussionSchema);
 
 Factory.define('UserDiscussion', UserDiscussion, {
   comment: () => faker.lorem.sentence(),
-  ringId: () => this.ringId,
   createdBy: () => this.userId,
   ringId: () => faker.lorem.sentence()
 });
