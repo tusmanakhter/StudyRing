@@ -1,6 +1,7 @@
 import { Rings } from "../../collections/rings/rings.js"
+import { joinEvent } from './methods.js';
 
-Events = new Mongo.Collection('events');
+export const Events = new Mongo.Collection('events');
 
 Events.allow({
     insert: function(userId, doc){
@@ -42,7 +43,32 @@ EventsSchema = new SimpleSchema({
       label: "Date",
       min: new Date()
     },
-
+    createdBy:{
+        type: String,
+        label: "Created By",
+        autoValue: function () {
+            //This makes sure to only set a value when it is an insert function, not an update
+            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+                return this.userId;
+            }
+        },
+        autoform: {
+            type: "hidden"
+        }
+    },
+    createdAt: {
+        type: Date,
+        label: "Created At",
+        autoValue: function() {
+            //This makes sure to only set a value when it is an insert function, not an update
+            if (this.isInsert && (!this.isSet || this.value.length === 0)) {
+                return new Date()
+            }
+        },
+        autoform: {
+            type: "hidden"
+        }
+    },
     members: {
         type: [String],
         autoValue: function() {
@@ -57,23 +83,27 @@ EventsSchema = new SimpleSchema({
     location: {
         type: String,
         label: "Location"
-    }
-});
-
-Meteor.methods({
-    deleteEvent: function(id) {
-        Events.remove(id);
     },
-    joinEvent: function(id){
-        var userId = Meteor.userId();
-        Meteor.users.update(userId, {$push: {rings: id}});
-        Rings.update(id, {$push: {members: userId}});
+    memberLimit: {
+        type: Number,
+        label: "Member Limit",
+        optional: true
     },
-    leaveEvent: function(id){
-        var userId = Meteor.userId();
-        Meteor.users.update(userId, {$pull: {rings: id}});
-        Rings.update(id, {$pull: {members: userId}});
+    ringId: {
+        type: String,
+        autoform: {
+            type: "hidden"
+        }
     }
 });
 
 Events.attachSchema( EventsSchema );
+
+Events.after.insert(function() {
+    if (Meteor.isServer){
+       joinEvent.call({ id: this._id });
+    }
+    if (Meteor.isClient){
+        Session.set('newEvent', false);
+    }
+});

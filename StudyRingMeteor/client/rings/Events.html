@@ -37,9 +37,12 @@ ________________________________________________________________________________
             </p>
 
             {{#if isMember}}
-                <button class="btn-deny leave-ring">Leave Event</button>
+                <button class="btn-deny leave-event">Leave Event</button>
             {{else}}
-                <button class="btn-primary join-ring">Join Event</button>
+                <button class="btn-primary join-event">Join Event</button>
+            {{/if}}
+            {{#if isOwner createdBy}}                                              
+                <button class="btn-deny delete-event">Delete Event</button>
             {{/if}}
         {{/if}}
 </template>
