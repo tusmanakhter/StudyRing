@@ -20,7 +20,7 @@ export const deleteEvent = new ValidatedMethod({
         'Must be the owner to delete event.');
     }
 
-    Rings.update({event: id}, {$pull: {event: id}});
+    Rings.update({events: id}, {$pull: {events: id}});
     Events.remove(id);
   },
 });
@@ -31,6 +31,11 @@ export const joinEvent = new ValidatedMethod({
     id: { type: String, regEx: SimpleSchema.RegEx.Id},
   }).validator(),
   run({ id }) {
+    var event = Events.findOne({_id: id});
+    if (event.memberLimit === event.members.length) {
+        throw new Meteor.Error('rings.joinEvent.limitReached',
+        'Member limit reached.');
+    }
     var userId = this.userId
     Meteor.users.update(userId, {$push: {events: id}});
     Events.update(id, {$push: {members: userId}});

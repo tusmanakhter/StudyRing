@@ -1,5 +1,5 @@
 import { Events } from "../../collections/events/ringEvents.js";
-import { joinEvent, leaveEvent } from "../../collections/events/methods.js";
+import { joinEvent, leaveEvent, deleteEvent } from "../../collections/events/methods.js";
 
 Template.Events.onCreated(function(){
     var self = this;
@@ -23,7 +23,10 @@ Template.EventsInfo.events({
     },
     'click .leave-event': function() {
         leaveEvent.call({ id: this._id });
-    }
+    },
+    'click .delete-event': function() {
+        deleteEvent.call({ id: this._id });
+    },
 });
 
 Template.EventsInfo.helpers({
@@ -37,5 +40,8 @@ Template.EventsInfo.helpers({
     },
     userId: function () {
         return this.createdBy;
+    },
+    isOwner: function(s2){
+      return (Meteor.userId()===s2);
     }
 })

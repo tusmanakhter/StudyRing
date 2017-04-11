@@ -41,5 +41,8 @@ ________________________________________________________________________________
             {{else}}
                 <button class="btn-primary join-event">Join Event</button>
             {{/if}}
+            {{#if isOwner createdBy}}                                              
+                <button class="btn-deny delete-event">Delete Event</button>
+            {{/if}}
         {{/if}}
 </template>
