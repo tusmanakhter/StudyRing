@@ -53,9 +53,7 @@ Template.RingInfo.events({
       e.preventDefault();
       Modal.show('RingSetNipModal');
 
-        togglePrivate.call({
-          id: this._id
-         });
+
     },
     'click .set-public': function() {
         togglePublic.call({ id: this._id });
@@ -67,7 +65,21 @@ Template.RingInfo.events({
         template.editMode.set(!template.editMode.get());
     },
     'click .join-ring': function() {
+      console.log(this._id)
         joinRing.call({ id: this._id });
+    },
+    'click .join-ring-private': function() {
+      var currentRing = Rings.findOne(this._id);
+      var id = currentRing._id;
+      var nip=currentRing.nipCode;
+        Modal.show("RingInputNipModal")    //opening an modal where user needs to
+        //Session.set("thisRing", this)      //input the nip to join the ring
+        console.log(this);
+        console.log(currentRing + " this is the currentRing");
+        console.log(nip + id);
+        Session.set("id", id);
+        Session.set("currentRingNip", nip);
+
     },
     'click .leave-ring': function() {
         leaveRing.call({ id: this._id });
@@ -77,20 +89,31 @@ Template.RingInfo.events({
 Template.RingSetNipModal.events({
   'submit form': function(e) {
     e.preventDefault();
-
     Modal.hide('RingSetNipModal');
-
     var nipCode = event.target.theNip.value;
-
     addNip.call({ nip: nipCode}  );
+    togglePrivate.call({
+      id: this._id
+     });
+  }
+});
+Template.RingInputNipModal.events({
+  'submit form': function(e) {
+    e.preventDefault();
+    Modal.hide('RingInputNipModal');
+    var Code = event.target.secretCode.value;
+    console.log(this.nipCode);
+    console.log(Session.get("currentRingNip")+ " the current ring nip")
+    if(Session.get("currentRingNip") == Code  ){
+        joinRing.call({ id: Session.get("id") });
+    }
   }
 });
 
 
-
 Template.RingInfo.helpers({
     Rings() {
-        return Rings;
+        return Rings.find({});
     },
     updateRingId: function() {
         return this._id;
@@ -113,7 +136,6 @@ Template.RingInfo.helpers({
         else
             return false;
 
-      
     },
     isOwner: function(s2){
       return (Meteor.userId()===s2);
@@ -122,7 +144,7 @@ Template.RingInfo.helpers({
 
 Template.NewRing.helpers({
     Rings() {
-        return Rings;
+        return Rings.find({});
     }
 });
 
