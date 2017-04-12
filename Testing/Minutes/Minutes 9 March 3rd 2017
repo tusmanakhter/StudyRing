@@ -4,16 +4,16 @@ Meeting Duration: 12:56pm - 1:17pm
 
 Durign the meeting, the TA gave us some general advice as to what he is looking for during our Sprints:
 
-*For the architecture picture we have to make it like a block edge diagram but similar to how it's done in slides. Have to choose one based on the framework we're using.
+-For the architecture picture we have to make it like a block edge diagram but similar to how it's done in slides. Have to choose one based on the framework we're using.
 
-*Upload diagram to git when sprint is due, put it up on Wednesday not Friday
+-Upload diagram to git when sprint is due, put it up on Wednesday not Friday
 
-*For sprint 3 grading: big difference is architecture diagram being consistent with code and task infrastructure being ready (Travis and some tests working) (functional website for testing for unit test)
+-For sprint 3 grading: big difference is architecture diagram being consistent with code and task infrastructure being ready (Travis and some tests working) (functional website for testing for unit test)
 
 After discussing what is expected of us, the TA asked if we had any questions and we asked about our docked marks from the Sprint 2 grade as well as how to handle "closed" issues.
 
-*Spoke to TA about docked marks from "empty" stories and issues cause we can't delete them
+-Spoke to TA about docked marks from "empty" stories and issues cause we can't delete them
 
-*Showed TA how we separated them and even though they are "closed" they don't necessarily mean closed but it can be discarded or changed or merged with another. Change to INVALID if story point or issue will not be used
+-Showed TA how we separated them and even though they are "closed" they don't necessarily mean closed but it can be discarded or changed or merged with another. Change to INVALID if story point or issue will not be used
 
-*Discussed disagreements with TA over Sprint 2 grades
+-Discussed disagreements with TA over Sprint 2 grades
