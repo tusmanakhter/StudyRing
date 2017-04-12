@@ -24,7 +24,7 @@ ________________________________________________________________________________
                       <i class="fa fa-calendar-plus-o"></i>
                   </span>
                 <div class="text-box">
-                    <p class="main-text">3 New</p>
+                    <p class="main-text">3 Upcoming</p>
                     <p class="text-muted">Events</p>
                 </div>
             </div>
@@ -92,6 +92,9 @@ ________________________________________________________________________________
                                   <td>{{ name }}</td>
                                   <td>{{ createdBy }}</td>
                                   <td>{{ numOfMembers }}</td>
+                                  <form action="/rings/{{_id}}">
+                                        <input type="submit" class="viewRing" value="View Ring" />
+                                  </form>
                               </tr>
                             {{/each}}
                           {{/if}}
