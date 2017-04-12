@@ -1,0 +1,40 @@
+These minutes were taken during our Sprint 4 Meeting with the TA
+Meeting Duration: 12:59pm-1:14pm
+
+Showed TA new stuff we did fixed a few bugs from last sprints that didn't work (username, password, avatar)
+
+In stories we had myRings and browseRings requiring more permission based for viewing and editing all the rings (previous sprints were able to view and edit all rings)
+
+Added a NavBar in the side because some browsers wouldn't show everything
+
+One feature to implement was Forms, will link to specific rings. The story for sprint 4 regarding forms was just the ability to post a comment
+
+Forum and rings are separate now since they are both templates but we can merge them together in sprint 5
+
+Will test if only one person can comment on the same ring or if not then we need to alter permissions. Right now there are no permissions for forms
+
+If we log in with an incognito window and comment there we can see it on the main forum as well meaning it's all synchronized. BUT we need to change the user specific to the message poster instead of using the logged in user
+
+Fixed front end on dashboard and will use it as placeholders for stuff to add in for sprint 5 (location of study 
+
+_____________________________________________________________________________________________________
+
+For grading:
+
+Coding style - most comments and formatting will be done at the top. For JavaScript and HTML we using the basic style (variables aren't in caps). Wants a link to say that it's standard
+
+Templates are meteor only so small templates we'd have: template name, description, function. For big templates we'd have all the smaller templates. Template names are capitalized while collection names are lowercase
+
+Ensuring that the code will match the style of comments we're going to finish the code first and then someone else just commits for comments and formats the code in question
+
+Comments should be in separate pull request with comments on the pull request. Need to make sure code formatting is correct for each code we create a pull request for
+
+For testing and continuous integration we have unit tests for backend methods. Meteor has functions for user login so we didn't need to test those. We tested methods we created on our own and displays it in Travis.
+
+_______________________________________________________________________________________________________
+For sprint 5 grading scheme differences:
+
+* Cleanup and stories should be completed
+* Directory package structure (if code is organized) (match with architecture diagram)
+* Need architecture diagram for presentation
+* Test quality (unit tests) does it make sense for testing
