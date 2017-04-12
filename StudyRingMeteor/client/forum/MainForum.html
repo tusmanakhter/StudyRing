@@ -9,16 +9,19 @@ ________________________________________________________________________________
 <template name="MainForum">
   <body>
       <div class="jumbotron">
-        <h1>Welcome To The Forum</h1>
+        <h1 style ="text-align:center;">Welcome To The Forum</h1>
+        <hr>
           {{>RingDiscussion}}
         <br><br>
-        <p>Have a question? We are here to help!</p>
+        <hr>
+        <p>Have any questions? Discuss with other members!</p>
       </div>
       <div>
         {{#each comments}}
           {{> MyAvatarComment}}
         {{/each}}
       </div>
+      <hr>
         {{> quickForm collection=UserDiscussion id="insertComment" type="insert" class="newCommentForm"}}
   </body>
 </template>
@@ -51,7 +54,10 @@ ________________________________________________________________________________
       <h4>{{comment}}</h4>
       <p> Created on: {{createdAt}} <br>
       Posted {{createdAgo}} </p>
+      {{#if userDelete}}
       <button class="btn-deny toggle-menu2"> Remove </button>
+      {{else}}
+      {{/if}}
     </div>
   </div>
 </template>
