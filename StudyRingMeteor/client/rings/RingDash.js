@@ -1,4 +1,5 @@
 import { Rings } from "../../collections/rings/rings.js";
+import { UserDiscussion } from "../../collections/userDiscussion/userDiscussion.js";
 
 Template.RingDash.onCreated(function(){
     this.editMode = new ReactiveVar(false);
