@@ -1,7 +1,7 @@
 <!--
 ________________________________________________________________________________
                                 ****Dashboard****
-Description: The dashboard is the lading page after someone has logged in or
+Description: The dashboard is the landing page after someone has logged in or
             registered successfully.
 Subtemplates: Soon to be implemented
 Functions: Display all the useful information to the user such as upcoming events,
@@ -76,37 +76,20 @@ ________________________________________________________________________________
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Ring Name</th>
                                 <th>Ring Leader</th>
                                 <th>Members</th>
-                                <th>Events</th>
                             </tr>
                         </thead>
                         <tbody>
                             {{ #each rings }}
                             <tr>
-                                <td>1</td>
                                 <td>{{ name }}</td>
                                 <td>{{ createdBy }}</td>
                                 <td>{{ numOfMembers }}</td>
-                                <td>2</td>
                             </tr>
                             {{/each}}
-                            <tr>
-                                <td>2</td>
-                                <td>COMP 346</td>
-                                <td>Aiman Hanna</td>
-                                <td>65</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Finals</td>
-                                <td>John Smith</td>
-                                <td>120</td>
-                                <td>13</td>
-                            </tr>
+
 
                         </tbody>
                     </table>
