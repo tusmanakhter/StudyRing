@@ -1,0 +1,13 @@
+We set up a domain which will be available at: studyring.tk
+
+We decided to split the project into three different stages: Groups, Events and the Database.
+
+Groups 
+- Most groups will be public, but private groups is a feature to be implemented later on
+- Groups will have tags which will help users find them 
+
+Events
+- Cap limit of people
+
+Database
+- Using user.txt for the database of usernames and password, but eventually we need to choose whether we will use Mongodb or mySQL for the groups and events database and upgrade.
