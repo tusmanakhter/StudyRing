@@ -4,17 +4,17 @@ We decided to divide the project and related discussions into 3 main sections <b
 ![](https://cdn.discordapp.com/attachments/227641064549384193/289595611114897408/unknown.png)
 
 #general
-*- Assigning other components besides programming (discussion of burndown chart and architecture diagram)
-*- Agreed that the layered architecture seemed the most fitting to our project
-*- Checking on progress and ensuring each member is working on something separate (no overlapping)
+* - Assigning other components besides programming (discussion of burndown chart and architecture diagram)
+* - Agreed that the layered architecture seemed the most fitting to our project
+* - Checking on progress and ensuring each member is working on something separate (no overlapping)
 
 #makeup_front_end
 Discussion of front-end design and other lingering visual issues 
-*- Overlapping items on the main homepage
-*- Color scheme changes to match the theme of the project and resemble the initial plan
+* - Overlapping items on the main homepage
+* - Color scheme changes to match the theme of the project and resemble the initial plan
 
 #surgeons_back_end
-*- Discussion of collections (user, rings and events)
-*- Discussing routing issues (noteably with the forgot my password page)
-*- Discussing future plans for layout of templates and configuration
+* - Discussion of collections (user, rings and events)
+* - Discussing routing issues (noteably with the forgot my password page)
+* - Discussing future plans for layout of templates and configuration
 
