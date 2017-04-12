@@ -7,6 +7,7 @@ Template.RingDash.onCreated(function(){
         var id = FlowRouter.getParam('id');
         self.subscribe('singleRing', id);
         self.subscribe('allUsers');
+        self.subscribe('userdiscussion');
     });
 });
 
@@ -23,5 +24,17 @@ Template.RingDash.helpers({
     members: () => {
         var id = FlowRouter.getParam('id');
         return Meteor.users.find({rings: id});
+    },
+    comments: ()=> {
+      var active = Session.get('activeRing');
+      return UserDiscussion.find({ringId: active});
+    },
+    userId: function () {
+        var userId = this.createdBy;
+        return Meteor.users.findOne({_id: userId});
+    },
+    usernameComment: function(){
+      var userId = this.createdBy;
+      return Meteor.users.findOne({_id: userId}).username;
     }
 });
