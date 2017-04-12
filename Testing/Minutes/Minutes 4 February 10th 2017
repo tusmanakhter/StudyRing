@@ -1,0 +1,33 @@
+This meeting was the final meeting before the Sprint 2 demonstartion
+Meeting Duration: 12:55pm - 1:12pm
+
+Met with TA and showed him what we did (login page, nav bar, account creation)
+
+Need to put the front page that Laurie did which is on GitHub put it into the story
+Put all the software on GitHub and discussions
+
+Changed from PHP/HTML CSS to Meteor and Mongo and JavaScript
+
+For future stories instead of putting StoryX - Idea change to Story X - Full title of idea
+Look up user story template for future references for stories
+
+Burndown chart is used to follow a specific unit of time how much work was done (display in graph how much work vs time taken)
+(Not GitHub since those graphs measure amount of code NOT amount of story points)
+Can be done manually or out of Git (TA doesnt know any proper method, maybe look into possible software to do it)
+TFS Burndown chart (Microsoft burndown chart and can enter user stories and we enter the fields (#of stories) and it creates the chart automatically)
+
+For grading Sprint 2:
+
+Task breakdown - checkpoints for each story and how we do it (look at description for sprint 2 and what we plan for sprint 3)
+
+Burndown is defined before you start the sprint (Ex: before Sprint 3 we predict to do 50 story points and compare with actual burndown postsprint)
+
+Can either do one burndown chart per sprint or one for the entire project
+
+Continuous integration - automated way that after every change made in the code, something gets the code and tries to build it with the existing code and then writes adn attempts to see if the code works or doesnt
+Continuous integration will be done for sprint 3 (Travis or other equivalent tools)
+Even though were doing the testing manually (check site after coding a portion) we need to make it automated instead of manual (done by Sprint 3)
+
+For Sprint 4-5 we need to refine more of the software process for each of them (user story + unit testing which runs that code)
+
+Minutes are taken daily (full time) talk about what we finished, what we had trouble with and goals to do before next meeting/scrum
