@@ -113,7 +113,7 @@ Template.RingInputNipModal.events({
 
 Template.RingInfo.helpers({
     Rings() {
-        return Rings.find({});
+        return Rings;
     },
     updateRingId: function() {
         return this._id;
@@ -144,7 +144,7 @@ Template.RingInfo.helpers({
 
 Template.NewRing.helpers({
     Rings() {
-        return Rings.find({});
+        return Rings;
     }
 });
 
