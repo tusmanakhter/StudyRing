@@ -1,6 +1,7 @@
 import './MainForum.html';
 import { Rings } from "../../collections/rings/rings.js"
 import { commentPush, deleteComment } from "../../collections/userDiscussion/methods.js";
+import { UserDiscussion } from "../../collections/userDiscussion/userDiscussion.js";
 //Meteor.subscribe('userdiscussion');
 
 
@@ -20,7 +21,9 @@ Template.MyAvatarComment.onCreated(function(){
 });
 
 Template.MainForum.helpers({
-
+    UserDiscussion() {
+        return UserDiscussion;
+    },
     updateCommentId: function() {                                               //This returns the id of the selected comment
         return this._id;
     },
@@ -55,6 +58,11 @@ Template.MyComment.helpers({
   createdAgo: function(){
     console.log(this.createdAt);
     return moment(this.createdAt).fromNow();
+  },
+  userDelete: function(){
+    var userId = this.createdBy;
+    console.log(this.createdBy);
+    return (Meteor.userId() === userId);
   }
 });
 

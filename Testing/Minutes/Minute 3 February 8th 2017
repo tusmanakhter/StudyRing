@@ -1,0 +1,30 @@
+New Business:
+
+Set up the tasks for each person and who will be front end, back end
+
+     Arshad - Github manager + front-end supporter
+     Tusman - Front-end
+     Pam - Back-end
+     Zack - Back-end
+     Brandon - Back-end
+     Laurie - Front-end
+     Taj - Back-end
+     Yan Ming - Back-end
+
+Tasks to complete for Sprint 2:
+
+	Username / password exception handling (Back-end)
+	Editing user info (Page, username, password, bio) (Back-end and Front-end)
+	Creating groups (Page, username, password, groups created) (Back-end and Front-end)
+	Redesign welcome page, login/logout pages, registration page
+	Fix Github isues
+		-Putting user stoeies as issues
+		-Relate issues with comments
+		-Assign issues
+
+
+Old Business:
+
+Need to restart a lot of the design using Meteor.js
+
+Deleted existing forks

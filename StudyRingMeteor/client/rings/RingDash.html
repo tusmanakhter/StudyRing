@@ -28,8 +28,14 @@ ________________________________________________________________________________
                 </span>
             {{/each}}
         </p>
-
         Created By: {{createdByUser.username}} {{> avatar userId=createdByUser shape="circle" size="medium"}}
         {{> Events}}
+        <p> Forum Posts: </p>
+        {{#each comments}}
+            <hr>
+          <h6 style ="color: gray"> {{> avatar user=userId shape="circle" size="small"}}  Posted by <span style="color:green;font-weight:bold">{{usernameComment}} </span></h6>
+           {{comment}}
+          <h5 style ="text-align:right; color: gray"> Created {{createdAt}} </h5>
+        {{/each}}
     </article>
 </template>

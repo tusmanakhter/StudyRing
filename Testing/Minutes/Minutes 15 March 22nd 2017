@@ -1,0 +1,11 @@
+This meeting was an online discussion over Discord text caht.
+Meeting Duration: 2:48pm - 4:16pm
+
+
+-We spoke about some of the bugs that we encountered during pair programming sessions.
+
+-Decided on a more structured method of formatting the entire project as well as the standard for all of our comments.
+
+-Fixed the bug with avatar pictures not showing up on the main page but displayed a broken link placeholder.
+
+-Created a method that checks if the user is the Ring Owner or another person who joined the Ring later on to implement a method to check who is the owner and who else can have access the Ring.
