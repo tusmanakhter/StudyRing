@@ -13,7 +13,8 @@ Template.Events.helpers({
         return Events;
     },
     events: ()=> {
-        return Events.find({});
+      var id = FlowRouter.getParam('id');
+      return Events.find({ringId: id});
     }
 })
 
