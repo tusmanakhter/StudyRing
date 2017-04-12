@@ -1,0 +1,15 @@
+During this meeting, we went over some issues that we had over the past week.
+Meeting Duration: 12:06pm - 1:26pm
+
+
+During the meeting we:
+-Brushed up on general meteor terms as well as our terminology in our project to avoid confusion
+
+-For comments, we removed the comments on some but decided to have standard comments for templates and collections while having different ones to distinguish between client side and server side.
+
+-Found bugs in newRing (Sprint 4), profile picture (Sprint 5) will be fixed in mentioned Sprints.
+
+-In a new Wiki page we will enforce a new file formatting as well as a way to comment or write the code all uniform.
+
+-For front-end it will go in it's separate folder with the names of the files are capitalized. For templates with sub-templates we will put them all into the same file. We will do the same for the events and sub-events.
+
