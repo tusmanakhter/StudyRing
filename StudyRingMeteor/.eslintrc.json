@@ -1,0 +1,18 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "meteor": true,
+    "node": true,
+    "browser": true
+  },
+  "plugins": ["meteor"],
+  "extends": ["plugin:meteor/recommended"],
+  "rules": {
+    "meteor/template-names": [0],
+    "meteor/no-session": [0],
+    "meteor/eventmap-params": [0]
+  }
+}

@@ -1,4 +1,5 @@
 import { Rings } from '../rings/rings.js';
+import { UserDiscussion } from './userDiscussion.js';
 
 export const commentPush = new ValidatedMethod({
   name: 'commentPush',

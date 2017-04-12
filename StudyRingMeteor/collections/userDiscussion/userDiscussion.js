@@ -1,7 +1,7 @@
 import { Rings } from '../rings/rings.js';
 import { commentPush } from './methods.js';
 
-UserDiscussion = new Mongo.Collection('userdiscussion');
+export const UserDiscussion = new Mongo.Collection('userdiscussion');
 
 
 UserDiscussion.allow({                                                          //Checks if the user is still logged in
@@ -66,3 +66,9 @@ Meteor.methods({
 })
 
 UserDiscussion.attachSchema(UserDiscussionSchema);
+
+Factory.define('UserDiscussion', UserDiscussion, {
+  comment: () => faker.lorem.sentence(),
+  createdBy: () => this.userId,
+  ringId: () => faker.lorem.sentence()
+});
