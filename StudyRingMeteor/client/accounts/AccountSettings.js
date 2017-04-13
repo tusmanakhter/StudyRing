@@ -18,15 +18,15 @@ Template.ChangePassword.events({
         if(newPass==newPass2){
             Accounts.changePassword(oldPass, newPass, function(error){
               if (error) {
-                console.log("ERROR" + error.reason);
+                sAlert.error(error.reason);
               }
               else{
-                console.log("Password Changed");
+                sAlert.success("Password Changed");
               }
             });
         }
         else{
-          console.log("New passwords do not match")
+            sAlert.error("New passwords do not match");
         }
     }
 });
@@ -35,7 +35,12 @@ Template.ChangeUsername.events({
     'submit form': function(event){
       event.preventDefault();
       var newUsername = event.target.newUsername.value;
-      changeUsername.call({ id: Meteor.userId(), newUsername });
+      changeUsername.call({ id: Meteor.userId(), newUsername }, function(error,result){
+          if(error)
+            sAlert.error(error.reason);
+          else
+            sAlert.success("Username changed.");
+      });
     }
 });
 
