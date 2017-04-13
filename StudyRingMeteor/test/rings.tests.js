@@ -40,6 +40,9 @@ describe('Rings', function () {
         assert.throws(() => {
           togglePrivate._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.togglePrivate.notOwner/);
+
+        //Confirm the ring is still public.
+        assert.isFalse(Rings.findOne({_id: RingId}).isPrivate);
     });
 
     //Tests togge to set ring private
@@ -55,6 +58,9 @@ describe('Rings', function () {
         assert.throws(() => {
           togglePublic._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.togglePublic.notOwner/);
+
+        //Confirm the ring is still private.
+        assert.isTrue(Rings.findOne({_id: RingId}).isPrivate);
     });
 
     //Tests toggle to set ring public
@@ -70,6 +76,9 @@ describe('Rings', function () {
         assert.throws(() => {
           addNip._execute({ userId2 }, { nip: "test", ringId: RingId });
         }, Meteor.Error, /rings.addNip.notOwner/);
+
+        //Confirm the ring has no nip.
+        assert.isUndefined(Rings.findOne({_id: RingId}).nipCode);
     });
 
     //Tests addition of nip to ring
@@ -111,6 +120,9 @@ describe('Rings', function () {
         assert.throws(() => {
           deleteRing._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.deleteRing.notOwner/);
+
+        //Confirm the ring is still there.
+        assert.equal(Rings.findOne({_id: RingId})._id, RingId);
     });
 
     //Tests the deletion of a ring

@@ -30,6 +30,9 @@ describe('Users', function () {
         assert.throws(() => {
             changeUsername._execute({userId1}, { id, newUsername });
         }, Meteor.Error);
+
+        //Confirm the username is not changed.
+        assert.equal(Meteor.users.findOne({_id: userId1}).username, "new name");
     });
 
     after(function() {
