@@ -58,6 +58,11 @@ Template.MyComment.helpers({
   createdAgo: function(){
     console.log(this.createdAt);
     return moment(this.createdAt).fromNow();
+  },
+  userDelete: function(){
+    var userId = this.createdBy;
+    console.log(this.createdBy);
+    return (Meteor.userId() === userId);
   }
 });
 

@@ -80,7 +80,11 @@ ________________________________________________________________________________
             {{#if isMember}}
                 <button class="btn-deny leave-ring">Leave Ring</button>
             {{else}}
+              {{#if isPrivate}}
+                <button class="btn-primary join-ring-private">Join Ring</button>
+              {{else}}
                 <button class="btn-primary join-ring">Join Ring</button>
+              {{/if}}
             {{/if}}
         {{/if}}
 
@@ -90,6 +94,32 @@ ________________________________________________________________________________
         {{/if}}
     </article>
 </template>
+
+<template name="RingInputNipModal">
+  <div class="modal fade">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Input Nip please</h4>
+        </div>
+
+        <form>
+
+        <div class="modal-body">
+
+            Nip:<input type="String" id="secretCode" class="secretCode" name="secretCode">
+            <button type="submit" class="btn btn-primary" id="save">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </form>
+
+      </div>
+    </div>
+  </div>
+</template>
+
 
 <template name="RingSetNipModal">
   <div class="modal fade">

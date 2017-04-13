@@ -1,0 +1,20 @@
+This meeting was the meeting prior to the Sprint 3 presentation and we met with our TA to discuss our progress so far.
+Meeting Duration: 1:16pm - 1:28pm
+
+During the meeting with the TA we:
+
+-Showed our progress on registration/login and explained how we changed everything from php to meteorJS
+-Showed placeholder buttons are private or public
+-Showed account setting allow username/password to be changed
+
+-Create new group story #34 assigned to 2 people. Divided and worked on it together, Pam debugged it and tested
+-Pull request for #34 was added a meteor prototype
+-Travis CI fixed configuration, it works. Didn't write tests but out code as is works....
+-Need to implement how to join other study groups
+-Need to reply to user stories and set them as sub tasks
+-For each group we should be able to create a study event within the group, password recovery for S3
+-Priority and risks for S3 is set up
+-Burn down chart for whole project is fine but you could also do each sprint. What we did is fine though
+
+Regarding the burndown chart for future Sprints, the TA gave us this advice:
+For burn down we need to show the number of hours, look at stories and check story points and when you code the story points and breakdown of the tasks you take into account how long the time took. Re-evaluate each day number of remaining hours in each sprint. Don't have that many user stories so it's better to show the time breakdown. This new brndown is for S3. On Wikipedia use the graph with remaining effort on the Y-axis. Hours on Y left, tasks on Y right, tasks completed per day on X

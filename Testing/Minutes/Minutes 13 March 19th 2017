@@ -1,0 +1,22 @@
+Meeting Duration: 12:56pm -1:18pm
+
+
+For this meeting, we met with the TA to discuss the setup for Sprint 4 as well as show our progress since the Sprint 3 presentation.
+
+
+-Showed TA how we split our stories and sub stories as well as tasks inside of them wanted to know difference between task and sub story, basically the same but each task we start we make an issue for it and implement it into the burndown
+
+-Sprint 4 wanted to find issues associated with sprint 4, we need to show the issues as well in the story point. Only use story, and task, take out substory. Collection of stories is a feature. To create the issues we can create as we go but always defence them in the stories that they're associated with
+
+-For burndown we add estimated hours and depending on how much gets done
+
+-When doing burndown and list all the items, we would list the task and hours and date when the task associated with it was closed. Listing stories is fine too but task is easier since we're creating a task per story. Only put hours on task level not story level
+
+-Assignees can also be used to see who does what for the burndown based on story breakdown
+
+-For sprint 5 one thing graded will be creation of new stories. If you clean up as we go but we may need just a clean up and no stories. If we keep pushing stories to sprint 5
+
+-Grading for sprint 4, difference is combine story related stuff into one, quality of code the TA looks at the code, what we change and if it's clear/consistent (put comments into code), code style enforced means if we don't like comments and make it readable without comments but we have some comments then it's bad (should have been defined at the beginning of assignment and make a document like online). Can also see who reviews the coding style or don't write based on how the style is being enforced. 
+-Continuous integration (Travis) need to test and execute for each commit, and stories (including maybe some past user stories). Want us to test a working and failing scenario but don't manually instead of using Travis (user experience, UI stuff, amount we have to do is based on user stories) ex: (ideal = login, nonideal = enter wrong login) do automated as much as possible but if not then do it manually (harder to do it all automated)
+
+-Unit test is method by method and manually. If most we do manually but some automated we just list "these are the tests that are automated" and put it in the github and put them into the stories

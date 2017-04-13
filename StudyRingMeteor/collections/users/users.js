@@ -38,6 +38,15 @@ User = new SimpleSchema({
     "rings.$": {
         type: String
     },
+    //This array stores the events that a user joins
+    events: {
+        type: Array,
+        optional: true
+    },
+    //The rings array stores items of type event
+    "events.$": {
+        type: String
+    },
     //This is the profile object where the profile image will be stored
     profile: {
         type: Object,

@@ -1,0 +1,14 @@
+Minutes 1 from January 27th 2017 meeting:
+
+This was our first meeting with our Teacher's Assistant and we spoke about our idea StudyRing and asked for his opinion.
+
+
+New business: Proposed two ideas; more user friendly merger of myConcordia and Moodle, second idea was a web app that can find or create study rooms to study for a course of your choice.
+
+For both ideas we would have to create an extra database which would store schedules as well as favourited locations to study.
+
+Decided on the study room app and are going to create a website with a domain instead of creating a web app. The website will require a login and password that can be saved and will allow the user to search by school for courses. Creation of issues and first story of implementation.
+
+For the login, we are deciding on JavaScript for the implementation and use NodeJS to run the website more smoothly.
+
+Old business: Nothing to report since the last meeting on January 20th.
