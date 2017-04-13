@@ -22,6 +22,15 @@ describe('Users', function () {
         changeUsername._execute({userId1}, { id, newUsername });
         assert.equal(Meteor.users.findOne(id).username, 'new name');
     });
+    
+    //Checks if all the rings are properly returned
+    it("Should not allow user to change username to a taken username", function() {
+        id = userId1;
+        newUsername = 'test4';
+        assert.throws(() => {
+            changeUsername._execute({userId1}, { id, newUsername });
+        }, Meteor.Error);
+    });
 
     after(function() {
         resetDatabase(null);

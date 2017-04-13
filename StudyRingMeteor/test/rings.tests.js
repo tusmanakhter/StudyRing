@@ -34,11 +34,27 @@ describe('Rings', function () {
         });
     });
 
+    //Tests the not owner error in the making of a ring private
+    it("Should only let the owner of a ring make it private", function() {
+        //Checks error condition
+        assert.throws(() => {
+          togglePrivate._execute({ userId2 }, { id: RingId });
+        }, Meteor.Error, /rings.togglePrivate.notOwner/);
+    });
+
     //Tests togge to set ring private
     it("Should set a ring to private", function() {
         const methodInvocation = { userId };
         togglePrivate._execute(methodInvocation, { id: RingId });
         assert.isTrue(Rings.findOne({_id: RingId}).isPrivate);
+    });
+
+    //Tests the not owner error in the making of a ring public
+    it("Should only let the owner of a ring make it public", function() {
+        //Checks error condition
+        assert.throws(() => {
+          togglePublic._execute({ userId2 }, { id: RingId });
+        }, Meteor.Error, /rings.togglePublic.notOwner/);
     });
 
     //Tests toggle to set ring public
@@ -48,9 +64,9 @@ describe('Rings', function () {
         assert.isFalse(Rings.findOne({_id: RingId}).isPrivate);
     });
 
+    //Tests if user can join a ring
     it("Should let a user join a ring", function() {
         const methodInvocation = { userId: userId2 };
-        const collector = new PublicationCollector();
 
         joinRing._execute(methodInvocation, { id: RingId });
 
@@ -61,9 +77,9 @@ describe('Rings', function () {
         assert.equal(user, userId2);
     });
 
+    //Tests if user can leave ring
     it("Should let a user leave a ring", function() {
         const methodInvocation = { userId: userId2 };
-        const collector = new PublicationCollector();
 
         leaveRing._execute(methodInvocation, { id: RingId });
 
@@ -74,10 +90,17 @@ describe('Rings', function () {
         assert.isUndefined(user);
     });
 
+    //Tests the not owner error in the deletion of a ring
+    it("Should only let the owner of a ring delete it", function() {
+        //Checks error condition
+        assert.throws(() => {
+          deleteRing._execute({ userId2 }, { id: RingId });
+        }, Meteor.Error, /rings.deleteRing.notOwner/);
+    });
+
     //Tests the deletion of a ring
     it("Should delete a ring", function() {
         const methodInvocation = { userId };
-        const collector = new PublicationCollector();
         
         deleteRing._execute(methodInvocation, { id: RingId });
 

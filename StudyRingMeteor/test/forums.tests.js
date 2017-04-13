@@ -41,8 +41,8 @@ describe('Forum', function () {
         });
     });
 
+    //Checks ring to comment association
     it("Should associate comment to ring", function() {
-        const collector = new PublicationCollector();
         const methodInvocation = { userId };
 
         commentPush._execute({ methodInvocation }, { ringId: RingId, commentId: CommentId});
@@ -54,10 +54,17 @@ describe('Forum', function () {
         assert.equal(comment, CommentId);
     });
 
+    //Tests the not owner error in deletion of a comment
+    it("Should only let the owner of a comment delete it", function() {
+        //Checks error condition
+        assert.throws(() => {
+          deleteComment._execute({ userId2 }, { id: CommentId });
+        }, Meteor.Error, /rings.deleteComment.notOwner/);
+    });
+
     //Tests the deletion of a comment
     it("Should delete a comment", function() {
         const methodInvocation = { userId };
-        const collector = new PublicationCollector();
 
         deleteComment._execute(methodInvocation, { id: CommentId });
 
