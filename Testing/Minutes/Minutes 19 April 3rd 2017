@@ -1,0 +1,10 @@
+The purpose of this meeting was to decide which group members would handle which Sprint's unit tests as well as the other tasks.
+Meeting Duration: 12:19pm - 12:38pm
+
+-We decided on a template that we will use for the unit tests for each Sprint
+-Decided that it would also be easier to have the User Stories document from the Wiki and put that in the same Excel document as the unit tests for reference
+
+-Regarding the other items in the Wiki section we also decided to move them from the Wiki into the main repository and have separate folders for the Testing, Burndown Charts and Minutes
+
+-We also fixed the error that had to do with calling a new Ring as well as correctly update the password
+-We also reflected on what the TA said during the previous meeting about splitting up the work and commits for the final Sprint and we kept that in mind when discussing the team breakdown.
