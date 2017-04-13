@@ -16,9 +16,9 @@ Template.ForgotPassword.events({
 
       Accounts.forgotPassword({email: email}, function(err){
         if (err)
-            console.log("error");
+            sAlert.error(err.reason);
         else {
-            console.log("email sent");
+            sAlert.success("Email sent.");
         }
     });
   },
@@ -29,7 +29,7 @@ Template.ForgotPassword.events({
     
     Accounts.resetPassword(Session.get('resetPassword'), pw, function(err){
         if (err)
-          console.log("error");
+            sAlert.error(err.reason);
         else {
           Session.set('resetPassword', null);
         }

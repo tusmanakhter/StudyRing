@@ -5,11 +5,12 @@ import { Events } from '../events/ringEvents.js';
 export const addNip = new ValidatedMethod({
   name: 'addNip',
   validate: new SimpleSchema({
-    nip: { type: String}
+    nip: { type: String},
+    ringId: { type: String, regEx: SimpleSchema.RegEx.Id}
   }).validator(),
-  run({ nip }) {
+  run({ nip, ringId }) {
 
-    Rings.update(id, {
+    Rings.update(ringId, {
       $set: {
           nipCode: nip
       }
@@ -22,7 +23,7 @@ export const togglePrivate = new ValidatedMethod({
   validate: new SimpleSchema({
     id: { type: String, regEx: SimpleSchema.RegEx.Id},
   }).validator(),
-  run({ id}) {
+  run({ id }) {
     if (this.userId != Rings.findOne({_id: id}).createdBy) {
         throw new Meteor.Error('rings.togglePrivate.notOwner',
         'Must be the owner to make ring private.');

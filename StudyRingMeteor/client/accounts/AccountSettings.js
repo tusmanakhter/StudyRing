@@ -11,7 +11,6 @@ Template.AccountSettings.onCreated(function(){
 Template.ChangePassword.events({
     'submit form': function(event){
         event.preventDefault();
-        console.log(event);
         var oldPass = event.target.oldPassword.value;
         var newPass = event.target.newPassword.value;
         var newPass2 = event.target.newPassword2.value;
