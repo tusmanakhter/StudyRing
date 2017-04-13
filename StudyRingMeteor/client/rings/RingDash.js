@@ -28,10 +28,7 @@ Template.RingDash.helpers({
     },
     comments: ()=> {
       var ringId = FlowRouter.getParam('id');
-      console.log(ringId);
-      Session.set('dashActive',ringId);
-      var active = Session.get('dashActive');
-      return UserDiscussion.find({ringId: active});
+      return UserDiscussion.find({ringId});
     },
     //User for avatar diplay
     userId: function () {
