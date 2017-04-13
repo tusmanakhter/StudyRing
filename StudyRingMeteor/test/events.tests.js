@@ -84,6 +84,9 @@ describe('Events', function () {
         assert.throws(() => {
           deleteEvent._execute({ userId2 }, { id: EventId });
         }, Meteor.Error, /rings.deleteEvent.notOwner/);
+
+        //Confirm the event is still there.
+        assert.equal(Events.findOne({_id: EventId})._id, EventId);
     });
 
     //Tests the deletion of an event

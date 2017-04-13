@@ -9,6 +9,10 @@ export const addNip = new ValidatedMethod({
     ringId: { type: String, regEx: SimpleSchema.RegEx.Id}
   }).validator(),
   run({ nip, ringId }) {
+    if (this.userId != Rings.findOne({_id: ringId}).createdBy) {
+        throw new Meteor.Error('rings.addNip.notOwner',
+        'Must be the owner to addNip.');
+    }
 
     Rings.update(ringId, {
       $set: {

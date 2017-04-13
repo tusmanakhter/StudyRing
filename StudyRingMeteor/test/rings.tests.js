@@ -1,5 +1,5 @@
 import { Rings } from '../collections/rings/rings.js';
-import { togglePrivate, togglePublic, joinRing, leaveRing, deleteRing } from '../collections/rings/methods.js';
+import { togglePrivate, togglePublic, joinRing, leaveRing, deleteRing, addNip } from '../collections/rings/methods.js';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import { Random } from 'meteor/random';
 import { resetDatabase } from 'meteor/xolvio:cleaner'
@@ -40,6 +40,9 @@ describe('Rings', function () {
         assert.throws(() => {
           togglePrivate._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.togglePrivate.notOwner/);
+
+        //Confirm the ring is still public.
+        assert.isFalse(Rings.findOne({_id: RingId}).isPrivate);
     });
 
     //Tests togge to set ring private
@@ -55,6 +58,9 @@ describe('Rings', function () {
         assert.throws(() => {
           togglePublic._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.togglePublic.notOwner/);
+
+        //Confirm the ring is still private.
+        assert.isTrue(Rings.findOne({_id: RingId}).isPrivate);
     });
 
     //Tests toggle to set ring public
@@ -62,6 +68,24 @@ describe('Rings', function () {
         const methodInvocation = { userId };
         togglePublic._execute(methodInvocation, { id: RingId });
         assert.isFalse(Rings.findOne({_id: RingId}).isPrivate);
+    });
+
+    //Tests the not owner error adding a nip to a ring
+    it("Should only let the owner of a ring add a nip", function() {
+        //Checks error condition
+        assert.throws(() => {
+          addNip._execute({ userId2 }, { nip: "test", ringId: RingId });
+        }, Meteor.Error, /rings.addNip.notOwner/);
+
+        //Confirm the ring has no nip.
+        assert.isUndefined(Rings.findOne({_id: RingId}).nipCode);
+    });
+
+    //Tests addition of nip to ring
+    it("Should add nip to a ring", function() {
+        const methodInvocation = { userId };
+        addNip._execute(methodInvocation, { nip: "test", ringId: RingId });
+        assert.equal(Rings.findOne({_id: RingId}).nipCode, "test");
     });
 
     //Tests if user can join a ring
@@ -96,6 +120,9 @@ describe('Rings', function () {
         assert.throws(() => {
           deleteRing._execute({ userId2 }, { id: RingId });
         }, Meteor.Error, /rings.deleteRing.notOwner/);
+
+        //Confirm the ring is still there.
+        assert.equal(Rings.findOne({_id: RingId})._id, RingId);
     });
 
     //Tests the deletion of a ring

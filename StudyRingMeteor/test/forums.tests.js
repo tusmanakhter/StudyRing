@@ -60,6 +60,9 @@ describe('Forum', function () {
         assert.throws(() => {
           deleteComment._execute({ userId2 }, { id: CommentId });
         }, Meteor.Error, /rings.deleteComment.notOwner/);
+
+        //Confirm the comment is still there
+        assert.equal(UserDiscussion.findOne({_id: CommentId})._id, CommentId);
     });
 
     //Tests the deletion of a comment
