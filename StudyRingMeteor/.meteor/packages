@@ -41,6 +41,8 @@ utilities:avatar@0.9.2
 matb33:collection-hooks
 mdg:validated-method
 meteorhacks:aggregate
+juliancwirko:s-alert
+juliancwirko:s-alert-scale
 
 dispatch:mocha
 practicalmeteor:chai
