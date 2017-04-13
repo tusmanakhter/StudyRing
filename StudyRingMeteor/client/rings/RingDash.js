@@ -30,18 +30,18 @@ Template.RingDash.helpers({
       var ringId = FlowRouter.getParam('id');
       return UserDiscussion.find({ringId});
     },
-    //User for avatar diplay
-    userId: function () {
+
+    userId: function () {                           //User for avatar diplay
         var userId = this.createdBy;
         return Meteor.users.findOne({_id: userId});
     },
-    //Name of the user who created the comment
-    usernameComment: function(){
+
+    usernameComment: function(){                    //Name of the user who created the comment
       var userId = this.createdBy;
       return Meteor.users.findOne({_id: userId}).username;
     },
-    //The date of the comment creation
-    createdAgo: function(){
+
+    createdAgo: function(){                         //The date of the comment creation
       console.log(this.createdAt);
       return moment(this.createdAt).fromNow();
     },
