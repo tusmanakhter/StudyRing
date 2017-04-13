@@ -7,7 +7,7 @@ Template.Login.events({
         if (Meteor.user()) {
            console.log(Meteor.userId());
         } else {
-           console.log("ERROR: " + error.reason);
+           sAlert.error(error.reason);
         }
      });
   },

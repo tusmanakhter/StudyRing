@@ -9,7 +9,7 @@ Template.Register.events({
             AvatarManager.setUserAvatar(Meteor.user()); //Sets profile avatar to the default avatar
             console.log(Meteor.userId());
          } else {
-            console.log("ERROR: " + error.reason);
+            sAlert.error(error.reason);
          }
       });
     },

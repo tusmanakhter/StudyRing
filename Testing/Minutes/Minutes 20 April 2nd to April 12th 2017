@@ -1,0 +1,19 @@
+These minutes are a recap of all of our online discussions over Discord Voice Chat, Discord Text Chat as well as our in person meetings since the previous meeting.
+
+-The first thing that we did was the unit tests for each Sprint, we did one for each of Sprints 1-4 so that each team member can have a guideline
+-We also moved the minutes over from the Wiki to the Minutes folder inside of the Testing folder
+-We added tests and also fixed some of teh issues we had with the importing of the files
+-We did some code edits that removed some of the errors that we had
+
+-We added event tests, event functionality for testing, event deletion and even setting a limit on the number of events
+-We encountered and fixed a bug with the rings not displaying properly
+
+For the unit testing we decided on a general naming convention that we would use which is as follows:
+SR_XX.Y
+Where SR stands for the Story point, XX stands for the numerical story point value and Y stands for the substory point value if applicable
+
+-For the unit testing we followed the instructions that the TA mentioned where we have to have the one successful case as well as one failed case
+
+-One error we ran into was that some people were doing the same unit tests without realizing so we had to delete or edit some unit tests after they were completed
+
+-We also did some acceptance testing for certain portions of the code for all the Sprints

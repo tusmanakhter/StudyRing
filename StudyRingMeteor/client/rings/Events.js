@@ -28,7 +28,11 @@ Template.EventsInfo.onCreated(function(){
 
 Template.EventsInfo.events({
     'click .join-event': function() {
-        joinEvent.call({ id: this._id });
+        joinEvent.call({ id: this._id }, function(error, result) {
+            if (error) {
+                sAlert.error(error.reason);
+            }
+       });
     },
     'click .leave-event': function() {
         leaveEvent.call({ id: this._id });
