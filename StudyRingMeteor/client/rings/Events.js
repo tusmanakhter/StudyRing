@@ -13,9 +13,18 @@ Template.Events.helpers({
         return Events;
     },
     events: ()=> {
-        return Events.find({});
+      var id = FlowRouter.getParam('id');
+      return Events.find({ringId: id});
     }
 })
+
+Template.EventsInfo.onCreated(function(){
+  this.editMode = new ReactiveVar(false);
+  var self = this;
+  self.autorun(function (){
+      self.subscribe('events');
+  });
+});
 
 Template.EventsInfo.events({
     'click .join-event': function() {
@@ -27,6 +36,9 @@ Template.EventsInfo.events({
     'click .delete-event': function() {
         deleteEvent.call({ id: this._id });
     },
+    'click .fa-pencil': function(event, template) {
+        template.editMode.set(!template.editMode.get());
+    }
 });
 
 Template.EventsInfo.helpers({
@@ -43,5 +55,11 @@ Template.EventsInfo.helpers({
     },
     isOwner: function(s2){
       return (Meteor.userId()===s2);
-    }
+    },
+    editMode: function() {
+        return Template.instance().editMode.get();
+    },
+    updateEventId: function() {
+        return this._id;
+    },
 })

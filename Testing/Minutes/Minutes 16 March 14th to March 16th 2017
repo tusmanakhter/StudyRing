@@ -1,0 +1,18 @@
+These minutes are a recap of all of the discussions that we have had in person as well as online on Discord from Sprint 3 up until Sprint 4.
+
+
+New Business:
+
+* Removed the custom.css page and used the style tag (.styl) instead for formatting
+* Added comments to every page and are using the same format for all files
+* Fixed a bug with the spacing for the Forum tab
+* Added an alert prompt for the user input and if its true (successful login) then react accordingly
+* Found an error where it sets the currently logged in user as the ring creator instead of the actual creator (moved to Sprint 5)
+* For Sprint 5 we will allow the admins permission to edit existing rings that they are a part of
+* Finished the burndown chart according to the way that the TA told us to during the Sprint 3 meeting
+* Added some Stories for Sprint 5
+* Debugged some of the issues we had with the login page as well as username/password bugs
+* Edited the overal layout and style of the site
+* Fixed the issue with the option to change a username in the account settings
+* Found a bug with the option to change the password, got fixed
+* Option to reset the password and confirmation to send an email to the registered email with a link to reset password was added and finished

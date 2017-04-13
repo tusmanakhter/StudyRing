@@ -24,7 +24,7 @@ ________________________________________________________________________________
                       <i class="fa fa-calendar-plus-o"></i>
                   </span>
                 <div class="text-box">
-                    <p class="main-text">3 New</p>
+                    <p class="main-text">3 Upcoming</p>
                     <p class="text-muted">Events</p>
                 </div>
             </div>
@@ -64,7 +64,7 @@ ________________________________________________________________________________
         </div>
     </div>
 
-<!-- not functional -->
+<!-- Rings section -->
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default mid">
@@ -76,38 +76,28 @@ ________________________________________________________________________________
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Ring Name</th>
                                 <th>Ring Leader</th>
                                 <th>Members</th>
-                                <th>Events</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{ #each rings }}
-                            <tr>
-                                <td>1</td>
-                                <td>{{ name }}</td>
-                                <td>{{ createdBy }}</td>
-                                <td>{{ numOfMembers }}</td>
-                                <td>2</td>
-                            </tr>
+                          {{#if noRings}}
+                              <tr>
+                                  <td>You have not joined any rings yet!</td>
+                              </tr>
+                          {{else}}
+                            {{#each rings}}
+                              <tr>
+                                  <td>{{ name }}</td>
+                                  <td>{{ createdBy }}</td>
+                                  <td>{{ numOfMembers }}</td>
+                                  <form action="/rings/{{_id}}">
+                                        <input type="submit" class="viewRing" value="View Ring" />
+                                  </form>
+                              </tr>
                             {{/each}}
-                            <tr>
-                                <td>2</td>
-                                <td>COMP 346</td>
-                                <td>Aiman Hanna</td>
-                                <td>65</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Finals</td>
-                                <td>John Smith</td>
-                                <td>120</td>
-                                <td>13</td>
-                            </tr>
-
+                          {{/if}}
                         </tbody>
                     </table>
                 </div>
@@ -115,6 +105,42 @@ ________________________________________________________________________________
         </div>
 
     </div>
+</div>
+
+<!-- Events section-->
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="panel panel-default mid">
+          <div class="panel-heading">
+              Events coming up
+          </div>
+          <div class="panel-body">
+              <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                          <tr>
+                              <th>Event Name</th>
+                              <th>Event Creator</th>
+                              <th>Event Date</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {{ #each events }}
+                          <tr>
+                              <td>{{ name }}</td>
+                              <td>{{ createdBy }}</td>
+                              <td>{{ eventDate }}</td>
+
+                          </tr>
+                          {{/each}}
+
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+
+  </div>
 </div>
   </body>
 </template>
