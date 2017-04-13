@@ -33,7 +33,7 @@ ________________________________________________________________________________
         <p> Forum Posts: </p>
         {{#each comments}}
             <hr>
-          <h6 style ="color: gray"> {{> avatar user=userId shape="circle" size="small"}}  Posted by <span style="color:green;font-weight:bold">{{usernameComment}} </span></h6>
+          <h6 style ="color: gray"> &nbsp; &nbsp; {{> avatar user=userId shape="circle" size="small"}}  Posted by <span style="color:green;font-weight:bold">{{usernameComment}} </span></h6>
            {{comment}}
           <h5 style ="text-align:right; color: gray"> Created {{createdAt}} </h5>
         {{/each}}
