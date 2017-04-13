@@ -15,7 +15,6 @@ Template.RingDiscussion.events({
     var ringId = this._id;
     Session.set('activeRing', ringId);
     var activeRing = Session.get('activeRing');
-    console.log(activeRing);
   }
 })
 

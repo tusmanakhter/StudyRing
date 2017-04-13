@@ -42,11 +42,9 @@ Template.RingDash.helpers({
     },
     //The date of the comment creation
     createdAgo: function(){
-      console.log(this.createdAt);
       return moment(this.createdAt).fromNow();
     },
     createdAt: function(){
-      console.log(this.createdAt);
       return moment(this.createdAt).format('DD/MM/YYYY');
     }
 });
