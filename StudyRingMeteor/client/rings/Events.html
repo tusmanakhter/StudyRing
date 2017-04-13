@@ -1,13 +1,17 @@
 <template name="Events">
+    <div class="new-ring-container">
+      <h3>
+        Events
+      </h3>
         {{> NewEvent}}
-
-{{#if Template.subscriptionsReady}}
-    {{#each events}}
-          {{> EventsInfo}}
-    {{/each}}
-{{else}}
-    <p>Loading</p>
-{{/if}}
+        {{#if Template.subscriptionsReady}}
+            {{#each events}}
+                  {{> EventsInfo}}
+            {{/each}}
+        {{else}}
+            <p>Loading</p>
+        {{/if}}
+    </div>
 </template>
 <!--
 ________________________________________________________________________________
@@ -17,11 +21,11 @@ Functions: Template to show a ring's events
 ________________________________________________________________________________
 -->
 <template name="EventsInfo">
-        <h3>
+        <h2>
             Name: {{name}}
-        </h3>
+        </h2>
         {{#if editMode}}
-                {{> quickForm collection=Events id=updateRingId type="update" doc=this autosave=true}}
+                {{> quickForm collection=Events id=updateEventId type="update" doc=this autosave=true}}
             {{else}}
             <p>
                 Description: {{desc}}
@@ -41,7 +45,8 @@ ________________________________________________________________________________
             {{else}}
                 <button class="btn-primary join-event">Join Event</button>
             {{/if}}
-            {{#if isOwner createdBy}}                                              
+            {{#if isOwner createdBy}}
+                <i class="fa fa-pencil"></i>
                 <button class="btn-deny delete-event">Delete Event</button>
             {{/if}}
         {{/if}}

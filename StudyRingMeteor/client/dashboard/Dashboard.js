@@ -1,10 +1,11 @@
 import { Rings } from "../../collections/rings/rings.js";
+import { Events } from "../../collections/events/ringEvents.js";
 
 Template.Dashboard.onCreated(function(){
     var self = this;
     self.autorun(function (){
-        //Subsribe to all rings to see them
         self.subscribe('usersRings');
+        self.subscribe('events');
     });
 });
 
@@ -24,7 +25,18 @@ Template.Dashboard.helpers({
     },
     numOfMembers: function() {
         return Rings.findOne({_id: this._id}).members.length;
-    }
+    },
+    events: ()=> {
+      var userId = Meteor.userId();
+        return Events.find({members: userId});
+    },
+    createdByEvents: function () {
+        var id = Events.findOne({_id: this._id}).createdBy;
+        return Meteor.users.findOne({_id: id}).username;
+    },
+    eventDate: function () {
+        return Events.findOne({_id: this._id}).eventDate;
+    },
 });
 
 Template.Dashboard.events({

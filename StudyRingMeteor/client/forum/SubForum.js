@@ -15,26 +15,15 @@ Template.RingDiscussion.events({
     var ringId = this._id;
     Session.set('activeRing', ringId);
     var activeRing = Session.get('activeRing');
-    console.log(activeRing);
   }
 })
 
 Template.RingDiscussion.helpers({
-
-
-//to show which button has been selected - UI enhancement
-/*    selectedClass: function(){
-      ringId = this._id;
-      var selectedButton = Session.get('activeChar');
-      if(selectedButton == ringId)
-        return 'selected'
-    },
-*/
     ringComments: function(){
       var active = Session.get('activeRing');
       return Rings.findOne({_id: active});
     },
     rings: ()=> {
-      return Rings.find({});
+      return Rings.find({members: Meteor.user()._id});
     }
 });

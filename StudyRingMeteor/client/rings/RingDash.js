@@ -27,23 +27,24 @@ Template.RingDash.helpers({
         return Meteor.users.find({rings: id});
     },
     comments: ()=> {
-      var active = Session.get('activeRing');
-      return UserDiscussion.find({ringId: active});
+      var ringId = FlowRouter.getParam('id');
+      return UserDiscussion.find({ringId});
     },
-    userId: function () {
+
+    userId: function () {                           //User for avatar diplay
         var userId = this.createdBy;
         return Meteor.users.findOne({_id: userId});
     },
-    usernameComment: function(){
+
+    usernameComment: function(){                    //Name of the user who created the comment
       var userId = this.createdBy;
       return Meteor.users.findOne({_id: userId}).username;
     },
-    createdAgo: function(){
+    createdAgo: function(){                         //The date of the comment creation
       console.log(this.createdAt);
       return moment(this.createdAt).fromNow();
     },
     createdAt: function(){
-      console.log(this.createdAt);
       return moment(this.createdAt).format('DD/MM/YYYY');
     }
 });
