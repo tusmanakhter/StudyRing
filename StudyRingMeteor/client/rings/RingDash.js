@@ -40,13 +40,11 @@ Template.RingDash.helpers({
       var userId = this.createdBy;
       return Meteor.users.findOne({_id: userId}).username;
     },
-
     createdAgo: function(){                         //The date of the comment creation
       console.log(this.createdAt);
       return moment(this.createdAt).fromNow();
     },
     createdAt: function(){
-      console.log(this.createdAt);
       return moment(this.createdAt).format('DD/MM/YYYY');
     }
 });

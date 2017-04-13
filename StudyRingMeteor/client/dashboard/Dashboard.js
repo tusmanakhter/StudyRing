@@ -30,7 +30,7 @@ Template.Dashboard.helpers({
       var userId = Meteor.userId();
         return Events.find({members: userId});
     },
-    createdBy: function () {
+    createdByEvents: function () {
         var id = Events.findOne({_id: this._id}).createdBy;
         return Meteor.users.findOne({_id: id}).username;
     },

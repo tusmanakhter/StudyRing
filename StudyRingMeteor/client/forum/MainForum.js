@@ -52,28 +52,23 @@ Template.MyAvatarComment.helpers({
 
 Template.MyComment.helpers({
   createdAt: function(){
-    console.log(this.createdAt);
     return moment(this.createdAt).format('DD/MM/YYYY');
   },
   createdAgo: function(){
-    console.log(this.createdAt);
     return moment(this.createdAt).fromNow();
   },
   userDelete: function(){
     var userId = this.createdBy;
-    console.log(this.createdBy);
     return (Meteor.userId() === userId);
   }
 });
 
 Template.MainForum.events({
   'click .toggle-menu1': function() {
-      console.log('click');
       Meteor.call('updateComment', this._id, inCommentSection);
     },
 
   'click .toggle-menu2': function() {
-    console.log('click');
     deleteComment.call({ id: this._id });
   },
 });

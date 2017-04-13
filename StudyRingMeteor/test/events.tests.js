@@ -26,7 +26,7 @@ describe('Events', function () {
         userId2 = Accounts.createUser({username: 'test2', email: 'test@gmail.com2', password: 'test2'});
     });
 
-    //Checks if all the rings are properly returned
+    //Checks if all the events are properly returned
     it("Should return all events", function() {
         const collector = new PublicationCollector();
 
@@ -39,9 +39,22 @@ describe('Events', function () {
         });
     });
 
+    //Checks ring to event association
+    it("Should associate event to ring", function() {
+        const methodInvocation = { userId };
+
+        eventPush._execute({ methodInvocation }, { ringId: RingId, eventId: EventId});
+
+        var ring = Events.findOne({ _id: EventId }).ringId;
+        var event = Rings.findOne({_id: RingId}).events[0];
+
+        assert.equal(ring, RingId);
+        assert.equal(event, EventId);
+    });
+
+    //Tests if a user can join event
     it("Should let a user join an event", function() {
         const methodInvocation = { userId: userId2 };
-        const collector = new PublicationCollector();
 
         joinEvent._execute(methodInvocation, { id: EventId });
 
@@ -52,9 +65,9 @@ describe('Events', function () {
         assert.equal(user, userId2);
     });
 
+    //Tests if a user can leave event
     it("Should let a user leave an event", function() {
         const methodInvocation = { userId: userId2 };
-        const collector = new PublicationCollector();
 
         leaveEvent._execute(methodInvocation, { id: EventId });
 
@@ -65,10 +78,17 @@ describe('Events', function () {
         assert.isUndefined(user);
     });
 
-    //Tests the deletion of a ring
+    //Tests the not owner error in deletion of an event
+    it("Should only let the owner of an event delete it", function() {
+        //Checks error condition
+        assert.throws(() => {
+          deleteEvent._execute({ userId2 }, { id: EventId });
+        }, Meteor.Error, /rings.deleteEvent.notOwner/);
+    });
+
+    //Tests the deletion of an event
     it("Should delete an event", function() {
         const methodInvocation = { userId };
-        const collector = new PublicationCollector();
         
         deleteEvent._execute(methodInvocation, { id: EventId });
 
