@@ -55,16 +55,6 @@ UserDiscussionSchema = new SimpleSchema({                                       
    }
 });
 
-Meteor.methods({
-  editComment: function(id, currentState){
-      UserDiscussion.update(id,{
-        $set:{
-          inCommentSection: !currentState
-        }
-      });
-  }
-})
-
 UserDiscussion.attachSchema(UserDiscussionSchema);
 
 Factory.define('UserDiscussion', UserDiscussion, {
