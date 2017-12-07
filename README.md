@@ -35,4 +35,4 @@ The goal of our project is to create a web application which will allow students
 * Bootstrap
 
 ## Other Useful Information
-[User Stories Google Sheet] (https://docs.google.com/spreadsheets/d/1m3Y0P3KuxlqG0z9wBiudmtYBCxCRJ-nLd1EyocOA9GQ/edit#gid=0)
+[User Stories Google Sheet](https://docs.google.com/spreadsheets/d/1m3Y0P3KuxlqG0z9wBiudmtYBCxCRJ-nLd1EyocOA9GQ/edit#gid=0)
